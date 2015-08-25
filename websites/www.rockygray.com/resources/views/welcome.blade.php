@@ -31,7 +31,7 @@
             }
 
             .title {
-                font-size: 96px;
+                font-size: 6em;
             }
         </style>
     </head>

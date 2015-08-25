@@ -5,6 +5,16 @@
   },
   "dependencies": {
     "laravel-elixir": "^2.0.0",
-    "bootstrap-sass": "^3.0.0"
+    "bootstrap-sass": "^3.0.0",
+    "gulp-livereload": "~1.0.1",
+    "tiny-lr": "0.0.5",
+    "gulp-autoprefixer": "0.0.6",
+    "gulp-notify": "~0.4.3",
+    "gulp-util": "~2.2.14",
+    "gulp-ruby-sass": "~0.3.0",
+    "gulp-phpunit": "0.0.3",
+    "gulp": "~3.5.2",
+    "gulp-coffee": "~1.4.1",
+    "gulp-notify-growl": "0.0.2"
   }
 }
