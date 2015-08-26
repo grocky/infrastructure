@@ -1,5 +1,6 @@
-/vendor
-/node_modules
+vendor
+node_modules
+bower_vendor
 Homestead.yaml
 .env
 _ide_helper.php
