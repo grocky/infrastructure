@@ -1,81 +1,83 @@
-var elixir = require('laravel-elixir');
-
-/*
- |--------------------------------------------------------------------------
- | Elixir Asset Management
- |--------------------------------------------------------------------------
- |
- | Elixir provides a clean, fluent API for defining some basic Gulp tasks
- | for your Laravel application. By default, we are compiling the Sass
- | file for our application, as well as publishing vendor resources.
- |
- */
-
-//elixir(function(mix) {
-//    mix.sass('app.scss');
-//});
-
-/*
- See dev dependencies https://gist.github.com/isimmons/8927890
- Compiles sass to compressed css with autoprefixing
- Compiles coffee to javascript
- Livereloads on changes to coffee, sass, and blade templates
- Runs PHPUnit tests
- Watches sass, coffee, blade, and phpunit
- Default tasks sass, coffee, phpunit, watch
- */
+var config = {
+    env: 'prod'
+};
 
 var gulp = require('gulp');
 var gutil = require('gulp-util');
-var notify = require('gulp-notify');
-var sass = require('gulp-ruby-sass');
-var autoprefix = require('gulp-autoprefixer');
-var coffee = require('gulp-coffee');
-var phpunit = require('gulp-phpunit');//notify requires >= v 0.0.3
-var fs = require('fs'); //only used for icon file with growlNotifier
+var plugins = require('gulp-load-plugins')();
 
+var paths = {
+    'src': {
+        'less': 'resources/target/less',
+        'scss': 'resources/target/scss',
+        'css': 'resources/target/css',
+        'js': 'resources/target/js',
+        'fonts': 'resources/target/fonts',
+        'vendor': 'resources/target/bower_vendor',
+        'views': 'resources/views'
+    },
+    'target': {
+        'css': 'public/css/',
+        'js': 'public/js/',
+        'fonts': 'public/fonts/',
+        'images': 'public/images/',
+        'vendor': '/public/bower_vendor/'
+    }
 
-// livereload
-var livereload = require('gulp-livereload');
-var lr = require('tiny-lr');
-var server = lr();
-
-//uncomment for growl notify for windows users
-//Specify custom icon by passing object to growl() { icon: fs.readFileSync('path_to_icon_file') }
-//var growl = ('gulp-notify-growl');
-//var growlNotifier = growl();
-
-//CSS directories
-var sassDir = 'app/assets/sass';
-var targetCSSDir = 'public/css';
-
-//javascript directories
-var coffeeDir = 'app/assets/coffee';
-var targetJSDir = 'public/js';
+};
 
 // blade directory
 var bladeDir = 'app/views';
 
 // Tasks
-/* sass compile */
-gulp.task('sass', function() {
- return gulp.src(sassDir + '/main.scss')
-     .pipe(sass({ style: 'compressed'}).on('error', gutil.log))
-     .pipe(autoprefix('last 10 versions'))
-     .pipe(gulp.dest(targetCSSDir))
-     .pipe(livereload(server))
-     .pipe(notify('CSS compiled, prefixed, and minified.'));
-
- //growlNotifier for windows
- //.pipe(notify({title: 'CSS Compiled', message: 'compiled, prefixed, and minified.', notifier: growlNotifier}));
+gulp.task('css', function () {
+    if (config.env == 'dev') {
+        return gulp.src(paths.src.css + '/**/*.css')
+            .pipe(plugins.autoprefixer('last 15 version', 'ie 8'))
+            .pipe(gulp.dest('public/css/'));
+    } else {
+        return gulp.src(paths.src.css + '/**/*.css')
+            .pipe(plugins.autoprefixer('last 15 version', 'ie 8'))
+            .pipe(plugins.minifyCss())
+            .pipe(gulp.dest(paths.target.css));
+    }
 });
 
-/* coffee compile */
-gulp.task('coffee', function() {
- return gulp.src(coffeeDir + '/**/*.coffee')
-     .pipe(coffee().on('error', gutil.log))
-     .pipe(gulp.dest(targetJSDir))
-     .pipe(livereload(server));
+gulp.task('scripts', function () {
+    if (config.env == 'dev') {
+        return gulp.src(paths.src.js + '/**/*.js')
+            .pipe(gulp.dest('public/js/'));
+    } else {
+        return gulp.src(paths.src.js + '/**/*.js')
+            .pipe(plugins.uglify())
+            .pipe(gulp.dest(paths.target.js));
+    }
+});
+
+//CSS Compilation
+gulp.task('plugins_css', function () {
+    return gulp.src([paths.src.vendor + '/bootstrap/dist/css/*.min.css', paths.src.vendor + '/**/dist/*/*.min.css'])
+        .pipe(plugins.minifyCss())
+        .pipe(plugins.concat('vendor.css'))
+        .pipe(gulp.dest(paths.target.css));
+});
+
+//JS Compilation
+gulp.task('plugins_scripts', function () {
+    return gulp.src([paths.src.vendor + '/jquery/dist/*.min.js', paths.src.vendor + '/**/dist/*/*.min.js'])
+        .pipe(plugins.uglify())
+        .pipe(plugins.concat('vendor.js'))
+        .pipe(gulp.dest(paths.target.js));
+});
+
+gulp.task('fonts', function(){
+    return gulp.src([paths.src.fonts + '/**/*', paths.src.vendor + '/**/dist/fonts/**/*'])
+        .pipe(gulp.dest(paths.target.fonts))
+});
+
+gulp.task('images', function(){
+    return gulp.src('app/target/images/**/*')
+        .pipe(gulp.dest(paths.target.images))
 });
 
 /* Blade Templates */
@@ -87,7 +89,8 @@ gulp.task('blade', function() {
 /* PHPUnit */
 gulp.task('phpunit', function() {
  //notify defaults to false. If you don't want to use a notifier or worry with errors in this task leave it off
- var options = {debug: false, notify: true}
+ var options = {debug: false, notify: true};
+
  gulp.src('app/tests/*.php')
      .pipe(phpunit('', options)) //empty phpunit path defaults ./vendor/bin/phpunit for windows specify with double back slashes
 
@@ -108,16 +111,28 @@ gulp.task('phpunit', function() {
 /* Watcher */
 gulp.task('watch', function() {
 
- server.listen(35729, function(err) {
-  if(err) {console.log(err);}
+    plugins.livereload.listen();
 
-  gulp.watch(bladeDir + '/**/*.blade.php', ['blade']);
-  gulp.watch(sassDir + '/**/*.scss', ['sass']);
-  gulp.watch(coffeeDir + '/**/*.coffee', ['coffee']);
- });
+    gulp.watch(paths.src.views + '/**/*.blade.php', ['blade']);
+    gulp.watch(paths.src.css + '/**/*.css', ['css']);
+    gulp.watch(paths.src.js + '/**/*.js', ['scripts']);
+    gulp.watch('app/**/*.php', ['phpunit']);
 
- gulp.watch('app/**/*.php', ['phpunit']);
 });
 
-/* Default Task */
-gulp.task('default', ['sass', 'coffee', 'phpunit', 'watch']);
+gulp.task('dev', function () {
+    config.env = 'dev';
+    plugins.livereload.listen();
+    gulp.watch([
+            'resources/assets/js/**/*.js',
+            'resources/assets/css/**/*.css',
+            'resources/assets/fonts/**/*',
+            'resources/assets/images/**/*'
+        ],
+        ['plugins_css','plugins_scripts','css', 'scripts','fonts','images']
+    );
+});
+
+gulp.task('prod', ['plugins_css', 'plugins_scripts', 'css', 'scripts', 'fonts', 'images']);
+
+gulp.task('default',['prod']);
