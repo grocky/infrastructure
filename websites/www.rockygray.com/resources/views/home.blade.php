@@ -22,7 +22,7 @@
 		<header>
 			<h1 id="logo">
 				<a href="index.html" title="Synopsis Theme" rel="home">
-					<img src="images/logo.png" alt="Synopsis Theme" width="230">
+					<img src="images/christmas_mohawk.jpg" alt="Synopsis Theme" width="230">
 				</a>
 			</h1>
 			<nav>

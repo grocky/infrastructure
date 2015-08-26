@@ -112,7 +112,7 @@ gulp.task('images', function(){
 
 /* Blade Templates */
 gulp.task('blade', function() {
- return gulp.src(bladeDir + '/**/*.blade.php')
+ return gulp.src(paths.src.views + '/**/*.blade.php')
      .pipe(livereload(server));
 });
 
