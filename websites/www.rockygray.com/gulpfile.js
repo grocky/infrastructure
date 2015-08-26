@@ -8,16 +8,16 @@ var plugins = require('gulp-load-plugins')();
 
 var paths = {
     'src': {
-        'less': 'resources/target/less',
-        'scss': 'resources/target/scss',
-        'css': 'resources/target/css',
-        'js': 'resources/target/js',
-        'fonts': 'resources/target/fonts',
-        'vendor': 'resources/target/bower_vendor',
+        'less': 'resources/assets/less',
+        'scss': 'resources/assets/scss',
+        'css': 'resources/assets/css',
+        'js': 'resources/assets/js',
+        'fonts': 'resources/assets/fonts',
+        'vendor': 'resources/assets/bower_vendor',
         'views': 'resources/views'
     },
     'target': {
-        'css': 'public/css/',
+        'css': 'public/css',
         'js': 'public/js/',
         'fonts': 'public/fonts/',
         'images': 'public/images/',
@@ -34,19 +34,19 @@ gulp.task('css', function () {
     if (config.env == 'dev') {
         return gulp.src(paths.src.css + '/**/*.css')
             .pipe(plugins.autoprefixer('last 15 version', 'ie 8'))
-            .pipe(gulp.dest('public/css/'));
+            .pipe(gulp.dest(paths.target.css));
     } else {
         return gulp.src(paths.src.css + '/**/*.css')
             .pipe(plugins.autoprefixer('last 15 version', 'ie 8'))
             .pipe(plugins.minifyCss())
-            .pipe(gulp.dest(paths.target.css));
+            .pipe(gulp.dest(paths.target.css))
     }
 });
 
 gulp.task('scripts', function () {
     if (config.env == 'dev') {
         return gulp.src(paths.src.js + '/**/*.js')
-            .pipe(gulp.dest('public/js/'));
+            .pipe(gulp.dest(paths.target.js));
     } else {
         return gulp.src(paths.src.js + '/**/*.js')
             .pipe(plugins.uglify())
@@ -72,6 +72,7 @@ gulp.task('plugins_scripts', function () {
 
 gulp.task('fonts', function(){
     return gulp.src([paths.src.fonts + '/**/*', paths.src.vendor + '/**/dist/fonts/**/*'])
+        .pipe(plugins.flatten())
         .pipe(gulp.dest(paths.target.fonts))
 });
 
