@@ -8,13 +8,11 @@
 	<title>Synopsis Template</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width">
-	<link rel="stylesheet" href="assets/css/style.css">
-	<link rel="stylesheet" href="assets/css/responsive.css">
-	<link rel="stylesheet" type="text/css" href="assets/rs-plugin/css/settings.css" media="screen" />
+	<link rel="stylesheet" href="css/vendor.min.css">
+	<link rel="stylesheet" href="css/style.min.css">
+	<link rel="stylesheet" href="css/responsive.min.css">
+	<link rel="stylesheet" type="text/css" href="rs-plugin/css/settings.css" media="screen" />
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700' rel='stylesheet' type='text/css'>
-	<script src="assets/js/libs/jquery-1.11.2.js"></script>
-	<script src="assets/js/libs/jquery-migrate.min.js"></script>
-	<script src="assets/js/libs/modernizr-2.6.2.min.js"></script>
 </head>
 <body class="home">
 
@@ -225,16 +223,16 @@ In eget urna a sem vestibulum feugiat a a nulla.  Proin dictum justo id nibh imp
 				<h2 class="blog-title-pro">© 2015 All Rights Reserved.</h2>
 			</div>
 		</div>
-	</footer>		
+	</footer>
 
-	
-<script src="assets/js/plugins.js"></script>
-<script src="assets/js/script.js"></script>
-<script src="assets/js/libs/jquery-ui.min.js"></script>
-<!-- RevSlider -->
-<script src="assets/js/revolution-slider.js"></script>
-<script type="text/javascript" src="assets/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
-<script type="text/javascript" src="assets/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
-<!-- End RevSlider -->
+
+<script src="js/vendor.min.js"></script>
+<script src="js/plugins.min.js"></script>
+	  <!-- RevSlider -->
+<script src="js/revolution-slider.min.js"></script>
+<script type="text/javascript" src="rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" src="rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+	  <!-- End RevSlider -->
+<script src="js/script.min.js"></script>
 </body>
 </html>

@@ -39,8 +39,16 @@ gulp.task('css', function () {
         return gulp.src(paths.src.css + '/**/*.css')
             .pipe(plugins.autoprefixer('last 15 version', 'ie 8'))
             .pipe(plugins.minifyCss())
+            .pipe(plugins.rename(function(path) {
+                path.basename += '.min'
+            }))
             .pipe(gulp.dest(paths.target.css))
     }
+});
+
+gulp.task('rs-plugin', function() {
+    return gulp.src('resources/assets/rs-plugin/**/*')
+        .pipe(gulp.dest('public/rs-plugin'))
 });
 
 gulp.task('scripts', function () {
@@ -48,36 +56,57 @@ gulp.task('scripts', function () {
         return gulp.src(paths.src.js + '/**/*.js')
             .pipe(gulp.dest(paths.target.js));
     } else {
-        return gulp.src(paths.src.js + '/**/*.js')
+        return gulp.src(paths.src.js + '/*.js')
             .pipe(plugins.uglify())
+            .pipe(plugins.rename(function(path) {
+                path.basename += '.min'
+            }))
             .pipe(gulp.dest(paths.target.js));
     }
 });
 
 //CSS Compilation
 gulp.task('plugins_css', function () {
-    return gulp.src([paths.src.vendor + '/bootstrap/dist/css/*.min.css', paths.src.vendor + '/**/dist/*/*.min.css'])
+    return gulp.src(
+        [
+            paths.src.vendor + '/bootstrap/dist/css/*.min.css',
+            paths.src.vendor + '/jquery-ui/themes/ui-darkness/*.css',
+            paths.src.vendor + '/jquery.ui.timepicker/*.css',
+            paths.src.vendor + '/jqueryui-timepicker-addon/dist/jqueryui-timepicker-addon.min.css',
+            paths.src.vendor + '/**/*.min.css'
+        ])
         .pipe(plugins.minifyCss())
         .pipe(plugins.concat('vendor.css'))
+        .pipe(plugins.rename('vendor.min.css'))
         .pipe(gulp.dest(paths.target.css));
 });
 
 //JS Compilation
-gulp.task('plugins_scripts', function () {
-    return gulp.src([paths.src.vendor + '/jquery/dist/*.min.js', paths.src.vendor + '/**/dist/*/*.min.js'])
+gulp.task('plugins_scripts', ['rs-plugin'], function () {
+    return gulp.src(
+        [
+            paths.src.vendor + '/jquery/dist/jquery.min.js',
+            paths.src.vendor + '/jquery-ui/jquery-ui.min.js',
+            paths.src.vendor + '/jquery.ui.timepicker/jquery.ui.timepicker.js',
+            paths.src.vendor + '/jqueryui-timepicker-addon/dist/jqueryui-timepicker-addon.min.js',
+            paths.src.vendor + '/**/dist/**/*.min.js',
+            paths.src.js + '/libs/*.js'
+        ])
+        .pipe(plugins.debug())
         .pipe(plugins.uglify())
         .pipe(plugins.concat('vendor.js'))
+        .pipe(plugins.rename('vendor.min.js'))
         .pipe(gulp.dest(paths.target.js));
 });
 
 gulp.task('fonts', function(){
-    return gulp.src([paths.src.fonts + '/**/*', paths.src.vendor + '/**/dist/fonts/**/*'])
+    return gulp.src([paths.src.fonts + '/**/*', paths.src.vendor + '/**/fonts/**/*'])
         .pipe(plugins.flatten())
         .pipe(gulp.dest(paths.target.fonts))
 });
 
 gulp.task('images', function(){
-    return gulp.src('app/target/images/**/*')
+    return gulp.src('resources/assets/images/**/*')
         .pipe(gulp.dest(paths.target.images))
 });
 
@@ -125,10 +154,10 @@ gulp.task('dev', function () {
     config.env = 'dev';
     plugins.livereload.listen();
     gulp.watch([
-            'resources/assets/js/**/*.js',
-            'resources/assets/css/**/*.css',
-            'resources/assets/fonts/**/*',
-            'resources/assets/images/**/*'
+            paths.src.js + '**/*.js',
+            paths.src.css + '/**/*.css',
+            paths.src.fonts + '/**/*',
+            paths.src.images + '/**/*'
         ],
         ['plugins_css','plugins_scripts','css', 'scripts','fonts','images']
     );
