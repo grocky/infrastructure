@@ -1,0 +1,13 @@
+.vcard {
+  font-family: "proxima-nova",sans-serif;
+  padding: 20px 10px;
+}
+
+.name {
+  font-weight: normal;
+  font-size: 2em;
+}
+
+.title {
+  font-weight: lighter;
+}

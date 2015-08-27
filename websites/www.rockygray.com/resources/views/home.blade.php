@@ -22,22 +22,40 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container vcard">
 
-    <div class="text-center">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+    <div class="row">
+        <div class="col-md-12"><h2 class="name">Rocky Gray Jr.</h2></div>
+        <div class="col-md-12"><span class="title">Software Engineer</span></div>
     </div>
 
-</div>>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="social-icons">
+                <ul>
+                    <li><i class="fa fa-github"></i>/grocky</li>
+                    <li><i class="fa fa-twitter"></i>/RockyGJr</li>
+                    <li><i class="fa fa-linkedin"></i>/rockygray</li>
+                </ul>
 
-      <!-- bower:js -->
-      <script src="vendor/jquery.js"></script>
-      <script src="vendor/bootstrap.min.js"></script>
-      <!-- endbower -->
+            </div>
+        </div>
+    </div>
 
-      <!-- inject:js -->
-      <script src="js/main.js"></script>
-      <!-- endinject -->
+    <div class="row">
+        <div class="col-md-12">312.857.6259 / rockyt.grayjr@gmail.com / Gray Designs</div>
+    </div>
+
+</div>
+
+<!-- bower:js -->
+<script src="vendor/jquery.js"></script>
+<script src="vendor/bootstrap.min.js"></script>
+<!-- endbower -->
+
+<!-- inject:js -->
+<script src="js/main.js"></script>
+<!-- endinject -->
+
 </body>
 </html>
