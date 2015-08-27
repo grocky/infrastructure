@@ -5,9 +5,12 @@
   color: #ffffff;
   background-color: #991d20;
   margin-top: 40%;
-  min-width: 410px;
+  min-width: 435px;
 }
 
+.vcard a {
+  color: #ffffff;
+}
 .name-title {
   font-weight: 400;
 }
@@ -33,12 +36,8 @@
   margin-right: 5px;
 }
 
-.social-icons li a {
-  color: #ffffff;
-}
-
 .separator {
-  margin: 0 15px;
+  margin: 0 3%;
 }
 
 .contact-info {
