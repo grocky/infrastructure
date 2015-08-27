@@ -1,13 +1,70 @@
 .vcard {
   font-family: "proxima-nova",sans-serif;
   padding: 20px 10px;
+  font-weight: 300;
+  color: #ffffff;
+  background-color: #991d20;
+  margin-top: 40%;
+  min-width: 410px;
+}
+
+.name-title {
+  font-weight: 400;
 }
 
 .name {
-  font-weight: normal;
   font-size: 2em;
 }
 
 .title {
-  font-weight: lighter;
+}
+
+.vcard .row:not(:first-child) {
+  margin-top: 40px;
+}
+
+.social-icons ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.social-icons li i {
+  margin-right: 5px;
+}
+
+.social-icons li a {
+  color: #ffffff;
+}
+
+.separator {
+  margin: 0 15px;
+}
+
+.contact-info {
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+  .vcard {
+    margin-top: 30%;
+  }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+
+  .vcard {
+    margin-top: 20%;
+  }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+
 }
