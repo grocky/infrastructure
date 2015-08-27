@@ -3,9 +3,19 @@
   "dependencies": {
     "bootstrap": "~3.3.5",
     "font-awesome": "fontawesome#~4.4.0",
-    "jquery-migrate-official": "~1.2.1",
-    "jquery-ui": "~1.11.4",
-    "jquery.ui.timepicker": "~0.3.3",
-    "jqueryui-timepicker-addon": "~1.5.5"
+    "jquery": "~2.1.4"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "dist/css/bootstrap.min.css",
+        "dist/js/bootstrap.min.js"
+      ]
+    },
+    "font-awesome": {
+      "main": [
+        "css/font-awesome.min.css"
+      ]
+    }
   }
 }

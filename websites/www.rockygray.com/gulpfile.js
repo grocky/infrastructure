@@ -4,116 +4,143 @@ var config = {
 
 var gulp = require('gulp');
 var gutil = require('gulp-util');
-var plugins = require('gulp-load-plugins')();
+var del = require('del');
+var wiredep = require('wiredep');
+var $ = require('gulp-load-plugins')();
 
 var paths = {
     'src': {
+        'path': 'resources/assets',
         'less': 'resources/assets/less',
         'scss': 'resources/assets/scss',
         'css': 'resources/assets/css',
         'js': 'resources/assets/js',
         'fonts': 'resources/assets/fonts',
-        'vendor': 'resources/assets/bower_vendor',
+        'vendor': 'resources/assets/bower_components',
         'views': 'resources/views'
     },
     'target': {
+        'path': 'public',
         'css': 'public/css',
-        'js': 'public/js/',
-        'fonts': 'public/fonts/',
-        'images': 'public/images/',
-        'vendor': '/public/bower_vendor/'
+        'js': 'public/js',
+        'fonts': 'public/fonts',
+        'images': 'public/images',
+        'vendor': 'public/vendor'
     }
-
 };
 
 // blade directory
 var bladeDir = 'app/views';
 
 // Tasks
-gulp.task('css', function () {
-    if (config.env == 'dev') {
-        return gulp.src(paths.src.css + '/**/*.css')
-            .pipe(plugins.autoprefixer('last 15 version', 'ie 8'))
-            .pipe(gulp.dest(paths.target.css));
-    } else {
-        return gulp.src(paths.src.css + '/**/*.css')
-            .pipe(plugins.autoprefixer('last 15 version', 'ie 8'))
-            .pipe(plugins.minifyCss())
-            .pipe(plugins.rename(function(path) {
-                path.basename += '.min'
-            }))
-            .pipe(gulp.dest(paths.target.css))
-    }
+function buildCss(shouldMinify) {
+
+    return gulp.src(paths.src.css + '/**/*.css')
+        .pipe($.autoprefixer('last 15 version', 'ie 8'))
+        .pipe($.if(shouldMinify, $.minifyCss()))
+        .pipe($.if(shouldMinify, $.rename({suffix: '.min'})))
+        .pipe(gulp.dest(paths.target.css))
+        .pipe($.livereload());
+}
+
+gulp.task('css', function() {
+    buildCss(config.env === 'prod');
 });
 
-gulp.task('rs-plugin', function() {
-    return gulp.src('resources/assets/rs-plugin/**/*')
-        .pipe(gulp.dest('public/rs-plugin'))
-});
+function buildScripts(shouldUglify) {
+    return gulp.src(paths.src.js + '/*.js')
+        .pipe($.if(shouldUglify, $.uglify()))
+        .pipe($.if(shouldUglify, $.rename({suffix: '.min'})))
+        .pipe(gulp.dest(paths.target.js))
+        .pipe($.livereload());
+}
 
-gulp.task('scripts', function () {
-    if (config.env == 'dev') {
-        return gulp.src(paths.src.js + '/**/*.js')
-            .pipe(gulp.dest(paths.target.js));
-    } else {
-        return gulp.src(paths.src.js + '/*.js')
-            .pipe(plugins.uglify())
-            .pipe(plugins.rename(function(path) {
-                path.basename += '.min'
-            }))
-            .pipe(gulp.dest(paths.target.js));
-    }
+gulp.task('scripts', function() {
+    return buildScripts(config.env === 'prod');
 });
 
 //CSS Compilation
-gulp.task('plugins_css', function () {
-    return gulp.src(
-        [
-            paths.src.vendor + '/bootstrap/dist/css/*.min.css',
-            paths.src.vendor + '/jquery-ui/themes/ui-darkness/*.css',
-            paths.src.vendor + '/jquery.ui.timepicker/*.css',
-            paths.src.vendor + '/jqueryui-timepicker-addon/dist/jqueryui-timepicker-addon.min.css',
-            paths.src.vendor + '/**/*.min.css'
-        ])
-        .pipe(plugins.minifyCss())
-        .pipe(plugins.concat('vendor.css'))
-        .pipe(plugins.rename('vendor.min.css'))
-        .pipe(gulp.dest(paths.target.css));
+
+function buildVendorCss(shouldMinify) {
+    return gulp.src(wiredep().css)
+        //.pipe($.if(shouldMinify, $.minifyCss()))
+        //.pipe($.if(shouldMinify, $.rename({suffix: '.min'})))
+        .pipe(gulp.dest(paths.target.vendor));
+}
+
+gulp.task('vendor-css', function () {
+    return buildVendorCss('prod' === config.env);
 });
 
 //JS Compilation
-gulp.task('plugins_scripts', ['rs-plugin'], function () {
-    return gulp.src(
-        [
-            paths.src.vendor + '/jquery/dist/jquery.min.js',
-            paths.src.vendor + '/jquery-ui/jquery-ui.min.js',
-            paths.src.vendor + '/jquery.ui.timepicker/jquery.ui.timepicker.js',
-            paths.src.vendor + '/jqueryui-timepicker-addon/dist/jqueryui-timepicker-addon.min.js',
-            paths.src.vendor + '/**/dist/**/*.min.js',
-            paths.src.js + '/libs/*.js'
-        ])
-        .pipe(plugins.debug())
-        .pipe(plugins.uglify())
-        .pipe(plugins.concat('vendor.js'))
-        .pipe(plugins.rename('vendor.min.js'))
-        .pipe(gulp.dest(paths.target.js));
+function buildVendorScripts(shouldUglify) {
+    return gulp.src(wiredep().js)
+        //.pipe($.if(shouldUglify, $.uglify()))
+        //.pipe($.if(shouldUglify, $.rename({suffix: '.min'})))
+        .pipe(gulp.dest(paths.target.vendor));
+}
+
+gulp.task('vendor-scripts', function () {
+    return buildVendorScripts('prod' === config.env);
 });
 
 gulp.task('fonts', function(){
     return gulp.src([paths.src.fonts + '/**/*', paths.src.vendor + '/**/fonts/**/*'])
-        .pipe(plugins.flatten())
+        .pipe($.flatten())
         .pipe(gulp.dest(paths.target.fonts))
+        .pipe($.livereload());
 });
 
 gulp.task('images', function(){
     return gulp.src('resources/assets/images/**/*')
         .pipe(gulp.dest(paths.target.images))
+        .pipe($.livereload());
 });
 
 /* Blade Templates */
 gulp.task('blade', function() {
  return gulp.src(paths.src.views + '/**/*.blade.php')
-     .pipe(livereload(server));
+     .pipe($.livereload());
+});
+
+gulp.task('root-files', function() {
+    return gulp.src(['resources/root-files/*', 'resources/root-files/.htaccess'])
+        .pipe(gulp.dest(paths.target.path));
+});
+
+gulp.task('wiredep', ['scripts', 'css', 'vendor-scripts', 'vendor-css'], function() {
+
+    return gulp.src('resources/views/**/*.blade.php')
+        .pipe(wiredep.stream({
+            fileTypes: {
+                html: {
+                    replace: {
+                        js: function(filePath) {
+                            return '<script src="' + 'vendor/' + filePath.split('/').pop() + '"></script>';
+                        },
+                        css: function(filePath) {
+                            return '<link rel="stylesheet" href="' + 'vendor/' + filePath.split('/').pop() + '"/>';
+                        }
+                    }
+                }
+            }
+        }))
+        .pipe($.inject(
+            gulp.src([paths.target.js + '/**/*.js'], { read: false }), {
+                addRootSlash: false,
+                transform: function(filePath, file, i, length) {
+                    return '<script src="' + filePath.replace(paths.target.path + '/', '') + '"></script>';
+                }
+            }))
+        .pipe($.inject(
+            gulp.src([paths.target.css + '/**/*.css'], { read: false }), {
+                addRootSlash: false,
+                transform: function(filePath, file, i, length) {
+                    return '<link rel="stylesheet" href="' + filePath.replace(paths.target.path + '/', '') + '"/>';
+                }
+            }))
+        .pipe(gulp.dest(paths.src.views))
+        .pipe($.livereload());
 });
 
 /* PHPUnit */
@@ -138,31 +165,45 @@ gulp.task('phpunit', function() {
      }));
 });
 
-/* Watcher */
-gulp.task('watch', function() {
+gulp.task('clean', function(cb) {
+    del([
+        paths.target.css,
+        paths.target.js,
+        paths.target.fonts,
+        paths.target.images,
+        'public/**/*',
+        'public/**/.htaccess'
+    ], cb);
+});
 
-    plugins.livereload.listen();
+
+gulp.task('install', function() {
+    return gulp.src(['bower.json', 'package.json'])
+        .pipe($.install());
+});
+
+gulp.task('build', ['root-files', 'vendor-css', 'vendor-scripts', 'css', 'scripts', 'fonts', 'images']);
+
+gulp.task('dev', ['clean'], function () {
+
+    config.env = 'dev';
+
+    gulp.start('build');
+
+    $.livereload.listen();
 
     gulp.watch(paths.src.views + '/**/*.blade.php', ['blade']);
     gulp.watch(paths.src.css + '/**/*.css', ['css']);
     gulp.watch(paths.src.js + '/**/*.js', ['scripts']);
+    gulp.watch(paths.src.fonts + '/**/*', ['fonts']);
+    gulp.watch(paths.src.images + '/**/*', ['images']);
     gulp.watch('app/**/*.php', ['phpunit']);
-
+    gulp.watch('bower.json', ['wiredep']);
 });
 
-gulp.task('dev', function () {
-    config.env = 'dev';
-    plugins.livereload.listen();
-    gulp.watch([
-            paths.src.js + '**/*.js',
-            paths.src.css + '/**/*.css',
-            paths.src.fonts + '/**/*',
-            paths.src.images + '/**/*'
-        ],
-        ['plugins_css','plugins_scripts','css', 'scripts','fonts','images']
-    );
+gulp.task('prod', ['clean'], function() {
+    "use strict";
+    gulp.start('build');
 });
-
-gulp.task('prod', ['plugins_css', 'plugins_scripts', 'css', 'scripts', 'fonts', 'images']);
 
 gulp.task('default',['prod']);
