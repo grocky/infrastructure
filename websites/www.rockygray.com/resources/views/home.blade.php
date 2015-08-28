@@ -13,8 +13,8 @@
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
 
     <!-- bower:css -->
-    <link rel='stylesheet' href='vendor/bootstrap.min.css'/>
-    <link rel='stylesheet' href='vendor/font-awesome.min.css'/>
+    <link rel="stylesheet" href="vendor/bootstrap.min.css"/>
+    <link rel="stylesheet" href="vendor/font-awesome.min.css"/>
     <!-- endbower -->
 
     <!-- inject:css -->
@@ -87,6 +87,7 @@
 <!-- bower:js -->
 <script src="vendor/jquery.js"></script>
 <script src="vendor/bootstrap.min.js"></script>
+<script src="vendor/TweenMax.js"></script>
 <!-- endbower -->
 
 <!-- inject:js -->
