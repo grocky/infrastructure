@@ -18,7 +18,7 @@ body {
   font-weight: 400;
 }
 
-.name-title object {
+.name-title svg {
   max-width: 300px;
 }
 
@@ -49,6 +49,14 @@ body {
 
 .navigation div:not(:first-child):not(:last-child) {
   padding: 0;
+}
+
+.logo svg {
+  max-width: 350px;
+}
+
+svg .logo-fill {
+  fill: #ffffff;
 }
 
 /* Custom, iPhone Retina */

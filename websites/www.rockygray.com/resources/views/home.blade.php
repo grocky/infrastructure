@@ -26,16 +26,26 @@
 <div class="container">
 
     <div class="row">
-        <div class="vcard col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+        <div class="vcard hidden col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
             <div class="row name-title">
                 <div class="col-sm-9">
                     <h1 class="name">ROCKY GRAY JR</h1>
                     <span class="title">Software Engineer</span>
                 </div>
                 <div class="col-sm-3 col-sm-offset-0 col-xs-8 col-xs-offset-2">
-                    <object class="center-block" data="images/logo_white.svg" type="image/svg+xml">
-                        <img src="images/logo_white-300x389.png" alt="logo">
-                    </object>
+                    <svg class="center-block" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         viewBox="0 0 264.2 341.5" style="enable-background:new 0 0 264.2 341.5;" xml:space="preserve">
+                        <g>
+                            <polygon class="logo-fill logo-middle-segment" points="187.8,158.7 187.8,197.9 107,197.9 163,158.7 	"></polygon>
+                            <path class="logo-fill logo-short-segment"
+                                  d="M200.4,158.7v63.7c0,37.7-30.6,68.3-68.3,68.3C96.3,290.7,66.9,263,64,228l-35.1,24.6
+                                  c13.1,44.7,54.3,77.4,103.2,77.4c59.3,0,107.5-48.2,107.5-107.5v-56.3l0-7.4H200.4z"></path>
+                            <path class="logo-fill logo-long-segment"
+                                  d="M24.6,222.9v1.8h0c0.1,5,0.6,9.9,1.3,14.7l37.8-26.5c0-28.7,0.1-100.1,0.1-101.7c1.9-36.3,31.8-64.7,68.3-64.7
+                                  c37.4,0,68,30.4,68.2,67.7l0,3l36.7-25.7C226.7,43,183.5,6.7,132.1,6.7C72.8,6.7,24.6,54.9,24.6,114.2l0,108.2h0
+                                  C24.6,222.6,24.6,222.7,24.6,222.9z"></path>
+                        </g>
+                    </svg>
                 </div>
             </div>
             <div class="row social-icons">
@@ -54,6 +64,21 @@
                 <div class="col-xs-1 text-center">/</div>
                 <div class="col-xs-3 text-right"><a href="#">Projects</a></div>
             </div>
+        </div>
+        <div class="logo col-sm-12">
+            <svg class="center-block" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 264.2 341.5" style="enable-background:new 0 0 264.2 341.5;" xml:space="preserve">
+                <g>
+                    <polygon class="logo-fill logo-middle-segment" points="187.8,158.7 187.8,197.9 107,197.9 163,158.7 	"></polygon>
+                    <path class="logo-fill logo-short-segment"
+                          d="M200.4,158.7v63.7c0,37.7-30.6,68.3-68.3,68.3C96.3,290.7,66.9,263,64,228l-35.1,24.6
+                          c13.1,44.7,54.3,77.4,103.2,77.4c59.3,0,107.5-48.2,107.5-107.5v-56.3l0-7.4H200.4z"></path>
+                    <path class="logo-fill logo-long-segment"
+                          d="M24.6,222.9v1.8h0c0.1,5,0.6,9.9,1.3,14.7l37.8-26.5c0-28.7,0.1-100.1,0.1-101.7c1.9-36.3,31.8-64.7,68.3-64.7
+                          c37.4,0,68,30.4,68.2,67.7l0,3l36.7-25.7C226.7,43,183.5,6.7,132.1,6.7C72.8,6.7,24.6,54.9,24.6,114.2l0,108.2h0
+                          C24.6,222.6,24.6,222.7,24.6,222.9z"></path>
+                </g>
+            </svg>
         </div>
     </div>
 
