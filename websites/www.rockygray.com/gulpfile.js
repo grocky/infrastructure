@@ -182,7 +182,7 @@ gulp.task('install', function() {
         .pipe($.install());
 });
 
-gulp.task('permissions', ['install', 'build'], $.shell.task(
+gulp.task('permissions', $.shell.task(
     [
         'chmod 777 -R public/'
     ]
