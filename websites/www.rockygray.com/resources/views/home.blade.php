@@ -18,22 +18,22 @@
     <!-- endbower -->
 
     <!-- inject:css -->
-    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="css/main.min.css"/>
     <!-- endinject -->
 </head>
 <body>
 
 <div class="container">
-
     <div class="row">
-        <div class="vcard hidden col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+        <div class="vcard col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
             <div class="row name-title">
-                <div class="col-sm-9">
+                <div class="col-sm-8">
                     <h1 class="name">ROCKY GRAY JR</h1>
+					<div class="rectangular-bar">&nbsp;</div>
                     <span class="title">Software Engineer</span>
                 </div>
                 <div class="col-sm-3 col-sm-offset-0 col-xs-8 col-xs-offset-2">
-                    <svg class="center-block" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    <svg class="logo center-block" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                          viewBox="0 0 264.2 341.5" style="enable-background:new 0 0 264.2 341.5;" xml:space="preserve">
                         <g>
                             <polygon class="logo-fill logo-middle-segment" points="187.8,158.7 187.8,197.9 107,197.9 163,158.7 	"></polygon>
@@ -65,8 +65,8 @@
                 <div class="col-xs-3 text-right"><a href="#">Projects</a></div>
             </div>
         </div>
-        <div class="logo col-sm-12">
-            <svg class="center-block" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        <div class="background">
+            <svg class="logo" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                  viewBox="0 0 264.2 341.5" style="enable-background:new 0 0 264.2 341.5;" xml:space="preserve">
                 <g>
                     <polygon class="logo-fill logo-middle-segment" points="187.8,158.7 187.8,197.9 107,197.9 163,158.7 	"></polygon>
@@ -91,7 +91,7 @@
 <!-- endbower -->
 
 <!-- inject:js -->
-<script src="js/main.js"></script>
+<script src="js/main.min.js"></script>
 <!-- endinject -->
 
 </body>

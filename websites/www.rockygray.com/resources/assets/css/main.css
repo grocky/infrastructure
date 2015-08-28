@@ -1,5 +1,6 @@
 body {
   background-color: #991d20;
+  overflow: hidden;
 }
 
 .vcard {
@@ -8,7 +9,7 @@ body {
   font-weight: 300;
   color: #ffffff;
   background-color: #991d20;
-  overflow-x: hidden
+  visibility: hidden;
 }
 
 .vcard a {
@@ -16,6 +17,16 @@ body {
 }
 .name-title {
   font-weight: 400;
+}
+
+.rectangular-bar {
+  background: #ffffff;
+  height: 5px;
+  width: 40px;
+}
+
+.name-title .rectangular-bar {
+  margin-bottom: .67em;
 }
 
 .name-title svg {
@@ -51,8 +62,18 @@ body {
   padding: 0;
 }
 
-.logo svg {
-  max-width: 350px;
+.background {
+  position: absolute;
+  top: -200px;
+  left: -200px;
+  width: 100%;
+  z-index: -99;
+  /*margin-top: 60px;*/
+}
+
+.background .logo {
+  width: 1000px;
+  visibility: hidden;
 }
 
 svg .logo-fill {
@@ -71,6 +92,13 @@ svg .logo-fill {
 
 /* Small Devices, Tablets */
 @media only screen and (min-width : 768px) {
+  .background .logo .logo-fill {
+    fill: #353535;
+  }
+
+  .background .logo {
+    visibility: visible;
+  }
   .vcard {
     margin-top: 30%;
     -webkit-box-shadow: 0px 9px 6px -3px rgba(0,0,0,0.35);
