@@ -183,7 +183,10 @@ gulp.task('install', function() {
         .pipe($.install());
 });
 
-gulp.task('build', ['root-files', 'vendor-css', 'vendor-scripts', 'css', 'scripts', 'fonts', 'images']);
+gulp.task('build', ['root-files', 'vendor-css', 'vendor-scripts', 'css', 'scripts', 'fonts', 'images'], function() {
+    "use strict";
+    gulp.start('wiredep');
+});
 
 gulp.task('dev', ['clean'], function () {
 
