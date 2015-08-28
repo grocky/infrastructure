@@ -177,14 +177,23 @@ gulp.task('clean', function(cb) {
     ], cb);
 });
 
-
 gulp.task('install', function() {
     return gulp.src(['bower.json'])
         .pipe($.install());
 });
 
-gulp.task('deploy', ['install'], function() {
+gulp.task('permissions', ['install', 'build'], $.shell.task(
+    [
+        'chmod 777 -R public/'
+    ]
+));
+            
+gulp.task('dependencies', ['install'], function() {
     gulp.start('build');
+});
+
+gulp.task('deploy', ['dependencies'], function() {
+    gulp.start('permissions');
 });
 
 gulp.task('build', ['root-files', 'vendor-css', 'vendor-scripts', 'css', 'scripts', 'fonts', 'images'], function() {
