@@ -5,7 +5,20 @@ $(function() {
     $cardLogo = $('.vcard .logo');
 
     $cardLogo.on('click', function() {
-        TweenMax.to($logos, 1, {rotation: "+=900"})
+        TweenMax.to($logos, 2, {
+                throwProps: {
+                    rotation: {
+                        velocity: 2000,
+                        end: function(n) {
+                            var degree = Math.round(n/180) * 180;
+                            console.log('n: ' + n + ' degree: ' + degree);
+                            return degree;
+                        }
+                    }
+                },
+                ease: Power4.easeOut
+            }
+        );
     });
 
     function introAnimation() {
