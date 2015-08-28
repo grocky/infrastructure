@@ -33,6 +33,6 @@
   },
   "scripts": {
     "start": "",
-    "postinstall": "gulp install"
+    "postinstall": "gulp deploy"
   }
 }

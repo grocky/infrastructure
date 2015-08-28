@@ -179,8 +179,11 @@ gulp.task('clean', function(cb) {
 
 
 gulp.task('install', function() {
-    gulp.src(['bower.json'])
+    return gulp.src(['bower.json'])
         .pipe($.install());
+});
+
+gulp.task('deploy', ['install'], function() {
     gulp.start('build');
 });
 
