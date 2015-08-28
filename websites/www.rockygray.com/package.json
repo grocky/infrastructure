@@ -1,8 +1,14 @@
 {
   "private": true,
+  "cacheDirectories": [
+    "node_modules",
+    "vendor",
+    "resoureces/assets/bower_components"
+  ],
   "devDependencies": {
   },
   "dependencies": {
+    "bower": "^1.5.2",
     "browser-sync": "^2.8.2",
     "del": "^1.2.1",
     "gulp": "^3.9.0",
@@ -26,7 +32,7 @@
     "wiredep": "^3.0.0-beta"
   },
   "scripts": {
-      "start": "",
-      "postinstall": "gulp install"
+    "start": "",
+    "postinstall": "gulp install"
   }
 }

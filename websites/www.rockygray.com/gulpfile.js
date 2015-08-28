@@ -179,7 +179,7 @@ gulp.task('clean', function(cb) {
 
 
 gulp.task('install', function() {
-    return gulp.src(['bower.json', 'package.json'])
+    return gulp.src(['bower.json'])
         .pipe($.install());
 });
 
