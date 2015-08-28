@@ -9,9 +9,16 @@
 	<meta name="description" content="Rocky Gray Jr; Software Engineer; Resume; Skills; Projects">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script src="//use.typekit.net/rur5mbi.js"></script>
-    <script>try{Typekit.load({ async: true });}catch(e){}</script>
-
+	<script>
+	  (function(d) {
+	    var config = {
+	      kitId: 'rur5mbi',
+	      scriptTimeout: 1000,
+	      async: true
+	    },
+	    h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='//use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+	  })(document);
+	</script>
     <!-- bower:css -->
     <link rel="stylesheet" href="vendor/bootstrap.min.css"/>
     <link rel="stylesheet" href="vendor/font-awesome.min.css"/>
