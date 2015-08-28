@@ -16,6 +16,7 @@ var paths = {
         'css': 'resources/assets/css',
         'js': 'resources/assets/js',
         'fonts': 'resources/assets/fonts',
+        'images': 'resources/assets/images',
         'vendor': 'resources/assets/bower_components',
         'views': 'resources/views'
     },
@@ -92,7 +93,7 @@ gulp.task('fonts', function(){
 });
 
 gulp.task('images', function(){
-    return gulp.src('resources/assets/images/**/*')
+    return gulp.src(paths.src.images + '/**/*')
         .pipe(gulp.dest(paths.target.images))
         .pipe($.livereload());
 });
