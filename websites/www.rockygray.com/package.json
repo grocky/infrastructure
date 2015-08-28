@@ -27,6 +27,6 @@
   },
   "scripts": {
       "start": "",
-      "postinstall": "gulp"
+      "postinstall": "gulp install"
   }
 }
