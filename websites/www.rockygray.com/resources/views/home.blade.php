@@ -6,8 +6,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Rocky Gray Jr.</title>
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width">
+	<meta name="description" content="Rocky Gray Jr; Software Engineer; Resume; Skills; Projects">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <script src="//use.typekit.net/rur5mbi.js"></script>
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
@@ -28,8 +28,15 @@
     <div class="row">
         <div class="vcard col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
             <div class="row name-title">
-                <div class="col-md-12"><h2 class="name">ROCKY GRAY JR</h2></div>
-                <div class="col-md-12"><span class="title">Software Engineer</span></div>
+                <div class="col-sm-9">
+                    <h1 class="name">ROCKY GRAY JR</h1>
+                    <span class="title">Software Engineer</span>
+                </div>
+                <div class="col-sm-3 col-sm-offset-0 col-xs-8 col-xs-offset-2">
+                    <object class="center-block" data="images/logo_white.svg" type="image/svg+xml">
+                        <img src="images/logo_white-300x389.png" alt="logo">
+                    </object>
+                </div>
             </div>
             <div class="row social-icons">
                 <div class="col-md-12">
@@ -40,7 +47,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="row contact-info">
+            <div class="row navigation">
                 <div class="col-xs-3 text-left"><a href="#">Resume</a></div>
                 <div class="col-xs-1 text-center">/</div>
                 <div class="col-xs-4 text-center"><a href="#">Skills</a></div>
