@@ -5,10 +5,10 @@ $(function() {
     $cardLogo = $('.vcard .logo');
 
     $cardLogo.on('click', function() {
-        TweenMax.to($logos, 2, {
+        TweenMax.to($logos, 3, {
                 throwProps: {
                     rotation: {
-                        velocity: 2000,
+                        velocity: 800,
                         end: function(n) {
                             var degree = Math.round(n/180) * 180;
                             console.log('n: ' + n + ' degree: ' + degree);
