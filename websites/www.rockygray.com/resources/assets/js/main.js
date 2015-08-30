@@ -1,7 +1,7 @@
 $(function() {
     var tl = new TimelineMax();
 
-    $logos = $('.logo')
+    $logos = $('.logo');
     $cardLogo = $('.vcard .logo');
 
     $cardLogo.on('click', function() {
