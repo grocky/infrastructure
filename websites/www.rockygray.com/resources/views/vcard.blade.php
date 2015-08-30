@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="css/main.css"/>
     <!-- endinject -->
 </head>
-<body>
+<body class="no-overflow">
 
 <div class="container">
     <div class="row">

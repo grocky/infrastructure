@@ -1,6 +1,9 @@
+.no-overflow {
+  overflow: hidden;
+}
+
 body {
   background-color: #991d20;
-  overflow: hidden;
 }
 
 .vcard {
@@ -99,6 +102,7 @@ svg .logo-fill {
   .background .logo {
     visibility: visible;
   }
+
   .vcard {
     margin-top: 30%;
     -webkit-box-shadow: 0px 9px 6px -3px rgba(0,0,0,0.35);
