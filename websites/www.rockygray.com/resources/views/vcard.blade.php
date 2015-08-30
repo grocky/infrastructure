@@ -24,7 +24,10 @@
     <link rel="stylesheet" href="vendor/font-awesome.min.css"/>
     <!-- endbower -->
 
-    <link rel="stylesheet" href="css/main.css"/>
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/main.min.css"/>
+    <link rel="stylesheet" href="css/errors/404.min.css"/>
+    <!-- endinject -->
 
 </head>
 <body class="no-overflow">
@@ -97,8 +100,8 @@
 <!-- endbower -->
 
 <!-- inject:js -->
-<script src="js/ThrowPropsPlugin.min.js"></script>
-<script src="js/main.js"></script>
+<script src="js/ThrowPropsPlugin.min.min.js"></script>
+<script src="js/main.min.js"></script>
 <!-- endinject -->
 
 </body>

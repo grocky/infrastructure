@@ -111,7 +111,7 @@ gulp.task('root-files', function() {
 
 gulp.task('wiredep', ['scripts', 'css', 'vendor-scripts', 'vendor-css'], function() {
 
-    return gulp.src('resources/views/**/*.blade.php')
+    return gulp.src('resources/views/**/*.php')
         .pipe(wiredep.stream({
             fileTypes: {
                 html: {
@@ -126,8 +126,7 @@ gulp.task('wiredep', ['scripts', 'css', 'vendor-scripts', 'vendor-css'], functio
                 }
             }
         }))
-        .pipe($.inject(
-            gulp.src([paths.target.js + '/**/*.js'], { read: false }), {
+        .pipe($.inject(gulp.src([paths.target.js + '/**/*.js'], { read: false }), {
                 addRootSlash: false,
                 transform: function(filePath, file, i, length) {
                     return '<script src="' + filePath.replace(paths.target.path + '/', '') + '"></script>';

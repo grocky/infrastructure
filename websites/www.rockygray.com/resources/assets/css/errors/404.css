@@ -1,19 +1,19 @@
 
-.logo {
+.page-404 .logo {
   margin-top: 2em;
   max-width: 300px;
 }
 
-.status {
+.page-404 .status {
   text-align: center;
   font-size: 10em;
 }
 
-.status a {
+.page-404 .status a {
   color: #353535;
 }
 
-.status a:hover {
+.page-404 .status a:hover {
   color: #353535;
   text-decoration: none;
 }
