@@ -24,9 +24,8 @@
     <link rel="stylesheet" href="vendor/font-awesome.min.css"/>
     <!-- endbower -->
 
-    <!-- inject:css -->
     <link rel="stylesheet" href="css/main.css"/>
-    <!-- endinject -->
+
 </head>
 <body class="no-overflow">
 
