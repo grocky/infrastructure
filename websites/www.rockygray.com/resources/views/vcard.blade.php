@@ -28,17 +28,6 @@
     <link rel="stylesheet" href="css/main.css"/>
     <link rel="stylesheet" href="css/errors/404.css"/>
     <!-- endinject -->
-
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-        ga('create', 'UA-55863384-1', 'auto');
-        ga('send', 'pageview');
-
-    </script>
 </head>
 <body class="no-overflow">
 
@@ -111,6 +100,7 @@
 
 <!-- inject:js -->
 <script src="js/ThrowPropsPlugin.min.js"></script>
+<script src="js/googleAnalytics.js"></script>
 <script src="js/main.js"></script>
 <!-- endinject -->
 </body>
