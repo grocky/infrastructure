@@ -25,8 +25,8 @@
     <!-- endbower -->
 
     <!-- inject:css -->
-    <link rel="stylesheet" href="css/main.min.css"/>
-    <link rel="stylesheet" href="css/errors/404.min.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="css/errors/404.css"/>
     <!-- endinject -->
 
     <script>
@@ -110,8 +110,8 @@
 <!-- endbower -->
 
 <!-- inject:js -->
-<script src="js/ThrowPropsPlugin.min.min.js"></script>
-<script src="js/main.min.js"></script>
+<script src="js/ThrowPropsPlugin.min.js"></script>
+<script src="js/main.js"></script>
 <!-- endinject -->
 </body>
 </html>

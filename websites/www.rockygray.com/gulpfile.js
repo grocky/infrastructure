@@ -39,7 +39,6 @@ function buildCss(shouldMinify) {
     return gulp.src(paths.src.css + '/**/*.css')
         .pipe($.autoprefixer('last 15 version', 'ie 8'))
         .pipe($.if(shouldMinify, $.minifyCss()))
-        .pipe($.if(shouldMinify, $.rename({suffix: '.min'})))
         .pipe(gulp.dest(paths.target.css))
         .pipe($.livereload());
 }
@@ -51,7 +50,6 @@ gulp.task('css', function() {
 function buildScripts(shouldUglify) {
     return gulp.src(paths.src.js + '/*.js')
         .pipe($.if(shouldUglify, $.uglify()))
-        .pipe($.if(shouldUglify, $.rename({suffix: '.min'})))
         .pipe(gulp.dest(paths.target.js))
         .pipe($.livereload());
 }
@@ -64,8 +62,6 @@ gulp.task('scripts', function() {
 
 function buildVendorCss(shouldMinify) {
     return gulp.src(wiredep().css)
-        //.pipe($.if(shouldMinify, $.minifyCss()))
-        //.pipe($.if(shouldMinify, $.rename({suffix: '.min'})))
         .pipe(gulp.dest(paths.target.vendor));
 }
 
@@ -76,8 +72,6 @@ gulp.task('vendor-css', function () {
 //JS Compilation
 function buildVendorScripts(shouldUglify) {
     return gulp.src(wiredep().js)
-        //.pipe($.if(shouldUglify, $.uglify()))
-        //.pipe($.if(shouldUglify, $.rename({suffix: '.min'})))
         .pipe(gulp.dest(paths.target.vendor));
 }
 
@@ -151,14 +145,14 @@ gulp.task('phpunit', function() {
  gulp.src('app/tests/*.php')
      .pipe(phpunit('', options)) //empty phpunit path defaults ./vendor/bin/phpunit for windows specify with double back slashes
 
-  //both notify and notify.onError will take optional notifier: growlNotifier for windows notifications
-  //if options.notify is true be sure to handle the error here or suffer the consequenses!
+     //both notify and notify.onError will take optional notifier: growlNotifier for windows notifications
+     //if options.notify is true be sure to handle the error here or suffer the consequenses!
      .on('error', notify.onError({
       title: 'PHPUnit Failed',
       message: 'One or more tests failed, see the cli for details.'
      }))
 
-  //will fire only if no error is caught
+     //will fire only if no error is caught
      .pipe(notify({
       title: 'PHPUnit Passed',
       message: 'All tests passed!'
@@ -174,25 +168,6 @@ gulp.task('clean', function(cb) {
         'public/**/*',
         'public/**/.htaccess'
     ], cb);
-});
-
-gulp.task('install', function() {
-    return gulp.src(['bower.json'])
-        .pipe($.install());
-});
-
-gulp.task('permissions', $.shell.task(
-    [
-        'chmod 777 -R public/'
-    ]
-));
-            
-gulp.task('dependencies', ['install'], function() {
-    gulp.start('build');
-});
-
-gulp.task('deploy', ['dependencies'], function() {
-    gulp.start('permissions');
 });
 
 gulp.task('build', ['root-files', 'vendor-css', 'vendor-scripts', 'css', 'scripts', 'fonts', 'images'], function() {
@@ -217,9 +192,18 @@ gulp.task('dev', ['clean'], function () {
     gulp.watch('bower.json', ['wiredep']);
 });
 
+gulp.task('install', function() {
+    return gulp.src(['bower.json'])
+        .pipe($.install());
+});
+
+gulp.task('deploy', ['install'], function() {
+    gulp.start('build');
+});
+
 gulp.task('prod', ['clean'], function() {
     "use strict";
-    gulp.start('build');
+    gulp.start('deploy');
 });
 
 gulp.task('default',['prod']);
