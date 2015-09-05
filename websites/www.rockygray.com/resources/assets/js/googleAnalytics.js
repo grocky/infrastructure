@@ -23,5 +23,3 @@ if (window.location.hostname === 'www.rockygray.com') {
 
 ga('create', gaProp, createOptions);
 ga('send', 'pageview');
-
-console.log(gaProp, createOptions);
