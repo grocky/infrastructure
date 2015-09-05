@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="css/main.css"/>
     <link rel="stylesheet" href="css/errors/404.css"/>
     <!-- endinject -->
-
+    <script src="js/googleAnalytics.js"></script>
 </head>
 <body class="page-404">
 
