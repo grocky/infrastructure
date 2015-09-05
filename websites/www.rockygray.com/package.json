@@ -34,6 +34,6 @@
   },
   "scripts": {
     "start": "",
-    "postinstall": "gulp deploy"
+    "postinstall": "gulp prod"
   }
 }

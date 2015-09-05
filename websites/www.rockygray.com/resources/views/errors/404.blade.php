@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="vendor/font-awesome.min.css"/>
 
     <!-- inject:css -->
-    <link rel="stylesheet" href="css/main.min.css"/>
-    <link rel="stylesheet" href="css/errors/404.min.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="css/errors/404.css"/>
     <!-- endinject -->
 
 </head>
