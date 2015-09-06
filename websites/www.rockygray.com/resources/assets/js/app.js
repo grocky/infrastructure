@@ -16,6 +16,8 @@
                 templateUrl: '../views/errors/404.html',
                 controller: 'vCardController'
             });
+
+        $locationProvider.html5Mode(true);
     })
 
     .animation('.slow-reveal', function() {
