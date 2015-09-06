@@ -65,13 +65,13 @@
                     </ul>
                 </div>
             </div>
-            <div class="row navigation">
-                <div class="col-xs-3 text-left"><a href="#">Resume</a></div>
-                <div class="col-xs-1 text-center">/</div>
-                <div class="col-xs-4 text-center"><a href="#">Skills</a></div>
-                <div class="col-xs-1 text-center">/</div>
-                <div class="col-xs-3 text-right"><a href="#">Projects</a></div>
-            </div>
+            {{--<div class="row navigation">--}}
+                {{--<div class="col-xs-3 text-left"><a href="#">Resume</a></div>--}}
+                {{--<div class="col-xs-1 text-center">/</div>--}}
+                {{--<div class="col-xs-4 text-center"><a href="#">Skills</a></div>--}}
+                {{--<div class="col-xs-1 text-center">/</div>--}}
+                {{--<div class="col-xs-3 text-right"><a href="#">Projects</a></div>--}}
+            {{--</div>--}}
         </div>
         <div class="background">
             <svg class="logo" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
