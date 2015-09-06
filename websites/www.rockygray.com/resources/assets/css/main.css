@@ -1,3 +1,7 @@
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
 .no-overflow {
   overflow: hidden;
 }
@@ -12,12 +16,12 @@ body {
   font-weight: 300;
   color: #ffffff;
   background-color: #991d20;
-  visibility: hidden;
 }
 
 .vcard a {
   color: #ffffff;
 }
+
 .name-title {
   font-weight: 400;
 }
