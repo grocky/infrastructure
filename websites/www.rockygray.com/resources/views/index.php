@@ -59,6 +59,7 @@
 <!-- inject:js -->
 <script src="js/ThrowPropsPlugin.min.js"></script>
 <script src="js/app.js"></script>
+<script src="js/googleAnalytics.js"></script>
 <script src="js/main.js"></script>
 <script src="js/controllers/VCard.js"></script>
 <script src="js/services/personalInformation.js"></script>
