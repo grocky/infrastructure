@@ -48,7 +48,7 @@ gulp.task('css', function() {
 });
 
 function buildScripts(shouldUglify) {
-    return gulp.src(paths.src.js + '/*.js')
+    return gulp.src(paths.src.js + '/**/*.js')
         .pipe($.if(shouldUglify, $.uglify()))
         .pipe(gulp.dest(paths.target.js))
         .pipe($.livereload());

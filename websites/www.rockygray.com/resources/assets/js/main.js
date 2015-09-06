@@ -1,11 +1,11 @@
 $(function() {
     var tl = new TimelineMax();
 
-    $logos = $('.logo');
-    $cardLogo = $('.vcard .logo');
+    logos = '.logo';
+    cardLogo = '.vcard .logo';
 
     $cardLogo.on('click', function() {
-        TweenMax.to($logos, 3, {
+        TweenMax.to(logos, 3, {
                 throwProps: {
                     rotation: {
                         velocity: 800,

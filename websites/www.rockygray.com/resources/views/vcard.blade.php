@@ -29,15 +29,14 @@
     <link rel="stylesheet" href="css/errors/404.css"/>
     <!-- endinject -->
 </head>
-<body class="no-overflow">
-
+<body class="no-overflow" ng-app="RockyGray" ng-controller="vCardController as vm">
 <div class="container">
     <div class="row">
         <div class="vcard col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
             <div class="row name-title">
                 <div class="col-sm-8">
                     <h1 class="name">ROCKY GRAY JR</h1>
-					<div class="rectangular-bar">&nbsp;</div>
+                    <div class="rectangular-bar">&nbsp;</div>
                     <span class="title">Software Engineer</span>
                 </div>
                 <div class="col-sm-3 col-sm-offset-0 col-xs-8 col-xs-offset-2">
@@ -93,15 +92,19 @@
 </div>
 
 <!-- bower:js -->
-<script src="vendor/jquery.js"></script>
-<script src="vendor/bootstrap.min.js"></script>
+<script src="vendor/angular.js"></script>
+<script src="vendor/ui-bootstrap-tpls.js"></script>
+<script src="vendor/angular-resource.js"></script>
 <script src="vendor/TweenMax.js"></script>
 <!-- endbower -->
 
 <!-- inject:js -->
 <script src="js/ThrowPropsPlugin.min.js"></script>
 <script src="js/googleAnalytics.js"></script>
-<script src="js/main.js"></script>
+<script src="js/app.min.js"></script>
+<script src="js/main.min.js"></script>
+<script src="js/controllers/VCard.min.js"></script>
+<script src="js/services/personalInformation.min.js"></script>
 <!-- endinject -->
 </body>
 </html>
