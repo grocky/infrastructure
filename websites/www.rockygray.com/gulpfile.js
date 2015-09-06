@@ -26,6 +26,7 @@ var paths = {
         'js': 'public/js',
         'fonts': 'public/fonts',
         'images': 'public/images',
+        'views': 'public/views',
         'vendor': 'public/vendor'
     }
 };
@@ -94,8 +95,15 @@ gulp.task('images', function(){
 
 /* Blade Templates */
 gulp.task('blade', function() {
- return gulp.src(paths.src.views + '/**/*.blade.php')
+ return gulp.src(paths.src.views + '/**/*')
      .pipe($.livereload());
+});
+
+gulp.task('views', function() {
+    "use strict";
+    return gulp.src(paths.src.views + '/**/*.html')
+        .pipe(gulp.dest(paths.target.views));
+
 });
 
 gulp.task('root-files', function() {
@@ -103,7 +111,7 @@ gulp.task('root-files', function() {
         .pipe(gulp.dest(paths.target.path));
 });
 
-gulp.task('wiredep', ['scripts', 'css', 'vendor-scripts', 'vendor-css'], function() {
+gulp.task('wiredep', ['scripts', 'css', 'vendor-scripts', 'vendor-css', 'views'], function() {
 
     return gulp.src('resources/views/**/*.php')
         .pipe(wiredep.stream({
@@ -165,6 +173,7 @@ gulp.task('clean', function(cb) {
         paths.target.js,
         paths.target.fonts,
         paths.target.images,
+        paths.target.views,
         'public/**/*',
         'public/**/.htaccess'
     ], cb);
@@ -183,13 +192,13 @@ gulp.task('dev', ['clean'], function () {
 
     $.livereload.listen();
 
-    gulp.watch(paths.src.views + '/**/*.blade.php', ['blade']);
+    gulp.watch(paths.src.views + '/**/*', ['blade', 'views']);
     gulp.watch(paths.src.css + '/**/*.css', ['css']);
     gulp.watch(paths.src.js + '/**/*.js', ['scripts']);
     gulp.watch(paths.src.fonts + '/**/*', ['fonts']);
     gulp.watch(paths.src.images + '/**/*', ['images']);
     gulp.watch('app/**/*.php', ['phpunit']);
-    gulp.watch('bower.json', ['wiredep']);
+    gulp.watch('bower.json', ['wiredep', 'build']);
 });
 
 gulp.task('install', function() {

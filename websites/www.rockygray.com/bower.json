@@ -2,8 +2,10 @@
   "name": "rockygray.com",
   "dependencies": {
     "angular": "~1.4.5",
+    "angular-animate": "~1.4.5",
     "angular-bootstrap": "~0.13.3",
     "angular-resource": "~1.4.5",
+    "angular-route": "~1.4.5",
     "bootstrap": "~3.3.5",
     "font-awesome": "fontawesome#~4.4.0",
     "gsap": "~1.17.0"
@@ -14,8 +16,10 @@
         "dist/css/bootstrap.min.css"
       ]
     },
-    "jquery": {
-      "main": []
+    "angular": {
+      "dependencies": {
+        "jquery": "*.js"
+      }
     },
     "font-awesome": {
       "main": [
