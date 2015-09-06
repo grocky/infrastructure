@@ -16,5 +16,22 @@
         vm.title = info.title;
 
         vm.socialLocations = personalInformation.getSocialLocations();
+
+        vm.rotateLogo = function() {
+            console.log('rotate logo');
+            TweenMax.to($('.logo'), 3, {
+                throwProps: {
+                    rotation: {
+                        velocity: 800,
+                        end: function(n) {
+                            var degree = Math.round(n/180) * 180;
+                            console.log('n: ' + n + ' degree: ' + degree);
+                            return degree;
+                        }
+                    }
+                },
+                ease: Power4.easeOut
+            });
+        };
     }]);
 })();
