@@ -1,5 +1,5 @@
 var config = {
-    env: 'prod'
+    env: 'dev'
 };
 
 var gulp = require('gulp');
@@ -50,7 +50,10 @@ gulp.task('css', function() {
 
 function buildScripts(shouldUglify) {
     return gulp.src(paths.src.js + '/**/*.js')
+        .pipe($.ngAnnotate())
+        .on('error', $.notify.onError("Error: <%= error.message %>"))
         .pipe($.if(shouldUglify, $.uglify()))
+        .on('error', $.notify.onError("Error: <%= error.message %>"))
         .pipe(gulp.dest(paths.target.js))
         .pipe($.livereload());
 }
@@ -212,6 +215,9 @@ gulp.task('deploy', ['install'], function() {
 
 gulp.task('prod', ['clean'], function() {
     "use strict";
+
+    config.env = 'prod';
+
     gulp.start('deploy');
 });
 

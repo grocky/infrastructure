@@ -2,7 +2,7 @@
 
     'use strict';
 
-    angular.module('main').factory('personalInformation', personalInformation);
+    angular.module('main').factory('personalInfo', personalInformation);
 
     function personalInformation() {
 
