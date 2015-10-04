@@ -51,7 +51,6 @@
 <script src="js/googleAnalytics.js"></script>
 <script src="js/controllers/mainCtrl.js"></script>
 <script src="js/services/personalInfoSrvc.js"></script>
-<script src="js/services/personalInformation.js"></script>
 <!-- endinject -->
 </body>
 </html>
