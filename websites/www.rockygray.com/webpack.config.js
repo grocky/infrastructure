@@ -33,6 +33,14 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.json']
+    extensions: ['', '.js', '.json'],
+    alias: {
+      TweenMax: 'gsap/src/uncompressed/TweenMax',
+      TweenLite: 'gsap/src/uncompressed/TweenLite',
+      TimelineLite: 'gsap/src/uncompressed/TimelineLite',
+      TimelineMax: 'gsap/src/uncompressed/TimelineMax',
+      EasePack: 'gsap/src/uncompressed/easing/EasePack',
+      CSSPlugin: 'gsap/src/uncompressed/plugins/CSSPlugin',
+    }
   }
 };

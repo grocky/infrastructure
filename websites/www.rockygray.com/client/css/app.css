@@ -5,16 +5,18 @@ body {
 
 .background {
   position: absolute;
-  top: -200px;
-  left: -200px;
+  top: -150px;
+  left: -100px;
   width: 100%;
   z-index: -99;
-
 }
 
 .backgroundLogo {
   composes: logo from "./Logo.css";
-  width: 850px;
+}
+
+.background .backgroundLogo {
+  width: 800px;
   visibility: hidden;
 }
 
@@ -33,7 +35,7 @@ body {
     background-color: #ffffff;
   }
 
-  .backgroundLogo {
+  .background .backgroundLogo {
     visibility: visible;
   }
 }
