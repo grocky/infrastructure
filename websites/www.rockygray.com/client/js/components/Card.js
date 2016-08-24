@@ -21,7 +21,7 @@ class Card extends React.Component {
 
     const cardStyleNames = `${styles.vcard} ${styles.revealItem} col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3`;
     const nameStyleNames = `row ${styles.nameTitle}`;
-    const socialStyleNames = `row ${styles.sociaIcons}`;
+    const socialStyleNames = `row ${styles.socialIcons}`;
 
     return (
       <div className="row">
