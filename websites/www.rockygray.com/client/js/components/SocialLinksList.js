@@ -9,23 +9,6 @@ class SocialLinksList extends React.Component {
     socialLinks: React.PropTypes.array
   };
 
-  static defaultProps = {
-    socialLinks:[
-      {
-        name: 'twitter',
-        url: 'https://twitter.com/RockyGJr'
-      },
-      {
-        name: 'linkedin',
-        url: 'https://www.linkedin.com/in/rockygray'
-      },
-      {
-        name: 'github',
-        url: 'https://github.com/grocky'
-      }
-    ]
-  };
-
   render() {
 
     const {socialLinks} = this.props;

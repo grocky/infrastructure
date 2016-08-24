@@ -12,15 +12,17 @@ const store = configureStore();
 
 export default React.createClass({
   render() {
+    const {background, card} = this.props;
+
     return (
       <div>
 
         <Provider store={store}>
-          <Card />
+          <Card {...card} />
         </Provider>
 
         <div className={styles.background}>
-          <Logo fillColor="#353535" containerClass={styles.backgroundLogo} />
+          <Logo {...background.logo} containerClass={styles.backgroundLogo} />
         </div>
 
         {
