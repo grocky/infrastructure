@@ -30,8 +30,8 @@ class SocialLinksList extends React.Component {
 
     const {socialLinks} = this.props;
 
-    const socialListItems = socialLinks.map(s => (
-      this.createListItem(s.name, s.url)
+    const socialListItems = socialLinks.map(l => (
+      <ListItem key={l.name} name={l.name} url={l.url} />
     ));
 
     return (
@@ -40,15 +40,18 @@ class SocialLinksList extends React.Component {
       </ul>
     );
   }
+}
 
-  createListItem(name, url) {
+const ListItem = React.createClass({
+  render: function() {
+    const {name, url} = this.props;
     return (
-      <li key={name}>
+      <li>
         <i className={`fa fa-${name} ${styles.listItemIcon}`} />
         <a href={url}>{'/' + url.split('/').pop()}</a>
       </li>
-    )
+    );
   }
-}
+});
 
 export default connect(state => state.Sample)(SocialLinksList)
