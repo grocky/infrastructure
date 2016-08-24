@@ -24,7 +24,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     devFlagPlugin,
-    new ExtractTextPlugin('app.css')
+    new ExtractTextPlugin('bundle.css')
   ],
   module: {
     loaders: [

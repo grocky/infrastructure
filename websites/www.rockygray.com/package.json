@@ -4,9 +4,7 @@
   "scripts": {
     "start": "DEBUG=true node server.js",
     "build": "webpack -p --config webpack.production.js",
-    "build-dev": "webpack -p"
-  },
-  "scripts": {
+    "build-dev": "webpack -p",
     "svg:clean": "svgo --disable=cleanupIDs --pretty --indent=2 --enable=removeViewBox --enable=removeDimensions",
     "svg:clean:all": "npm run svg:clean -- --folder client/img",
     "svg:min": "svgo --disable=cleanupIDs"

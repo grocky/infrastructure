@@ -1,78 +1,6 @@
-.text {
-  font-size: 2rem;
-  line-height: 1.5;
-  color: #BADA55;
-}
-
-.no-overflow {
-  overflow: hidden;
-}
-
+/* Base Styles (mobile first) */
 body {
   background-color: #991d20;
-}
-
-.vcard {
-  font-family: "proxima-nova",sans-serif;
-  padding: 20px 10px;
-  font-weight: 300;
-  color: #ffffff;
-  background-color: #991d20;
-}
-
-.vcard a {
-  color: #ffffff;
-}
-
-.nameTitle {
-  font-weight: 400;
-}
-
-.rectangularBar {
-  background: #ffffff;
-  height: 5px;
-  width: 40px;
-}
-
-.nameTitle .rectangularBar {
-  margin-bottom: .67em;
-}
-
-.nameTitle svg {
-  max-width: 300px;
-}
-
-.name {
-  font-size: 2em;
-}
-
-.title {
-}
-
-.vcard .row:not(:first-child) {
-  margin-top: 40px;
-}
-
-.socialIcons {
-  margin-bottom: 30px;
-}
-
-.socialIcons ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.socialIcons li i {
-  margin-right: 5px;
-}
-
-.separator {
-  margin: 0 3%;
-}
-
-.navigation div:not(:first-child):not(:last-child) {
-  padding: 0;
 }
 
 .background {
@@ -81,15 +9,13 @@ body {
   left: -200px;
   width: 100%;
   z-index: -99;
+
 }
 
-.background .logo {
-  width: 1000px;
+.backgroundLogo {
+  composes: logo from "./Logo.css";
+  width: 850px;
   visibility: hidden;
-}
-
-.logoFill {
-  fill: #ffffff;
 }
 
 /* Custom, iPhone Retina */
@@ -99,37 +25,22 @@ body {
 
 /* Extra Small Devices, Phones */
 @media only screen and (min-width : 480px) {
-
 }
 
 /* Small Devices, Tablets */
 @media only screen and (min-width : 768px) {
-  .background .logo .logo-fill {
-    fill: #353535;
-  }
-
-  .background .logo {
-    visibility: visible;
-  }
-
-  .vcard {
-    margin-top: 30%;
-    -webkit-box-shadow: 0 9px 6px -3px rgba(0,0,0,0.35);
-    -moz-box-shadow: 0 9px 6px -3px rgba(0,0,0,0.35);
-    box-shadow: 0 9px 6px -3px rgba(0,0,0,0.35);
-  }
-
   body {
     background-color: #ffffff;
+  }
+
+  .backgroundLogo {
+    visibility: visible;
   }
 }
 
 /* Medium Devices, Desktops */
 @media only screen and (min-width : 992px) {
 
-  .vcard {
-    margin-top: 20%;
-  }
 }
 
 /* Large Devices, Wide Screens */
