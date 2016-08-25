@@ -1,9 +1,8 @@
 import React from 'react';
-import { Provider } from 'react-redux';
 import { render } from 'react-dom';
 
 import configureStore from './store/configureStore';
-import { renderDevTools } from './utils/devTools';
+import { renderDevTools } from './utils/DevTools';
 
 import App from './components/App';
 
@@ -41,14 +40,6 @@ const props = {
 const store = configureStore({});
 
 render(
-  <div>
-    <Provider store={store}>
-      <App {...props} />
-    </Provider>
-    {
-      renderDevTools(store)
-    }
-  </div>
-  ,
+  <App store={store} background={props.background} card={props.card} />,
   document.getElementById('app')
 );
