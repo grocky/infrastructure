@@ -1,6 +1,8 @@
 import React from 'react';
-import Logo from './Logo';
-import SocialLinksList from './SocialLinksList';
+
+import Logo from '../components/Logo';
+import SocialLinksList from '../components/SocialLinksList';
+import { changeLogoHighlightedSection } from '../actions/CardActions';
 
 import styles from '../../css/Card.css';
 
@@ -45,4 +47,23 @@ class Card extends React.Component {
   }
 }
 
-export default connect(state => state.Sample)(Card)
+const mapStateToProps = (state) => ({ logos: state.logos});
+
+const logoSections = {
+  r: [1],
+  g: [1, 2, 3],
+  j: [2, 3]
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onUpdateSections: () => {
+      dispatch(changeLogoHighlightedSection(logoSections.r))
+    }
+  }
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Card)

@@ -1,40 +1,19 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
+import IconLinkListItem from './IconLinkListItem';
+
 import styles from '../../css/SocialLinksList.css'
 
-import {connect} from 'react-redux';
+const SocialLinksList = ({ socialLinks }) => (
+  <ul className={styles.ul}>
+    {socialLinks.map(l => (<IconLinkListItem key={l.name} name={l.name} url={l.url} />))}
+  </ul>
+);
 
-class SocialLinksList extends React.Component {
+SocialLinksList.propTypes = {
+  socialLinks: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired
+  }).isRequired).isRequired
+};
 
-  static propTypes = {
-    socialLinks: React.PropTypes.array
-  };
-
-  render() {
-
-    const {socialLinks} = this.props;
-
-    const socialListItems = socialLinks.map(l => (
-      <ListItem key={l.name} name={l.name} url={l.url} />
-    ));
-
-    return (
-      <ul className={styles.ul}>
-        {socialListItems}
-      </ul>
-    );
-  }
-}
-
-const ListItem = React.createClass({
-  render: function() {
-    const {name, url} = this.props;
-    return (
-      <li>
-        <i className={`fa fa-${name} ${styles.listItemIcon}`} />
-        <a href={url}>{'/' + url.split('/').pop()}</a>
-      </li>
-    );
-  }
-});
-
-export default connect(state => state.Sample)(SocialLinksList)
+export default SocialLinksList;

@@ -1,7 +1,7 @@
 import {createStore, applyMiddleware, combineReducers, compose} from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import {devTools, persistState} from 'redux-devtools';
-import * as reducers from '../reducers/index';
+import reducers from '../reducers';
 
 let createStoreWithMiddleware;
 
@@ -16,8 +16,6 @@ if (__DEV__) {
   createStoreWithMiddleware = applyMiddleware(thunkMiddleware)(createStore);
 }
 
-const rootReducer = combineReducers(reducers);
-
 export default function configureStore(initialState) {
-  return createStoreWithMiddleware(rootReducer, initialState);
+  return createStoreWithMiddleware(reducers, initialState);
 }

@@ -1,6 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './containers/App';
+import { Provider } from 'react-redux';
+import { render } from 'react-dom';
+
+import configureStore from './store/configureStore';
+import { renderDevTools } from './utils/devTools';
+
+import App from './components/App';
 
 const props = {
   card: {
@@ -33,4 +38,17 @@ const props = {
   }
 };
 
-ReactDOM.render(<App {...props} />, document.getElementById('app'));
+const store = configureStore({});
+
+render(
+  <div>
+    <Provider store={store}>
+      <App {...props} />
+    </Provider>
+    {
+      renderDevTools(store)
+    }
+  </div>
+  ,
+  document.getElementById('app')
+);

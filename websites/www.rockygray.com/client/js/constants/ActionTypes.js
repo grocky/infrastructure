@@ -1,4 +1,3 @@
-export const DATA_FETCHED = 'DATA_FETCHED';
-export const DATA_SUCCEEDED = 'DATA_SUCCEEDED';
-export const DATA_FAILED = 'DATA_FAILED';
-export const TITLE_CHANGED = 'TITLE_CHANGED';
+export const LOGO_CLICKED = 'LOGO_CLICKED';
+export const SPIN_STARTED = 'SPIN_STARTED';
+export const SPIN_STOPPED = 'SPIN_STOPPED';
