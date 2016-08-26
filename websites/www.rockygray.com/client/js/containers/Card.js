@@ -1,8 +1,9 @@
 import React from 'react';
+import _sample from 'lodash/sample';
 
 import Logo from '../components/Logo';
 import SocialLinksList from '../components/SocialLinksList';
-import { changeLogoHighlightedSection } from '../actions/CardActions';
+import * as CardActions from '../actions/CardActions';
 
 import styles from '../../css/Card.css';
 
@@ -12,7 +13,7 @@ class Card extends React.Component {
 
   render() {
 
-    const {personalInfo, socialLinks, logo} = this.props;
+    const {personalInfo, socialLinks, logo, logos} = this.props;
 
     return (
       <div className="row">
@@ -25,7 +26,7 @@ class Card extends React.Component {
                 <span className={styles.title}>{personalInfo.title}</span>
               </div>
               <div className="col-sm-3 col-sm-offset-0 col-xs-8 col-xs-offset-2">
-                <Logo {...logo} />
+                <Logo {...logo} {...logos} highlightColor='#696969' onMouseEnter={this.props.onUpdateSections} addToRefList={this.props.addToRefList} />
               </div>
             </div>
             <div className={`row ${styles.socialIcons}`}>
@@ -49,21 +50,11 @@ class Card extends React.Component {
 
 const mapStateToProps = (state) => ({ logos: state.logos});
 
-const logoSections = {
-  r: [1],
-  g: [1, 2, 3],
-  j: [2, 3]
-};
-
 const mapDispatchToProps = dispatch => {
   return {
-    onUpdateSections: () => {
-      dispatch(changeLogoHighlightedSection(logoSections.r))
-    }
+    onUpdateSections: () => dispatch(CardActions.changeLogoHighlightedSection(_sample(Logo.letterGroups))),
+    addToRefList: (ref) => dispatch(CardActions.addLogoRef(ref))
   }
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Card)
+export default connect(mapStateToProps, mapDispatchToProps)(Card)

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import logos from './logos';
+import logos from './logoReducer';
 
 export default combineReducers({
   logos

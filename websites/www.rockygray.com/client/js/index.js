@@ -2,7 +2,6 @@ import React from 'react';
 import { render } from 'react-dom';
 
 import configureStore from './store/configureStore';
-import { renderDevTools } from './utils/DevTools';
 
 import App from './components/App';
 
@@ -27,12 +26,14 @@ const props = {
       title: 'Software Engineer'
     },
     logo: {
-      fillColor: '#ffffff'
+      fillColor: '#ffffff',
+      highlightColor: '#696969'
     }
   },
   background: {
     logo: {
-      fillColor: '#353535'
+      fillColor: '#353535',
+      highlightColor: '#991d20'
     }
   }
 };

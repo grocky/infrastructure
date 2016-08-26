@@ -5,10 +5,18 @@ export const types = {
   SPIN_STOPPED: 'SPIN_STOPPED'
 };
 
-export function changeLogoHighlightedSection(sections: array) {
+export function changeLogoHighlightedSection(letterGroup: object) {
   return {
-    type: LOGO_CLICKED,
-    payload: { sections }
+    type: types.LOGO_INTERACTION,
+    payload: { sections: letterGroup.sections },
+    meta: { letter: letterGroup.letter }
+  }
+}
+
+export function addLogoRef(logoRef) {
+  return {
+    type: types.LOGO_CREATED,
+    payload: { logoRef }
   }
 }
 

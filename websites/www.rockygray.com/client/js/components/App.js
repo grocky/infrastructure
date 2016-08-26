@@ -7,13 +7,13 @@ import DevTools from '../utils/DevTools';
 
 import { logo } from '../../css/Logo.css'
 
-const App = ({ store, card, background }) => {
-  console.log('loading App');
+const App = ({ store, card, background, addToRefList }) => {
+
   return (
     <Provider store={store}>
       <div>
         <Card { ...card } />
-        <BackgroundLogo logo={background.logo} />
+        <BackgroundLogo addToRefList={addToRefList} { ...background } />
         <DevTools />
       </div>
     </Provider>
@@ -23,7 +23,8 @@ const App = ({ store, card, background }) => {
 App.propTypes = {
   store: PropTypes.object.isRequired,
   card: PropTypes.object.isRequired,
-  background: PropTypes.object.isRequired
+  background: PropTypes.object.isRequired,
+  addToRefList: PropTypes.func
 };
 
 export default App;
