@@ -1,4 +1,9 @@
-import { LOGO_CLICKED, SPIN_STARTED, SPIN_STOPPED } from '../constants/ActionTypes';
+export const types = {
+  LOGO_INTERACTION: 'LOGO_INTERACTION',
+  LOGO_CREATED: 'LOGO_CREATED',
+  SPIN_STARTED: 'SPIN_STARTED',
+  SPIN_STOPPED: 'SPIN_STOPPED'
+};
 
 export function changeLogoHighlightedSection(sections: array) {
   return {
@@ -9,7 +14,7 @@ export function changeLogoHighlightedSection(sections: array) {
 
 export function startRotation() {
   return {
-    type: SPIN_STARTED,
+    type: types.SPIN_STARTED,
     payload: {
       isSpinning: true
     }
@@ -18,7 +23,7 @@ export function startRotation() {
 
 export function stopRotation() {
   return {
-    type: SPIN_STOPPED,
+    type: types.SPIN_STOPPED,
     payload: {
       isSpinning: false
     }
