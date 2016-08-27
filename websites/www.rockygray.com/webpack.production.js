@@ -8,7 +8,7 @@ var devFlagPlugin = new webpack.DefinePlugin({
 
 module.exports = {
   entry: [
-    './js/index.js'
+    './client/js/index.js'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
@@ -18,7 +18,7 @@ module.exports = {
   plugins: [
     new webpack.NoErrorsPlugin(),
     devFlagPlugin,
-    new ExtractTextPlugin('app.css')
+    new ExtractTextPlugin('bundle.css')
   ],
   module: {
     loaders: [
@@ -27,6 +27,14 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.json']
+    extensions: ['', '.js', '.json'],
+    alias: {
+      TweenMax: 'gsap/src/uncompressed/TweenMax',
+      TweenLite: 'gsap/src/uncompressed/TweenLite',
+      TimelineLite: 'gsap/src/uncompressed/TimelineLite',
+      TimelineMax: 'gsap/src/uncompressed/TimelineMax',
+      EasePack: 'gsap/src/uncompressed/easing/EasePack',
+      CSSPlugin: 'gsap/src/uncompressed/plugins/CSSPlugin',
+    }
   }
 };

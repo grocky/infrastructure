@@ -23,46 +23,64 @@ class App extends Component {
     store: PropTypes.object
   };
 
-  render() {
-    const { card, background, addToRefList, logo, logos } = this.props;
+  handleLogoClick = (event: SyntheticMouseEvent) => {
+    event.preventDefault();
+    if (this.props.logos.isSpinning) {
+      return event;
+    }
+    this.props.actions.startRotation();
+    TweenMax.to(this.props.logos.refs, 3, {
+      throwProps: {
+        rotation: {
+          velocity: 800,
+          end: naturalLandingValue => Math.round(naturalLandingValue / 180) * 180
+        }
+      },
+      ease: Power4.easeOut,
+      onComplete: this.props.actions.rotationStopped
+    });
+  };
 
-    console.log('App', logo, logos);
+  handleUpdateSections = (event: SyntheticMouseEvent) => {
+    if (this.props.logos.isSpinning) {
+      return event;
+    }
+    this.props.actions.updateSections(_sample(Logo.letterGroups));
+  };
+
+  handleCreateLogo = this.props.actions.createLogo;
+
+  render() {
+    const { card, background, logos } = this.props;
 
     return (
       <div>
-        <Card { ...card } addToRefList={addToRefList} { ...this.props } />
-        <BackgroundLogo logo={logo} logos={logos}  addToRefList={addToRefList} { ...background } />
+        <Card
+          { ...card }
+          logos={logos}
+          onUpdateSections={this.handleUpdateSections}
+          onStartRotation={this.handleLogoClick}
+          createLogo={this.handleCreateLogo}
+        />
+        <BackgroundLogo
+          { ...background }
+          logos={logos}
+          createLogo={this.handleCreateLogo}
+        />
       </div>
     );
   }
-
-  componentDidUpdate(prevProps, prevState) {
-    const { store } = this.context;
-    const isSpinning = store.getState().logos.isSpinning;
-
-    if (isSpinning && prevProps.logos.isSpinning !== isSpinning) {
-      TweenMax.to(prevProps.logos.refs, 3, {
-        throwProps: {
-          rotation: {
-            velocity: 800,
-            end: naturalLandingValue => Math.round(naturalLandingValue / 180) * 180
-          }
-        },
-        ease: Power4.easeOut,
-        onComplete: prevProps.onStopRotation
-      });
-    }
-  }
-
 }
 
 const mapStateToProps = (state) => ({ logos: state.logos});
 
 const mapDispatchToProps = dispatch => ({
-  onUpdateSections: () => dispatch(CardActions.changeLogoHighlightedSection(_sample(Logo.letterGroups))),
-  onStartRotation: () => dispatch(CardActions.startRotation()),
-  onStopRotation: () => dispatch(CardActions.rotationStopped()),
-  addToRefList: (ref) => dispatch(CardActions.addLogoRef(ref))
+  actions: {
+    updateSections: (letterGroup) => dispatch(CardActions.updateSections(letterGroup)),
+    startRotation: () => dispatch(CardActions.startRotation()),
+    rotationStopped: () => dispatch(CardActions.rotationStopped()),
+    createLogo: (ref) => dispatch(CardActions.createLogo(ref))
+  }
 });
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => Object.assign({}, ownProps, stateProps, dispatchProps);

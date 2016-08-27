@@ -3,9 +3,9 @@ import React, { PropTypes } from 'react';
 import Logo from './Logo';
 import styles from '../../css/app.css'
 
-const BackgroundLogo = ({ logo, logos, addToRefList }) => (
+const BackgroundLogo = ({ logo, logos, createLogo }) => (
   <div className={styles.background}>
-    <Logo {...logo} {...logos} highlightColor='#991d20' addToRefList={addToRefList} containerClass={styles.backgroundLogo} />
+    <Logo key="background" {...logo} {...logos} highlightColor='#991d20' createLogo={createLogo} containerClass={styles.backgroundLogo} />
   </div>
 );
 
@@ -16,7 +16,7 @@ BackgroundLogo.propTypes = {
     containerClass: PropTypes.string
   }).isRequired,
   logos: PropTypes.object.isRequired,
-  addToRefList: PropTypes.func.isRequired
+  createLogo: PropTypes.func.isRequired
 };
 
 export default BackgroundLogo;

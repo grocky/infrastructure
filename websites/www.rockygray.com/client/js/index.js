@@ -2,6 +2,10 @@ import React from 'react';
 import { render } from 'react-dom';
 
 import AppContainer from './containers/AppContainer'
+import configureStore from './store/configureStore';
+
+const prelodedState = {};
+const store = configureStore(prelodedState);
 
 const props = {
   card: {
@@ -37,6 +41,6 @@ const props = {
 };
 
 render(
-  <AppContainer background={props.background} card={props.card} />,
-  document.getElementById('app')
+  <AppContainer store={store} initialProps={props} />,
+  document.getElementById('root')
 );

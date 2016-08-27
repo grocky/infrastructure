@@ -18,10 +18,12 @@ app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, 'client', 'index.html'));
 });
 
-app.listen(5000, 'localhost', function (err, result) {
+const port = 5000;
+
+app.listen(port, 'localhost', function (err, result) {
   if (err) {
-    console.log(err);
+    console.error(err);
   }
 
-  console.log('Listening at localhost:5000');
+  console.info("==> 🌎Listening on port %s. Open up http://localhost:%s/ in your browser.", port, port);
 });

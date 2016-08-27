@@ -1,18 +1,13 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import _map from 'lodash/map'
 import _includes from 'lodash/includes';
-
-import styles from '../../css/Logo.css'
 
 const LogoPath = ({fill, path}) => (
   <path fill={fill} d={path} />
 );
 
-const Logo = ({ fillColor, highlightColor, addToRefList, onMouseEnter, onClick, changeHighlightedSections, highlightedSections, containerClass }) => {
-
-  console.log(highlightColor, highlightedSections);
-
-  const sections = [
+const Logo = ({ fillColor, highlightColor, createLogo, onMouseEnter, onClick, highlightedSections, containerClass }) => {
+  const segments = [
     {
       key: 'top',
       fill: '',
@@ -30,16 +25,16 @@ const Logo = ({ fillColor, highlightColor, addToRefList, onMouseEnter, onClick, 
     }
   ];
 
-  const logoPaths = _map(sections, section => {
-    if (_includes(highlightedSections, section.key)) {
-      section.fill = highlightColor
-    }
-    return <LogoPath key={section.key} fill={section.fill} path={section.path} />;
-  });
+  const logoPaths = _map(segments, segment => (
+    <LogoPath key={segment.key}
+              fill={_includes(highlightedSections, segment.key) ? highlightColor : segment.fill}
+              path={segment.path}
+    />
+  ));
 
   return (
     <svg className={containerClass} fill={fillColor} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 215 323"
-         ref={addToRefList}
+         ref={createLogo}
          onMouseEnter={onMouseEnter}
          onClick={onClick}
     >
@@ -66,14 +61,11 @@ Logo.letterGroups = [
 Logo.propTypes = {
   fillColor: PropTypes.string.isRequired,
   highlightColor: PropTypes.string,
-  addToRefList: PropTypes.func.isRequired,
+  createLogo: PropTypes.func.isRequired,
   onMouseEnter: PropTypes.func,
   onClick: PropTypes.func,
-  changeHighlightedSections: PropTypes.func,
   highlightedSections: PropTypes.array,
   containerClass: PropTypes.string
 };
-
-Logo.defaultProps = () => ({highlightedSections: [], containerClass: styles.logo});
 
 export default Logo;

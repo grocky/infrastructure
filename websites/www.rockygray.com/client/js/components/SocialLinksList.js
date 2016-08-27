@@ -5,7 +5,7 @@ import styles from '../../css/SocialLinksList.css'
 
 const SocialLinksList = ({ socialLinks }) => (
   <ul className={styles.ul}>
-    {socialLinks.map(l => (<IconLinkListItem key={l.name} name={l.name} url={l.url} />))}
+    {socialLinks.map(l => <IconLinkListItem key={l.name} name={l.name} url={l.url} />)}
   </ul>
 );
 
