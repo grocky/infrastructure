@@ -22,7 +22,8 @@ if (environment === 'development') {
   }));
   app.use(webpackHotMiddleware(compiler));
 } else {
-  app.use('/static', express.static(path.join(__dirname, 'dist')));
+  console.log('Setting up dist static directory');
+  app.use(express.static(path.join(__dirname, 'dist')));
 }
 
 app.use('/img', express.static(path.join(__dirname, 'client', 'img')));
