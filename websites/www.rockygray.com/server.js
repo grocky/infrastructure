@@ -7,7 +7,9 @@ const port = process.env.PORT || 5000;
 
 const environment = process.env.NODE_ENV || 'development';
 
-if (environment !== 'production') {
+console.info('Starting server for %s environment', environment);
+
+if (environment === 'development') {
   const webpack = require('webpack');
   const webpackDevMiddleware = require('webpack-dev-middleware');
   const webpackHotMiddleware = require('webpack-hot-middleware');
