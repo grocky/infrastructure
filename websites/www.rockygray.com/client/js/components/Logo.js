@@ -8,7 +8,7 @@ const LogoPath = ({fill, path}) => (
   <path fill={fill} d={path} />
 );
 
-const Logo = ({ fillColor, highlightColor, addToRefList, onMouseEnter, changeHighlightedSections, highlightedSections, containerClass }) => {
+const Logo = ({ fillColor, highlightColor, addToRefList, onMouseEnter, onClick, changeHighlightedSections, highlightedSections, containerClass }) => {
 
   const sections = [
     {
@@ -38,7 +38,9 @@ const Logo = ({ fillColor, highlightColor, addToRefList, onMouseEnter, changeHig
   return (
     <svg className={containerClass} fill={fillColor} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 215 323"
          ref={addToRefList}
-         onMouseEnter={onMouseEnter} >
+         onMouseEnter={onMouseEnter}
+         onClick={onClick}
+    >
       {logoPaths}
     </svg>
   );
@@ -64,6 +66,7 @@ Logo.propTypes = {
   highlightColor: PropTypes.string,
   addToRefList: PropTypes.func,
   onMouseEnter: PropTypes.func,
+  onClick: PropTypes.func,
   changeHighlightedSections: PropTypes.func,
   highlightedSections: PropTypes.array,
   containerClass: PropTypes.string

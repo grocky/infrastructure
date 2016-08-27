@@ -29,7 +29,7 @@ export function startRotation() {
   }
 }
 
-export function stopRotation() {
+export function rotationStopped() {
   return {
     type: types.SPIN_STOPPED,
     payload: {

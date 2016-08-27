@@ -1,5 +1,7 @@
 import React from 'react';
 import _sample from 'lodash/sample';
+import {TweenMax} from 'gsap';
+require('../libs/ThrowPropsPlugin.min');
 
 import Logo from '../components/Logo';
 import SocialLinksList from '../components/SocialLinksList';
@@ -13,7 +15,7 @@ class Card extends React.Component {
 
   render() {
 
-    const {personalInfo, socialLinks, logo, logos} = this.props;
+    const {store, personalInfo, socialLinks, logo, logos} = this.props;
 
     return (
       <div className="row">
@@ -26,7 +28,7 @@ class Card extends React.Component {
                 <span className={styles.title}>{personalInfo.title}</span>
               </div>
               <div className="col-sm-3 col-sm-offset-0 col-xs-8 col-xs-offset-2">
-                <Logo {...logo} {...logos} highlightColor='#696969' onMouseEnter={this.props.onUpdateSections} addToRefList={this.props.addToRefList} />
+                <Logo {...logo} {...logos} highlightColor='#696969' onClick={this.props.onStartRotation} onMouseEnter={this.props.onUpdateSections} addToRefList={this.props.addToRefList} />
               </div>
             </div>
             <div className={`row ${styles.socialIcons}`}>
@@ -46,13 +48,37 @@ class Card extends React.Component {
       </div>
     )
   }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { store } = this.context;
+    const isSpinning = store.getState().logos.isSpinning;
+
+    if (isSpinning && prevProps.logos.isSpinning !== isSpinning) {
+      TweenMax.to(prevProps.logos.refs, 3, {
+        throwProps: {
+          rotation: {
+            velocity: 800,
+            end: naturalLandingValue => Math.round(naturalLandingValue / 180) * 180
+          }
+        },
+        ease: Power4.easeOut,
+        onComplete: prevProps.onStopRotation
+      });
+    }
+  }
 }
+
+Card.contextTypes = {
+  store: React.PropTypes.object.isRequired
+};
 
 const mapStateToProps = (state) => ({ logos: state.logos});
 
 const mapDispatchToProps = dispatch => {
   return {
     onUpdateSections: () => dispatch(CardActions.changeLogoHighlightedSection(_sample(Logo.letterGroups))),
+    onStartRotation: () => dispatch(CardActions.startRotation()),
+    onStopRotation: () => dispatch(CardActions.rotationStopped()),
     addToRefList: (ref) => dispatch(CardActions.addLogoRef(ref))
   }
 };
