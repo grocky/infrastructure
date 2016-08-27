@@ -10,6 +10,8 @@ const LogoPath = ({fill, path}) => (
 
 const Logo = ({ fillColor, highlightColor, addToRefList, onMouseEnter, onClick, changeHighlightedSections, highlightedSections, containerClass }) => {
 
+  console.log(highlightColor, highlightedSections);
+
   const sections = [
     {
       key: 'top',

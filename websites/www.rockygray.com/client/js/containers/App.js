@@ -24,12 +24,14 @@ class App extends Component {
   };
 
   render() {
-    const { card, background, addToRefList } = this.props;
+    const { card, background, addToRefList, logo, logos } = this.props;
+
+    console.log('App', logo, logos);
 
     return (
       <div>
         <Card { ...card } addToRefList={addToRefList} { ...this.props } />
-        <BackgroundLogo addToRefList={addToRefList} { ...background } />
+        <BackgroundLogo logo={logo} logos={logos}  addToRefList={addToRefList} { ...background } />
       </div>
     );
   }
