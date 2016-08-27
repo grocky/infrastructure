@@ -2,10 +2,6 @@ var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-var devFlagPlugin = new webpack.DefinePlugin({
-  __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
-});
-
 module.exports = {
   entry: [
     './client/js/index.js'
@@ -17,7 +13,11 @@ module.exports = {
   },
   plugins: [
     new webpack.NoErrorsPlugin(),
-    devFlagPlugin,
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
     new ExtractTextPlugin('bundle.css')
   ],
   module: {
