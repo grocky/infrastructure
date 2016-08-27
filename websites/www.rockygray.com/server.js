@@ -23,6 +23,7 @@ if (environment !== 'production') {
   app.use('/static', express.static(path.join(__dirname, 'dist')));
 }
 
+app.use('/img', express.static(path.join(__dirname, 'client', 'img')));
 app.use((req, res) => res.sendFile(path.join(__dirname, 'client', 'index.html')));
 
 app.listen(port, err => {
