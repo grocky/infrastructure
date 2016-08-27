@@ -33,6 +33,13 @@
   max-width: 300px;
 }
 
+.activeLogo {
+  cursor: pointer;
+}
+
+.inactiveLogo {
+  cursor: auto;
+}
 
 /*.separator {*/
 /*margin: 0 3%;*/
