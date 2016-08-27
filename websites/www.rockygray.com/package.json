@@ -24,6 +24,7 @@
     "redux": "^3.2.0",
     "redux-logger": "^2.4.0",
     "redux-thunk": "^1.0.0",
+    "webpack": "1.13.2",
     "whatwg-fetch": "^1.0.0"
   },
   "devDependencies": {
