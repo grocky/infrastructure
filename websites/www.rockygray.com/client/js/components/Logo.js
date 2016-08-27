@@ -64,7 +64,7 @@ Logo.letterGroups = [
 Logo.propTypes = {
   fillColor: PropTypes.string.isRequired,
   highlightColor: PropTypes.string,
-  addToRefList: PropTypes.func,
+  addToRefList: PropTypes.func.isRequired,
   onMouseEnter: PropTypes.func,
   onClick: PropTypes.func,
   changeHighlightedSections: PropTypes.func,

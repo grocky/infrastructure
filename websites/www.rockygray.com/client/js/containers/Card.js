@@ -1,21 +1,29 @@
-import React from 'react';
-import _sample from 'lodash/sample';
+import React, { PropTypes } from 'react';
 import {TweenMax} from 'gsap';
 require('../libs/ThrowPropsPlugin.min');
 
 import Logo from '../components/Logo';
 import SocialLinksList from '../components/SocialLinksList';
-import * as CardActions from '../actions/CardActions';
 
 import styles from '../../css/Card.css';
 
-import {connect} from 'react-redux';
-
 class Card extends React.Component {
+
+  static propTypes = {
+    personalInfo: PropTypes.object.isRequired,
+    socialLinks: PropTypes.array.isRequired,
+    logo: PropTypes.object.isRequired,
+    logos: PropTypes.object.isRequired,
+    addToRefList: PropTypes.func.isRequired
+  };
+
+  static contextTypes = {
+    store: PropTypes.object
+  };
 
   render() {
 
-    const {store, personalInfo, socialLinks, logo, logos} = this.props;
+    const { personalInfo, socialLinks, logo, logos } = this.props;
 
     return (
       <div className="row">
@@ -68,19 +76,4 @@ class Card extends React.Component {
   }
 }
 
-Card.contextTypes = {
-  store: React.PropTypes.object.isRequired
-};
-
-const mapStateToProps = (state) => ({ logos: state.logos});
-
-const mapDispatchToProps = dispatch => {
-  return {
-    onUpdateSections: () => dispatch(CardActions.changeLogoHighlightedSection(_sample(Logo.letterGroups))),
-    onStartRotation: () => dispatch(CardActions.startRotation()),
-    onStopRotation: () => dispatch(CardActions.rotationStopped()),
-    addToRefList: (ref) => dispatch(CardActions.addLogoRef(ref))
-  }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Card)
+export default Card;

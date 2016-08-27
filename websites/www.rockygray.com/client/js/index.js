@@ -1,9 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import configureStore from './store/configureStore';
-
-import App from './components/App';
+import AppContainer from './containers/AppContainer'
 
 const props = {
   card: {
@@ -38,9 +36,7 @@ const props = {
   }
 };
 
-const store = configureStore({});
-
 render(
-  <App store={store} background={props.background} card={props.card} />,
+  <AppContainer background={props.background} card={props.card} />,
   document.getElementById('app')
 );
