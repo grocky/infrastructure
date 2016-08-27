@@ -15,8 +15,7 @@ import * as CardActions from '../actions/CardActions';
 class App extends Component {
 
   static propTypes = {
-    card: PropTypes.object.isRequired,
-    background: PropTypes.object.isRequired,
+    card: PropTypes.object.isRequired
   };
 
   static contextTypes = {
@@ -63,7 +62,6 @@ class App extends Component {
           createLogo={this.handleCreateLogo}
         />
         <BackgroundLogo
-          { ...background }
           logos={logos}
           createLogo={this.handleCreateLogo}
         />
