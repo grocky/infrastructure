@@ -1,0 +1,69 @@
+.vcard {
+  font-family: "proxima-nova",sans-serif;
+  padding: 20px 10px;
+  font-weight: 300;
+  color: #ffffff;
+  background-color: transparent;
+  margin: 0;
+}
+
+.vcard a {
+  color: #ffffff;
+}
+
+.vcard .row:not(:first-child) {
+  margin-top: 40px;
+}
+
+.rectangularBar {
+  background: #ffffff;
+  height: 5px;
+  width: 40px;
+  margin-bottom: .67em;
+}
+
+.name {
+  font-size: 2em;
+  font-weight: 400;
+}
+
+.title { }
+
+.vcard svg {
+  max-width: 300px;
+}
+
+
+/*.separator {*/
+/*margin: 0 3%;*/
+/*}*/
+
+/*.navigation div:not(:first-child):not(:last-child) {*/
+/*padding: 0;*/
+/*}*/
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+  .vcard {
+    box-shadow: 0 9px 6px -3px rgba(0, 0, 0, 0.35);
+    background-color: #991d20;
+    margin-top: 50%;
+  }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+
+}
