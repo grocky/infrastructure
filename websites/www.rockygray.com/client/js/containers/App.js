@@ -15,11 +15,8 @@ import * as CardActions from '../actions/CardActions';
 class App extends Component {
 
   static propTypes = {
-    card: PropTypes.object.isRequired
-  };
-
-  static contextTypes = {
-    store: PropTypes.object
+    card: PropTypes.object.isRequired,
+    logos: PropTypes.object.isRequired
   };
 
   handleLogoClick = (event: SyntheticMouseEvent) => {
@@ -50,7 +47,7 @@ class App extends Component {
   handleCreateLogo = this.props.actions.createLogo;
 
   render() {
-    const { card, background, logos } = this.props;
+    const { card, logos } = this.props;
 
     return (
       <div>
