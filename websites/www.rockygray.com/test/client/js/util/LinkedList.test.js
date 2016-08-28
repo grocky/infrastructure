@@ -2,8 +2,16 @@ import {ImmutableList, Node} from '../../../../client/js/utils/LinkedList'
 
 const double = (value) => value * 2;
 const add = (a, b) => a + b;
+const addObj = (a, value) => {
+  if (!a.sum) a.sum = 0;
+  a.sum += value;
+  return a;
+};
 
 describe('LinkedList', () => {
+  const initValue = 0;
+  const initObj = {};
+
   describe('NullNode', () => {
     it('should be empty', () => {
       expect(Node.NullNode.isEmpty()).to.equal(true);
@@ -18,10 +26,12 @@ describe('LinkedList', () => {
       expect(Node.NullNode.map(double)).to.equal(Node.NullNode);
     });
     it('should return initial value on reduce', () => {
-      expect(Node.NullNode.reduce(add, 1)).to.equal(1);
+      expect(Node.NullNode.reduce(add, initValue)).to.equal(initValue);
+      expect(Node.NullNode.reduce(addObj, initObj)).to.equal(initObj);
     });
     it('should return initial value on reduceRight', () => {
-      expect(Node.NullNode.reduce(add, 1)).to.equal(1);
+      expect(Node.NullNode.reduceRight(add, initValue)).to.equal(initValue);
+      expect(Node.NullNode.reduceRight(add, initObj)).to.equal(initObj);
     });
   });
   describe('Node', () => {
@@ -51,8 +61,17 @@ describe('LinkedList', () => {
     });
     it('should reduce to the correct value', () => {
       const head = new Node(1, new Node(2, new Node(3, Node.NullNode)));
-      const result = head.reduce(add, 0);
+      const result = head.reduce(add, initValue);
       expect(result).to.equal(6);
+      const resultObj = head.reduce(addObj, initObj);
+      expect(resultObj).to.eql({sum: 6});
+    });
+    it('should reduceRight to the correct value', () => {
+      const head = new Node(1, new Node(2, new Node(3, Node.NullNode)));
+      const result = head.reduceRight(add, initValue);
+      expect(result).to.equal(6);
+      const resultObj = head.reduceRight(addObj, initObj);
+      expect(resultObj).to.eql({sum: 6});
     });
     it('should map nodes', () => {
       const head = new Node(1, new Node(2, new Node(3, Node.NullNode)));

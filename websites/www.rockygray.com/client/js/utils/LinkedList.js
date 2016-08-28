@@ -39,18 +39,16 @@ export class Node {
   }
 
   map(fn: func) {
-    if (this.isEmpty()) {
-    }
     const NodeBuilder = (memo, value) => new Node(fn(value), memo);
     return this.reduceRight(NodeBuilder, Node.NullNode);
   }
 
   reduce(fn: func, memo) {
-    return this.isEmpty() ? memo : this.next.reduce(fn, fn(memo, this.data));
+    return this.next.reduce(fn, fn(memo, this.data));
   }
 
   reduceRight(fn: func, memo) {
-    return this.isEmpty() ? memo : fn(this.next.reduceRight(fn, memo), this.data);
+    return fn(this.next.reduceRight(fn, memo), this.data);
   }
 
 }
