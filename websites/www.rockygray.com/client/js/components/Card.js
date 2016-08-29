@@ -16,7 +16,7 @@ const Card = ({ personalInfo, socialLinks, logos, createLogo, onStartRotation, o
             <span className={styles.title}>{personalInfo.title}</span>
           </div>
           <div className="col-sm-3 col-sm-offset-0 col-xs-8 col-xs-offset-2">
-            <Logo key="card" {...logos} fillColor="#FFFFFF" highlightColor='#A1A1A1' onClick={onStartRotation} onMouseEnter={onUpdateSections} createLogo={createLogo} />
+            <Logo key="card" {...logos} containerClass={logos.isSpinning ? styles.inactiveLogo : styles.activeLogo} fillColor="#FFFFFF" highlightColor='#A1A1A1' onClick={onStartRotation} onMouseEnter={onUpdateSections} createLogo={createLogo} />
           </div>
         </div>
         <div className={`row ${styles.socialIcons}`}>

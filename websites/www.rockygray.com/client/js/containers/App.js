@@ -15,11 +15,8 @@ import * as CardActions from '../actions/CardActions';
 class App extends Component {
 
   static propTypes = {
-    card: PropTypes.object.isRequired
-  };
-
-  static contextTypes = {
-    store: PropTypes.object
+    card: PropTypes.object.isRequired,
+    logos: PropTypes.object.isRequired
   };
 
   handleLogoClick = (event: SyntheticMouseEvent) => {
@@ -44,13 +41,13 @@ class App extends Component {
     if (this.props.logos.isSpinning) {
       return event;
     }
-    this.props.actions.updateSections(_sample(Logo.letterGroups));
+    this.props.actions.updateSections();
   };
 
   handleCreateLogo = this.props.actions.createLogo;
 
   render() {
-    const { card, background, logos } = this.props;
+    const { card, logos } = this.props;
 
     return (
       <div>
@@ -74,7 +71,7 @@ const mapStateToProps = (state) => ({ logos: state.logos});
 
 const mapDispatchToProps = dispatch => ({
   actions: {
-    updateSections: (letterGroup) => dispatch(CardActions.updateSections(letterGroup)),
+    updateSections: () => dispatch(CardActions.updateSections()),
     startRotation: () => dispatch(CardActions.startRotation()),
     rotationStopped: () => dispatch(CardActions.rotationStopped()),
     createLogo: (ref) => dispatch(CardActions.createLogo(ref))
