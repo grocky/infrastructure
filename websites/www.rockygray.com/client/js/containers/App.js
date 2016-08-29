@@ -41,7 +41,7 @@ class App extends Component {
     if (this.props.logos.isSpinning) {
       return event;
     }
-    this.props.actions.updateSections(_sample(Logo.letterGroups));
+    this.props.actions.updateSections();
   };
 
   handleCreateLogo = this.props.actions.createLogo;
@@ -71,7 +71,7 @@ const mapStateToProps = (state) => ({ logos: state.logos});
 
 const mapDispatchToProps = dispatch => ({
   actions: {
-    updateSections: (letterGroup) => dispatch(CardActions.updateSections(letterGroup)),
+    updateSections: () => dispatch(CardActions.updateSections()),
     startRotation: () => dispatch(CardActions.startRotation()),
     rotationStopped: () => dispatch(CardActions.rotationStopped()),
     createLogo: (ref) => dispatch(CardActions.createLogo(ref))

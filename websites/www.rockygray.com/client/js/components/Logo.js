@@ -76,19 +76,4 @@ Logo.defaultProps = {
   ]
 };
 
-Logo.letterGroups = [
-  {
-    letter: 'r',
-    sections: ['middle', 'bottom']
-  },
-  {
-    letter: 'g',
-    sections: []
-  },
-  {
-    letter: 'j',
-    sections: ['top']
-  }
-];
-
 export default Logo;

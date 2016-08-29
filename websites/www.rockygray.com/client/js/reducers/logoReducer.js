@@ -1,17 +1,33 @@
 import { types as cardActionTypes } from '../actions/CardActions';
 
 const initialState = {
-  isSpinning: false,
-  highlightedSections: [],
+  letterGroups: {
+    index: 0,
+    states: [1, 0, 1, 2],
+    sections: [
+      ['middle', 'bottom'], // r
+      [], // g
+      ['top'] // j
+    ]
+  },
   refs: []
 };
 
 export default function logos(state = initialState, action) {
   switch (action.type) {
     case cardActionTypes.LOGO_INTERACTION:
+      const {index, states, sections} = state.letterGroups;
+      const nextIndex = index >= states.length -1
+        ? 0
+        : index + 1;
+
       return {
         ...state,
-        highlightedSections: action.payload.sections
+        letterGroups: {
+          ...state.letterGroups,
+          index: nextIndex,
+        },
+        highlightedSections: sections[states[nextIndex]]
       };
     case cardActionTypes.LOGO_CREATED:
       return {
