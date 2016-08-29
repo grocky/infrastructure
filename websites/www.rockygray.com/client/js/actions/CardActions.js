@@ -5,11 +5,9 @@ export const types = {
   SPIN_STOPPED: 'SPIN_STOPPED'
 };
 
-export function updateSections(letterGroup: object) {
+export function updateSections() {
   return {
     type: types.LOGO_INTERACTION,
-    payload: { sections: letterGroup.sections },
-    meta: { letter: letterGroup.letter }
   }
 }
 

@@ -26,16 +26,6 @@ const props = {
     personalInfo: {
       name: 'Rocky Gray Jr',
       title: 'Software Engineer'
-    },
-    logo: {
-      fillColor: '#ffffff',
-      highlightColor: '#696969'
-    }
-  },
-  background: {
-    logo: {
-      fillColor: '#353535',
-      highlightColor: '#991d20'
     }
   }
 };
