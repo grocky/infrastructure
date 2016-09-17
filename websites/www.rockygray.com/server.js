@@ -29,7 +29,7 @@ if (environment === 'development') {
 if (environment === 'production') {
   app.get('/.well-known/acme-challenge/:id', (req, res) => {
     console.log('Received acme verification request with id:', req.params.id);
-    res.send(process.env.ACME_CHALLENGE_URI);
+    res.send(process.env.ACME_CHALLENGE_RESPONSE);
   });
 }
 
