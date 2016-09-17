@@ -26,6 +26,13 @@ if (environment === 'development') {
   app.use(express.static(path.join(__dirname, 'dist')));
 }
 
+if (environment === 'production') {
+  app.get('/.well-known/acme-challenge/:id', (req, res) => {
+    console.log('Received acme verification request with id:', req.params.id);
+    res.send(process.env.ACME_CHALLENGE_URI);
+  });
+}
+
 app.use('/img', express.static(path.join(__dirname, 'client', 'img')));
 app.use((req, res) => res.sendFile(path.join(__dirname, 'client', 'index.html')));
 
