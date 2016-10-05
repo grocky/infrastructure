@@ -10,7 +10,6 @@ const addObj = (a, value) => {
 
 describe('LinkedList', () => {
   const initValue = 0;
-  const initObj = {};
 
   describe('NullNode', () => {
     it('should be empty', () => {
@@ -26,10 +25,12 @@ describe('LinkedList', () => {
       expect(Node.NullNode.map(double)).to.equal(Node.NullNode);
     });
     it('should return initial value on reduce', () => {
+      const initObj = {};
       expect(Node.NullNode.reduce(add, initValue)).to.equal(initValue);
       expect(Node.NullNode.reduce(addObj, initObj)).to.equal(initObj);
     });
     it('should return initial value on reduceRight', () => {
+      const initObj = {};
       expect(Node.NullNode.reduceRight(add, initValue)).to.equal(initValue);
       expect(Node.NullNode.reduceRight(add, initObj)).to.equal(initObj);
     });
@@ -63,14 +64,14 @@ describe('LinkedList', () => {
       const head = new Node(1, new Node(2, new Node(3, Node.NullNode)));
       const result = head.reduce(add, initValue);
       expect(result).to.equal(6);
-      const resultObj = head.reduce(addObj, initObj);
+      const resultObj = head.reduce(addObj, {});
       expect(resultObj).to.eql({sum: 6});
     });
     it('should reduceRight to the correct value', () => {
       const head = new Node(1, new Node(2, new Node(3, Node.NullNode)));
       const result = head.reduceRight(add, initValue);
       expect(result).to.equal(6);
-      const resultObj = head.reduceRight(addObj, initObj);
+      const resultObj = head.reduceRight(addObj, {});
       expect(resultObj).to.eql({sum: 6});
     });
     it('should map nodes', () => {

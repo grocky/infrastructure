@@ -1,17 +1,22 @@
 {
-  "name": "rockygraycom",
+  "name": "rockygray",
   "version": "1.0.0",
   "engines": {
     "node": "6.4.0"
   },
   "scripts": {
+    "clean": "rm -rf dist/",
     "postinstall": "npm run build",
     "start": "node server.js",
     "start:dev": "DEBUG=true node server.js",
     "test": "mocha --compilers js:babel-core/register --recursive",
     "test:watch": "npm run test -- --watch",
     "build": "webpack --optimize-minimize --config webpack.production.js",
+    "postbuild": "npm run favicons",
     "build-dev": "webpack -p",
+    "favicons": "npm run favicons:generate && npm run favicons:inject",
+    "favicons:generate": "real-favicon generate faviconDescription.json faviconData.json dist/static/favicons",
+    "favicons:inject": "real-favicon inject faviconData.json dist/ client/index.html",
     "svg:clean": "svgo --disable=cleanupIDs --pretty --indent=2 --enable=removeViewBox --enable=removeDimensions",
     "svg:clean:all": "npm run svg:clean -- --folder client/img",
     "svg:min": "svgo --disable=cleanupIDs"
@@ -23,6 +28,7 @@
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-0": "^6.3.13",
+    "cli-real-favicon": "0.0.6",
     "css-loader": "^0.23.1",
     "cssnext-loader": "^1.0.1",
     "es6-promise": "^3.2.1",
