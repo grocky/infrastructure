@@ -1,4 +1,10 @@
 language: node_js
 node_js:
-  - "6"
-
+- '6'
+deploy:
+  provider: heroku
+  api_key:
+    secure: FIs/q9IaRuYockyXEv/gVNvlj96E3nfNJAIN/MekGi4VNh5t9D+tou8zwiasafeYHVyRPYmMFkYjpJgLLn1qyaOLdcALuSdz8nNTlV8PE09E0+sOx3Wk+lp1cfgyONTyyoWS0r5w9tQY0xWGlpCwLRD8C8CyHs1VY3LV6XSzb+MjRqhmmuLT7sifsi4Ogdl2HUtycAYGfxN3intV5klqGnEaTuhvolAt0ZSXCK0Eo0nRCZbda+/MR2zeZrxx/iC9E2nL8fL71mq0GtmwmqIHwAhsWFYPyCBrynIz+NbUgWxSKMOi4ObxW3J/idoRdf2Zl3TgG2mXm3R2A0LTuKxvT7E6ci1nbLiMAtVWUnVMAKgvWmJD0TAcw16y6+Su9ITX/hDsfe/ifjCt3T2i1bDg9qFd0Y1biyIPvP9+/GfApuCv8WLSfX8c5wNvzE1lMxCjXyaGm3K9q32VJ8xKgZq6cAqLhNQjeOh5S1W3c4KI/aAL46Rx+6fg9rJV+YiSt0OxZF+30MI+8hbtlNGFEr4Su36jFAL/13mXGGctAHOKRHM29YkSUoPhDHUORxbeTn5bg3LPZGIjaXo1KwQoMZIbqhiRi4Ep/+kfCbaAtR6tuNroiBymNh+7YxX9Jug9Qh1Y5huDEXmz2lwyILP7MjTRx+5FvGmcciIxUDey5kEkXYk=
+  app:
+    master: rocky-gray
+    develop: rocky-gray-staging
