@@ -1,3 +1,6 @@
 .DS_Store
 dist/**
 node_modules/
+faviconData.json
+client/favicons/
+npm-debug.log
