@@ -5,13 +5,18 @@
     "node": "6.4.0"
   },
   "scripts": {
+    "clean": "rm -rf dist/",
     "postinstall": "npm run build",
     "start": "node server.js",
     "start:dev": "DEBUG=true node server.js",
     "test": "mocha --compilers js:babel-core/register --recursive",
     "test:watch": "npm run test -- --watch",
     "build": "webpack --optimize-minimize --config webpack.production.js",
+    "postbuild": "npm run favicons",
     "build-dev": "webpack -p",
+    "favicons": "npm run favicons:generate && npm run favicons:inject",
+    "favicons:generate": "real-favicon generate faviconDescription.json faviconData.json dist/static/favicons",
+    "favicons:inject": "real-favicon inject faviconData.json dist/ client/index.html",
     "svg:clean": "svgo --disable=cleanupIDs --pretty --indent=2 --enable=removeViewBox --enable=removeDimensions",
     "svg:clean:all": "npm run svg:clean -- --folder client/img",
     "svg:min": "svgo --disable=cleanupIDs"
@@ -46,6 +51,7 @@
     "babel-eslint": "^5.0.0-beta4",
     "babel-preset-react-hmre": "^1.1.1",
     "chai": "3.5.0",
+    "cli-real-favicon": "0.0.6",
     "cross-env": "^1.0.6",
     "eslint": "^1.10.3",
     "eslint-plugin-babel": "^3.0.0",

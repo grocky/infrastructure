@@ -27,7 +27,8 @@ if (environment === 'development') {
 }
 
 app.use('/img', express.static(path.join(__dirname, 'client', 'img')));
-app.use((req, res) => res.sendFile(path.join(__dirname, 'client', 'index.html')));
+app.use(express.static(path.join(__dirname, 'dist', 'static', 'favicons')));
+app.use((req, res) => res.sendFile(path.join(__dirname, 'dist', 'index.html')));
 
 app.listen(port, err => {
   if (err) {
