@@ -46,8 +46,10 @@ if (environment === 'production') {
     }
 
     if (acmeKey) {
+      console.log({message: 'found acme key', key: acmeKey, token: acmeToken});
       res.send(acmeKey);
     } else {
+      console.log({message: 'acme key not found', key: acmeKey, token: acmeToken});
       res.status(404).send();
     }
   });
