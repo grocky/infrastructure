@@ -29,7 +29,27 @@ if (environment === 'development') {
 if (environment === 'production') {
   app.get('/.well-known/acme-challenge/:id', (req, res) => {
     console.log('Received acme verification request with id:', req.params.id);
-    res.send(process.env.ACME_CHALLENGE_RESPONSE);
+    const acmeToken = req.params.id;
+    let acmeKey;
+
+    if (process.env.ACME_KEY && process.env.ACME_TOKEN && acmeToken === process.env.ACME_TOKEN) {
+        acmeKey = process.env.ACME_KEY;
+    }
+
+    for (let key in process.env) {
+      if (key.startsWith('ACME_TOKEN_')) {
+        const num = key.split('ACME_TOKEN_')[1];
+        if (acmeToken === process.env['ACME_TOKEN_' + num]) {
+          acmeKey = process.env['ACME_KEY_' + num];
+        }
+      }
+    }
+
+    if (acmeKey) {
+      res.send(acmeKey);
+    } else {
+      res.status(404).send();
+    }
   });
 }
 
