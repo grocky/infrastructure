@@ -4,3 +4,4 @@ node_modules/
 faviconData.json
 client/favicons/
 npm-debug.log
+build/
