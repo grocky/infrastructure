@@ -19,3 +19,7 @@ variable "www_domain_name" {
 variable "root_domain_name" {
   default = "rockygray.com"
 }
+
+output "s3_website_url" {
+  value = "${aws_s3_bucket.www.website_endpoint}"
+}

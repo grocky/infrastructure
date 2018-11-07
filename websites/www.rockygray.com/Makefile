@@ -7,6 +7,9 @@ tf-init:
 tf-plan:
 	cd infrastructure; terraform plan
 
+tf-apply:
+	cd infrastructure; terraform apply
+
 clean:
 	@rm -rf dist/ $(BUILD_DIR)
 
