@@ -2,7 +2,7 @@ BUILD_DIR=build
 BUCKET_NAME=www.rockygray.com
 
 tf-init:
-	cd teraform; terraform init
+	cd infrastructure; terraform init
 
 tf-plan:
 	cd infrastructure; terraform plan
