@@ -27,3 +27,7 @@ output "s3_website_url" {
 output "cloudfron_url" {
   value = "${aws_cloudfront_distribution.www_distribution.domain_name}"
 }
+
+output "nameservers" {
+  value = ["${aws_route53_zone.zone.name_servers}"]
+}
