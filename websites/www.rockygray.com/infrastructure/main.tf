@@ -24,8 +24,16 @@ output "s3_website_url" {
   value = "${aws_s3_bucket.www.website_endpoint}"
 }
 
-output "cloudfron_url" {
+output "cloudfront_url" {
   value = "${aws_cloudfront_distribution.www_distribution.domain_name}"
+}
+
+output "cloudfront_www_id" {
+  value = "${aws_cloudfront_distribution.www_distribution.id}"
+}
+
+output "cloudfront_root_id" {
+  value = "${aws_cloudfront_distribution.root_distribution.id}"
 }
 
 output "nameservers" {
