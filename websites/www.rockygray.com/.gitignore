@@ -6,4 +6,5 @@ npm-debug.log
 build/**
 .terraform
 *.tfstate.backup
+terraform.tfstate
 
