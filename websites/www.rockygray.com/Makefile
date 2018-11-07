@@ -1,5 +1,5 @@
 clean:
-	@rm -rf dist/
+	@rm -rf dist/ build/
 
 build:
 	npm run build

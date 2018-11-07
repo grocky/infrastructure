@@ -1,6 +1,6 @@
 
 {
-    "masterPicture": "client/img/logo.svg",
+    "masterPicture": "public/img/logo.svg",
     "iconsPath": "/",
     "design": {
         "ios": {

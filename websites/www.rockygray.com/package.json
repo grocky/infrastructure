@@ -10,7 +10,7 @@
     "clean": "rm -rf dist/",
     "start:dev": "DEBUG=true node server.js",
     "test:watch": "npm run test -- --watch",
-    "postbuild": "npm run favicons",
+    "postbuild": "echo 'doing nothing for now...' && exit 0 || npm run favicons",
     "build-dev": "webpack -p",
     "favicons": "npm run favicons:generate && npm run favicons:inject",
     "favicons:generate": "real-favicon generate faviconDescription.json faviconData.json dist/static/favicons",
