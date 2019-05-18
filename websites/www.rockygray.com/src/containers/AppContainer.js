@@ -11,9 +11,4 @@ const AppContainer = ({ store, initialProps }) => (
   </div>
 );
 
-// AppContainer.propTypes = {
-//   store: PropTypes.object.isRequired,
-//   initialProps: PropTypes.object.isRequired
-// };
-
 export default AppContainer;

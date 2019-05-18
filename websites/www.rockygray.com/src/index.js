@@ -11,17 +11,21 @@ const props = {
   card: {
     socialLinks:[
       {
-        name: 'twitter',
-        url: 'https://twitter.com/RockyGJr'
+        name: 'github',
+        url: 'https://github.com/grocky'
       },
       {
         name: 'linkedin',
         url: 'https://www.linkedin.com/in/rockygray'
       },
       {
-        name: 'github',
-        url: 'https://github.com/grocky'
-      }
+        name: 'medium',
+        url: 'https://medium.com/@rocky.grayjr'
+      },
+      {
+        name: 'twitter',
+        url: 'https://twitter.com/RockyGJr'
+      },
     ],
     personalInfo: {
       name: 'Rocky Gray Jr',

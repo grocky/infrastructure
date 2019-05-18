@@ -5,7 +5,7 @@ import styles from './SocialLinksList.module.css'
 const IconLinkListItem = ({ name, url}) => (
   <li>
     <i className={`fa fa-${name} ${styles.listItemIcon}`} />
-    <a href={url} target='_blank' rel="noopener noreferrer">{'/' + url.split('/').pop()}</a>
+    <a href={url} rel="noopener noreferrer" target='_blank'>{'/' + url.split('/').pop()}</a>
   </li>
 );
 
