@@ -1,11 +1,38 @@
 .profile {
-	display: flex;
-	height: 100%;
-  padding: 0;
+  flex: 1;
+  display: flex;
+  height: 100%;
+  padding: 2em 0 0;
   margin: 0;
-	justify-content: center;
+  justify-content: center;
 }
 
 .profile-section {
-	 text-align: center;
+}
+
+.profile-section .information {
+  text-align: left;
+  position: relative;
+  color: white;
+}
+
+.profile-section p {
+  position: absolute;
+  left: 60%;
+  transform: translate(-50%, -50%);
+}
+
+.profile-section .information .name {
+  top: 70%;
+
+}
+
+.profile-section .information .title {
+  top: 80%;
+}
+
+footer {
+  font-size: .5em;
+  color: white;
+  background-color: #343434;
 }
