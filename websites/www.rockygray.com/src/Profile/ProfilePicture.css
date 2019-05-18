@@ -1,0 +1,4 @@
+.profile-clip {
+	margin: 20px;
+  clip-path: url(#profileClip);
+}

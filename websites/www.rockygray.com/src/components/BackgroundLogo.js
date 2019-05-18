@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Logo from './Logo';
-import styles from '../containers/App.module.css'
+import styles from '../App.css'
 
 const BackgroundLogo = ({ logo, logos, createLogo }) => (
   <div className={styles.background}>

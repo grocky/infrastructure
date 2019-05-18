@@ -1,0 +1,9 @@
+/* Base Styles (mobile first) */
+:root {
+  --main-color: #991d20
+}
+
+body {
+  background-color: var(--main-color);
+}
+

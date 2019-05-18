@@ -4,8 +4,10 @@ import { render } from 'react-dom';
 import AppContainer from './containers/AppContainer'
 import configureStore from './store/configureStore';
 
-const prelodedState = {};
-const store = configureStore(prelodedState);
+import './index.css'
+
+const preLoadedState = {};
+const store = configureStore(preLoadedState);
 
 const props = {
   card: {
