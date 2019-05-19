@@ -39,7 +39,7 @@ class AppContainer extends Component {
   render() {
     return (
       <Provider store={this.props.store}>
-        <App { ...this.props.initialProps }/>
+        <App />
       </Provider>
     );
   }

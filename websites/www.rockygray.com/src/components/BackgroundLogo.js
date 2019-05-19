@@ -9,9 +9,4 @@ const BackgroundLogo = ({ logo, logos, createLogo }) => (
   </div>
 );
 
-// BackgroundLogo.propTypes = {
-//   logos: PropTypes.object.isRequired,
-//   createLogo: PropTypes.func.isRequired
-// };
-
 export default BackgroundLogo;

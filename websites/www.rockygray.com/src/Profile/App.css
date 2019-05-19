@@ -1,38 +1,80 @@
-.profile {
+.background-logo {
+  position: absolute;
+  top: 8px;
+  left: -100px;
+  width: 100%;
+  z-index: -99;
+}
+
+.background-logo svg {
+  max-height: 90vh;
+  fill: var(--cool-red);
+}
+
+.profile-container {
+  position: relative;
   flex: 1;
   display: flex;
+  flex-flow: column nowrap;
   height: 100%;
-  padding: 2em 0 0;
-  margin: 0;
-  justify-content: center;
+  padding: 3em 4em 0;
+  justify-content: space-between;
 }
 
-.profile-section {
+.profile-container section {
+  margin-top: 1em;
 }
 
-.profile-section .information {
-  text-align: left;
+.information {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  max-width: 350px;
+  margin: auto;
+}
+
+.contact-info {
+  background-color: var(--dark-gray);
+  color: white;
+  border-radius: 10px;
+  padding: .5em;
+  margin: 0 4em;
+}
+
+.contact-info p {
+  margin: .3em
+}
+
+.social-sites-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap:  wrap
+}
+
+.social-link {
+  width: 33%;
+  height: 100px;
+}
+
+.social-link a {
+  color: var(--dark-gray);
+  text-decoration: none;
+}
+
+.social-link a:hover {
   color: white;
 }
 
-.profile-section p {
-  position: absolute;
-  left: 60%;
-  transform: translate(-50%, -50%);
-}
-
-.profile-section .information .name {
-  top: 70%;
-
-}
-
-.profile-section .information .title {
-  top: 80%;
+.social-link .label {
+  margin-top: .5em;
 }
 
 footer {
   font-size: .5em;
   color: white;
-  background-color: #343434;
+  background-color: var(--dark-gray);
 }

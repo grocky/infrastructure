@@ -22,10 +22,9 @@ const ProfilePicture = ({ imageWidth, image, xCenter, yCenter, circleDiameter })
 
   return (
     <>
-      <img class="profile-clip" width={imageWidth} src={image} alt="Headshot" />
-      <svg width="0" height="0">
+      <svg width={imageWidth} height="200">
         <defs>
-          <clipPath id="profileClip">
+          <clipPath id="profileClipPath">
             <rect
               x={topRectangle.xStart}
               y={topRectangle.yStart}
@@ -40,7 +39,16 @@ const ProfilePicture = ({ imageWidth, image, xCenter, yCenter, circleDiameter })
               height={squareLength}
             />
           </clipPath>
+          <filter id="dilateShape">
+            <feMorphology operator="dilate" in="SourceGraphic" radius="2" />
+          </filter>
         </defs>
+        <g transform="translate(5,5)">
+          <g class="profile-dilate">
+            <rect class="profile-clip" x="0" y="0" height="400px" width={imageWidth} ></rect>
+          </g>
+          <image class="profile-clip" href={image} height="200" width={imageWidth} />
+        </g>
       </svg>
     </>);
 };

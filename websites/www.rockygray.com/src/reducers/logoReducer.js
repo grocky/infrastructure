@@ -3,7 +3,7 @@ import { types as cardActionTypes } from '../actions/CardActions';
 const initialState = {
   letterGroups: {
     index: 0,
-    states: [1, 0, 1, 2],
+    states: [1, 0, 2],
     sections: [
       ['middle', 'bottom'], // r
       [], // g
