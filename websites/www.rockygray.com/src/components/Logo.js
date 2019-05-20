@@ -1,9 +1,6 @@
 import React from 'react';
 
-import _map from 'lodash/map'
-import _includes from 'lodash/includes';
-
-import style from './Card.module.css';
+import style from './Logo.css';
 
 const LogoPath = ({ fill, path }) => (
   <path fill={ fill } d={path} />
@@ -12,10 +9,11 @@ const LogoPath = ({ fill, path }) => (
 const Logo = ({ segments, fillColor, highlightColor, createLogo, onMouseEnter, onClick, highlightedSections, containerClass }) => {
 
   // TODO: extract to SVGPathsGroup
-  const logoPaths = _map(segments, segment => (
-    <LogoPath key={segment.id}
-              fill={_includes(highlightedSections, segment.id) ? highlightColor : segment.fill}
-              path={segment.path}
+  const logoPaths = segments.map(segment => (
+    <LogoPath
+      key={segment.id}
+      fill={highlightedSections.includes(segment.id) ? highlightColor : segment.fill}
+      path={segment.path}
     />
   ));
 
@@ -33,21 +31,6 @@ const Logo = ({ segments, fillColor, highlightColor, createLogo, onMouseEnter, o
     </svg>
   );
 };
-
-// Logo.propTypes = {
-//   createLogo: PropTypes.func.isRequired,
-//   fillColor: PropTypes.string,
-//   highlightColor: PropTypes.string,
-//   onMouseEnter: PropTypes.func,
-//   onClick: PropTypes.func,
-//   highlightedSections: PropTypes.array,
-//   containerClass: PropTypes.string,
-//   segments: PropTypes.arrayOf(PropTypes.shape({ // TODO: move to SVGPathsGroup container
-//     id: PropTypes.string.isRequired,
-//     path: PropTypes.string.isRequired,
-//     fill: PropTypes.string
-//   }).isRequired)
-// };
 
 const noop = () => {};
 

@@ -15,15 +15,15 @@ resource "aws_s3_bucket" "terraform_state" {
 
   tags {
     Name = "grocky-tfstate"
-    Env = "prod"
+    Env  = "prod"
   }
 }
 
 resource "aws_dynamodb_table" "terraform_state_lock" {
-  name = "tfstate-lock"
-  read_capacity = 1
+  name           = "tfstate-lock"
+  read_capacity  = 1
   write_capacity = 1
-  hash_key = "LockID"
+  hash_key       = "LockID"
 
   attribute {
     name = "LockID"
@@ -32,6 +32,6 @@ resource "aws_dynamodb_table" "terraform_state_lock" {
 
   tags {
     Name = "tfstate-lock"
-    Env = "prod"
+    Env  = "prod"
   }
 }

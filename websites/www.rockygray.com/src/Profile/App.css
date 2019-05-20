@@ -1,0 +1,94 @@
+* {
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.no-transition {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -o-transition: none !important;
+  transition: none !important;
+}
+
+.background-logo {
+  position: absolute;
+  top: 8px;
+  left: -100px;
+  width: 100%;
+  z-index: -99;
+}
+
+.background-logo svg {
+  max-height: 90vh;
+  fill: var(--cool-red);
+}
+
+.profile-container {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+  padding: 3em 4em 0;
+  justify-content: space-between;
+}
+
+.profile-container section {
+  margin-top: 1em;
+}
+
+.information {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  max-width: 350px;
+  margin: auto;
+}
+
+.contact-info {
+  background-color: var(--dark-gray);
+  color: white;
+  border-radius: 10px;
+  padding: .5em;
+  margin: 0 4em;
+}
+
+.contact-info p {
+  margin: .3em
+}
+
+.social-sites-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap:  wrap
+}
+
+.social-link {
+  width: 33%;
+  height: 100px;
+}
+
+.social-link a {
+  color: var(--dark-gray);
+  text-decoration: none;
+}
+
+.social-link a:hover {
+  color: white;
+}
+
+.social-link .label {
+  margin-top: .5em;
+}
+
+footer {
+  font-size: .5em;
+  color: white;
+  background-color: var(--dark-gray);
+}

@@ -8,7 +8,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "clean": "rm -rf dist/",
-    "start:dev": "DEBUG=true node server.js",
     "test:watch": "npm run test -- --watch",
     "postbuild": "echo 'doing nothing for now...' && exit 0 || npm run favicons",
     "build-dev": "webpack -p",
@@ -22,10 +21,11 @@
   "dependencies": {
     "gsap": "2.0.2",
     "lodash": "4.17.11",
+    "npm": "6.9.0",
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
     "react-redux": "5.1.0",
-    "react-scripts": "2.1.1",
+    "react-scripts": "3.0.1",
     "redux": "4.0.1"
   },
   "eslintConfig": {
@@ -33,10 +33,9 @@
   },
   "devDependencies": {
     "chai": "3.5.0",
-    "mocha": "3.0.2",
+    "mocha": "6.1.4",
     "sinon": "1.17.5",
-    "cli-real-favicon": "0.0.6",
-    "svgo": "0.6.6"
+    "svgo": "1.2.2"
   },
   "browserslist": [
     ">0.2%",

@@ -1,6 +1,7 @@
 resource "aws_s3_bucket" "root" {
   bucket = "${var.root_domain_name}"
   acl    = "public-read"
+
   policy = <<POLICY
 {
   "Version":"2012-10-17",
@@ -30,6 +31,7 @@ resource "aws_cloudfront_distribution" "root_distribution" {
       origin_protocol_policy = "http-only"
       origin_ssl_protocols   = ["TLSv1", "TLSv1.1", "TLSv1.2"]
     }
+
     domain_name = "${aws_s3_bucket.root.website_endpoint}"
     origin_id   = "${var.root_domain_name}"
   }
@@ -49,6 +51,7 @@ resource "aws_cloudfront_distribution" "root_distribution" {
 
     forwarded_values {
       query_string = false
+
       cookies {
         forward = "none"
       }

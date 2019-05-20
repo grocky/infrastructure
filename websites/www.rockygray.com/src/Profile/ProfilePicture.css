@@ -1,0 +1,7 @@
+.profile-clip {
+  clip-path: url(#profileClipPath);
+}
+.profile-dilate {
+  filter: url(#dilateShape);
+  fill: var(--dark-gray);
+}
