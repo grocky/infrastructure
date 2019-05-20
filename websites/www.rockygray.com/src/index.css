@@ -11,12 +11,6 @@ body {
 	font-family: "proxima-nova",sans-serif;
 }
 
-* {
-  -webkit-transition: all 0.2s linear;
-  -o-transition: all 0.2s linear;
-	transition: all 0.2s linear;
-}
-
 .flex,
 .flex-stack {
   display: flex;

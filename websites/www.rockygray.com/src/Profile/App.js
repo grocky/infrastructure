@@ -10,6 +10,31 @@ import Logo from '../components/Logo';
 
 class App extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      date: new Date(),
+    };
+  }
+
+  handleLogoClick = (event: SyntheticMouseEvent) => {
+    event.preventDefault();
+    if (this.props.logos.isSpinning) {
+      return event;
+    }
+    this.props.actions.startRotation();
+    TweenMax.to(this.props.logos.refs, 3, {
+      throwProps: {
+        rotation: {
+          velocity: 800,
+          end: naturalLandingValue => Math.round(naturalLandingValue / 180) * 180
+        }
+      },
+      ease: Power4.easeOut,
+      onComplete: this.props.actions.rotationStopped
+    });
+  };
+
   render() {
 
     const profilePictureProps = {
@@ -45,7 +70,7 @@ class App extends Component {
 
     const socialLinks = socialSites.map(s => (
       <div class="social-link" key={s.name}>
-        <a href={s.url} rel="noopener noreferrer" target="_blank">
+        <a class="no-transition" href={s.url} rel="noopener noreferrer" target="_blank">
           <div className={`fa fa-${s.name} fa-4x`}></div>
           <div class="label">{ `/${s.url.split('/').pop()}` }</div>
         </a>
@@ -54,7 +79,7 @@ class App extends Component {
 
     return (
       <>
-        <div class="background-logo">
+        <div class="background-logo animate-in">
           <Logo />
         </div>
         <main class="profile-container">
@@ -70,7 +95,7 @@ class App extends Component {
           </section>
         </main>
         <footer>
-          <p>&copy; Rocky Gray {new Date().getFullYear()}</p>
+          <p>&copy; Rocky Gray {this.state.date.getFullYear()}</p>
         </footer>
       </>
     );
