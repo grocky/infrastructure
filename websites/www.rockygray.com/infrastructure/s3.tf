@@ -26,4 +26,10 @@ POLICY
   versioning {
     enabled = true
   }
+
+  tags {
+    Name        = "www.rockygray.com"
+    Env         = "prod"
+    Application = "www.rockygray.com"
+  }
 }

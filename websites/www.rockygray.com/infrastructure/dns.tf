@@ -1,5 +1,11 @@
 resource "aws_route53_zone" "zone" {
   name = "${var.root_domain_name}"
+
+  tags {
+    Name        = "rockygray.com"
+    Env         = "prod"
+    Application = "www.rockygray.com"
+  }
 }
 
 resource "aws_route53_record" "www" {
