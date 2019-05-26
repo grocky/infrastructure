@@ -86,6 +86,7 @@
 .social-link a {
   color: var(--light-gray);
   text-decoration: none;
+  display: block;
 }
 
 .social-link a:hover {
