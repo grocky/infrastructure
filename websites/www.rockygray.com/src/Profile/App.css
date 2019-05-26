@@ -11,6 +11,11 @@
   left: -100px;
   width: 100%;
 }
+@media screen and (min-width: 1400px) {
+  .background-logo {
+    left: 0;
+  }
+}
 
 .background-logo svg {
   max-height: 90vh;
@@ -22,6 +27,9 @@
   flex: 1;
   display: flex;
   flex-flow: column nowrap;
+  width: 100%;
+  max-width: 1024px;
+  margin: auto;
 }
 
 .profile-container section {
