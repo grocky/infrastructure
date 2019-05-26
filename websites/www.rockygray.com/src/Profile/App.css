@@ -1,8 +1,8 @@
 * {
-  -webkit-transition: all 0.2s linear;
-  -moz-transition: all 0.2s linear;
-  -o-transition: all 0.2s linear;
-  transition: all 0.2s linear;
+  -webkit-transition: all 0.4s linear;
+  -moz-transition: all 0.4s linear;
+  -o-transition: all 0.4s linear;
+  transition: all 0.4s linear;
 }
 
 .background-logo {
@@ -10,7 +10,6 @@
   top: 8px;
   left: -100px;
   width: 100%;
-  z-index: -99;
 }
 
 .background-logo svg {
@@ -23,9 +22,6 @@
   flex: 1;
   display: flex;
   flex-flow: column nowrap;
-  height: 100%;
-  padding: 1em 0 0;
-  justify-content: space-between;
 }
 
 .profile-container section {
@@ -44,8 +40,9 @@
 }
 
 .contact-info {
-  background-color: var(--dark-gray);
-  color: white;
+  background-color: var(--light-gray);
+  color: var(--dark-gray);
+  border: .2rem solid;
   border-radius: 10px;
   padding: .5em;
   margin: 0 4em;
@@ -60,6 +57,7 @@
 }
 
 .social-sites-container {
+  position: relative;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
@@ -94,4 +92,9 @@ footer {
   font-size: .5em;
   color: white;
   background-color: var(--dark-gray);
+  padding: .4em;
+}
+
+footer p {
+  margin: 0;
 }

@@ -38,8 +38,8 @@ class App extends Component {
 
     const profilePictureProps = {
       image: headshot,
-      imageWidth: 350,
-      xCenter: 180,
+      imageWidth: 320,
+      xCenter: 160,
       yCenter: 80,
       circleDiameter: 150,
     };
@@ -78,10 +78,10 @@ class App extends Component {
 
     return (
       <>
-        <div class="background-logo">
-          <Logo />
-        </div>
         <main class="profile-container">
+          <div class="background-logo">
+            <Logo />
+          </div>
           <header class="information">
               <ProfilePicture {...profilePictureProps} />
               <div class="contact-info">
