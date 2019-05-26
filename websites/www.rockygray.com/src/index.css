@@ -26,9 +26,5 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-	flex: 1;
   text-align: center;
-	position: relative;
-	width: 100%;
 }

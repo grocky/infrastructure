@@ -1,15 +1,8 @@
 * {
-  -webkit-transition: all 0.2s linear;
-  -moz-transition: all 0.2s linear;
-  -o-transition: all 0.2s linear;
-  transition: all 0.2s linear;
-}
-
-.no-transition {
-  -webkit-transition: none !important;
-  -moz-transition: none !important;
-  -o-transition: none !important;
-  transition: none !important;
+  -webkit-transition: all 0.4s linear;
+  -moz-transition: all 0.4s linear;
+  -o-transition: all 0.4s linear;
+  transition: all 0.4s linear;
 }
 
 .background-logo {
@@ -17,7 +10,11 @@
   top: 8px;
   left: -100px;
   width: 100%;
-  z-index: -99;
+}
+@media screen and (min-width: 1400px) {
+  .background-logo {
+    left: 0;
+  }
 }
 
 .background-logo svg {
@@ -30,9 +27,9 @@
   flex: 1;
   display: flex;
   flex-flow: column nowrap;
-  height: 100%;
-  padding: 3em 4em 0;
-  justify-content: space-between;
+  width: 100%;
+  max-width: 1024px;
+  margin: auto;
 }
 
 .profile-container section {
@@ -51,11 +48,16 @@
 }
 
 .contact-info {
-  background-color: var(--dark-gray);
-  color: white;
+  background-color: var(--light-gray);
+  color: var(--dark-gray);
+  border: .2rem solid;
   border-radius: 10px;
   padding: .5em;
   margin: 0 4em;
+}
+
+.contact-info .title {
+  font-size: .5em;
 }
 
 .contact-info p {
@@ -63,20 +65,28 @@
 }
 
 .social-sites-container {
+  position: relative;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  flex-wrap:  wrap
+  flex-flow: row wrap;
+  justify-content: space-evenly;
 }
 
 .social-link {
-  width: 33%;
-  height: 100px;
+  flex: 0 0 100px;
+  background-color: var(--dark-gray);
+  padding: .5em;
+  margin-bottom: 1em;
+  border-radius: 10px;
+}
+
+.social-link .fa {
+  font-size: 2em;
 }
 
 .social-link a {
-  color: var(--dark-gray);
+  color: var(--light-gray);
   text-decoration: none;
+  display: block;
 }
 
 .social-link a:hover {
@@ -91,4 +101,9 @@ footer {
   font-size: .5em;
   color: white;
   background-color: var(--dark-gray);
+  padding: .4em;
+}
+
+footer p {
+  margin: 0;
 }
