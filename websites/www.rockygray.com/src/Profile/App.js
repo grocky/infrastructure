@@ -40,7 +40,7 @@ class App extends Component {
       image: headshot,
       imageWidth: 350,
       xCenter: 180,
-      yCenter: 90,
+      yCenter: 80,
       circleDiameter: 150,
     };
 
@@ -69,8 +69,8 @@ class App extends Component {
 
     const socialLinks = socialSites.map(s => (
       <div class="social-link" key={s.name}>
-        <a class="no-transition" href={s.url} rel="noopener noreferrer" target="_blank">
-          <div className={`fa fa-${s.name} fa-4x`}></div>
+        <a href={s.url} rel="noopener noreferrer" target="_blank">
+          <div className={`fa fa-${s.name}`}></div>
           <div class="label">{ `/${s.url.split('/').pop()}` }</div>
         </a>
       </div>
@@ -78,7 +78,7 @@ class App extends Component {
 
     return (
       <>
-        <div class="background-logo animate-in">
+        <div class="background-logo">
           <Logo />
         </div>
         <main class="profile-container">
@@ -86,7 +86,7 @@ class App extends Component {
               <ProfilePicture {...profilePictureProps} />
               <div class="contact-info">
                 <p class="name">Rocky Gray Jr.</p>
-                <p class="title">Software Engineer</p>
+                <p class="title"><em>Software Engineer</em></p>
               </div>
           </header>
           <section class="social-sites-container">

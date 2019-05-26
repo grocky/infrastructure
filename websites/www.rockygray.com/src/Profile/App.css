@@ -5,13 +5,6 @@
   transition: all 0.2s linear;
 }
 
-.no-transition {
-  -webkit-transition: none !important;
-  -moz-transition: none !important;
-  -o-transition: none !important;
-  transition: none !important;
-}
-
 .background-logo {
   position: absolute;
   top: 8px;
@@ -31,7 +24,7 @@
   display: flex;
   flex-flow: column nowrap;
   height: 100%;
-  padding: 3em 4em 0;
+  padding: 1em 0 0;
   justify-content: space-between;
 }
 
@@ -58,24 +51,34 @@
   margin: 0 4em;
 }
 
+.contact-info .title {
+  font-size: .5em;
+}
+
 .contact-info p {
   margin: .3em
 }
 
 .social-sites-container {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  flex-wrap:  wrap
+  flex-flow: row wrap;
+  justify-content: space-evenly;
 }
 
 .social-link {
-  width: 33%;
-  height: 100px;
+  flex: 0 0 100px;
+  background-color: var(--dark-gray);
+  padding: .5em;
+  margin-bottom: 1em;
+  border-radius: 10px;
+}
+
+.social-link .fa {
+  font-size: 2em;
 }
 
 .social-link a {
-  color: var(--dark-gray);
+  color: var(--light-gray);
   text-decoration: none;
 }
 
