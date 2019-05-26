@@ -23,7 +23,7 @@ infra-apply: ## Apply terraform
 clean: ## Cleanup the application
 	rm -rf dist/ $(BUILD_DIR)
 
-build: ## Build the application
+package: ## Package the application
 	npm run build
 
 publish: build ## Publish the application to S3

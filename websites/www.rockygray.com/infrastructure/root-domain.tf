@@ -21,9 +21,17 @@ POLICY
     // Note this redirect. Here's where the magic happens.
     redirect_all_requests_to = "https://${var.www_domain_name}"
   }
+
+  tags {
+    Name        = "rockygray.com"
+    Env         = "prod"
+    Application = "www.rockygray.com"
+  }
 }
 
 resource "aws_cloudfront_distribution" "root_distribution" {
+  comment = "Redirect distribution for rockygray.com"
+
   origin {
     custom_origin_config {
       http_port              = "80"
@@ -69,6 +77,12 @@ resource "aws_cloudfront_distribution" "root_distribution" {
   viewer_certificate {
     acm_certificate_arn = "${aws_acm_certificate.certificate.arn}"
     ssl_support_method  = "sni-only"
+  }
+
+  tags {
+    Name        = "rockygray.com"
+    Env         = "prod"
+    Application = "www.rockygray.com"
   }
 }
 
