@@ -44,10 +44,10 @@ const ProfilePicture = ({ imageWidth, image, xCenter, yCenter, circleDiameter })
           </filter>
         </defs>
         <g transform="translate(5,5)">
-          <g class="profile-dilate">
-            <rect class="profile-clip" x="0" y="0" height="400px" width={imageWidth} ></rect>
+          <g className="profile-dilate">
+            <rect className="profile-clip" x="0" y="0" height="400px" width={imageWidth} ></rect>
           </g>
-          <image class="profile-clip" href={image} height="200" width={imageWidth} />
+          <image className="profile-clip" href={image} height="200" width={imageWidth} />
         </g>
       </svg>
     </>);
