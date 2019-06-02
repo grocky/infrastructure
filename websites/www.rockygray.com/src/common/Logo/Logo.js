@@ -6,7 +6,16 @@ const LogoPath = ({ fill, path }) => (
   <path fill={ fill } d={path} />
 );
 
-const Logo = ({ segments, fillColor, highlightColor, createLogo, onMouseEnter, onClick, highlightedSections, containerClass }) => {
+const Logo = ({
+    segments,
+    fillColor,
+    highlightColor,
+    createLogo,
+    onMouseEnter,
+    onClick,
+    highlightedSections,
+    containerClass,
+}) => {
 
   // TODO: extract to SVGPathsGroup
   const logoPaths = segments.map(segment => (
@@ -35,8 +44,8 @@ const Logo = ({ segments, fillColor, highlightColor, createLogo, onMouseEnter, o
 const noop = () => {};
 
 Logo.defaultProps = {
-  fillColor: '#FFFFFF',
-  highlightColor: '#991D20',
+  fillColor: '#991D20',
+  highlightColor: '#353535',
   onMouseEnter: noop,
   onClick: noop,
   highlightedSections: [],

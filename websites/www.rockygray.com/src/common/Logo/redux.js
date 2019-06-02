@@ -6,7 +6,7 @@ const  SPIN_STOPPED = 'logo/SPIN_STOPPED';
 const initialState = {
   letterGroups: {
     index: 0,
-    states: [1, 0, 2],
+    states: [1, 0, 1, 2],
     sections: [
       ['middle', 'bottom'], // r
       [], // g
