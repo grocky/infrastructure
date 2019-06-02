@@ -1,5 +1,5 @@
 import { createStore } from 'redux'
-import rootReducer from '../reducers'
+import rootReducer from './RootReducer'
 
 export default function configureStore(preloadedState) {
   return createStore(

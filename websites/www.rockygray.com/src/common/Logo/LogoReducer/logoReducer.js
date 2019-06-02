@@ -1,4 +1,4 @@
-import { types as cardActionTypes } from '../actions/CardActions';
+import { types as cardActionTypes } from '../LogoActions';
 
 const initialState = {
   letterGroups: {

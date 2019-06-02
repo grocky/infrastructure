@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 
 import { TweenMax, Power4 } from 'gsap';
 
-import './App.css'
-import headshot from './headshot_450.jpg'
+import './Profile.css'
+import headShot from './headshot_450.jpg'
 import ProfilePicture from './ProfilePicture';
-import Logo from '../components/Logo';
+import Logo from '../common/Logo/Logo';
 
-class App extends Component {
+class Profile extends Component {
 
   constructor(props) {
     super(props);
@@ -16,7 +16,7 @@ class App extends Component {
     };
   }
 
-  handleLogoClick = (event: SyntheticMouseEvent) => {
+  handleLogoClick = (event) => {
     event.preventDefault();
     if (this.props.logos.isSpinning) {
       return event;
@@ -37,7 +37,7 @@ class App extends Component {
   render() {
 
     const profilePictureProps = {
-      image: headshot,
+      image: headShot,
       imageWidth: 320,
       xCenter: 160,
       yCenter: 80,
@@ -101,4 +101,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default Profile;

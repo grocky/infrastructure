@@ -3,13 +3,13 @@ import { Provider, connect } from 'react-redux';
 
 import { TweenMax, Power4 } from 'gsap';
 
-import * as CardActions from '../actions/CardActions'
+import * as CardActions from '../common/Logo/LogoActions'
 
-import App from '../Profile/App'
+import Profile from './Profile'
 
-class AppContainer extends Component {
+class ProfileContainer extends Component {
 
-  handleLogoClick = (event: SyntheticMouseEvent) => {
+  handleLogoClick = (event) => {
     event.preventDefault();
     if (this.props.logos.isSpinning) {
       return event;
@@ -27,7 +27,7 @@ class AppContainer extends Component {
     });
   };
 
-  handleUpdateSections = (event: SyntheticMouseEvent) => {
+  handleUpdateSections = (event) => {
     if (this.props.logos.isSpinning) {
       return event;
     }
@@ -39,7 +39,7 @@ class AppContainer extends Component {
   render() {
     return (
       <Provider store={this.props.store}>
-        <App />
+        <Profile />
       </Provider>
     );
   }
@@ -58,4 +58,4 @@ const mapDispatchToProps = dispatch => ({
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => Object.assign({}, ownProps, stateProps, dispatchProps);
 
-export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(AppContainer)
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(ProfileContainer)
