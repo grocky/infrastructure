@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import AppContainer from './Profile/ProfileContainer'
+import AppContainer from './Profile'
 import { configureStore } from './rootRedux';
 
 import './index.css'

@@ -3,9 +3,14 @@ import { Provider, connect } from 'react-redux';
 
 import { TweenMax, Power4 } from 'gsap';
 
-import * as CardActions from '../common/Logo/LogoActions'
+import {
+  updateSections,
+  startRotation,
+  rotationStopped,
+  createLogo,
+} from '../common/Logo';
 
-import Profile from './Profile'
+import Profile from './component'
 
 class ProfileContainer extends Component {
 
@@ -49,13 +54,18 @@ const mapStateToProps = (state) => ({ logos: state.logos});
 
 const mapDispatchToProps = dispatch => ({
   actions: {
-    updateSections: () => dispatch(CardActions.updateSections()),
-    startRotation: () => dispatch(CardActions.startRotation()),
-    rotationStopped: () => dispatch(CardActions.rotationStopped()),
-    createLogo: (ref) => dispatch(CardActions.createLogo(ref))
+    updateSections: () => dispatch(updateSections()),
+    startRotation: () => dispatch(startRotation()),
+    rotationStopped: () => dispatch(rotationStopped()),
+    createLogo: (ref) => dispatch(createLogo(ref)),
   }
 });
 
-const mergeProps = (stateProps, dispatchProps, ownProps) => Object.assign({}, ownProps, stateProps, dispatchProps);
+const mergeProps = (stateProps, dispatchProps, ownProps) =>
+  ({ ...ownProps, ...stateProps, ...dispatchProps });
 
-export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(ProfileContainer)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+  mergeProps,
+)(ProfileContainer)
