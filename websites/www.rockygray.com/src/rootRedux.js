@@ -1,7 +1,7 @@
 import { createStore } from 'redux'
 import { combineReducers } from 'redux';
 
-import logos from './common/Logo';
+import logos from './common/Logo/redux';
 
 const rootReducer = combineReducers({
   logos,

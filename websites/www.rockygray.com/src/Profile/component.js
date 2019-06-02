@@ -5,7 +5,7 @@ import { TweenMax, Power4 } from 'gsap';
 import './Profile.css'
 import headShot from './headshot_450.jpg'
 import ProfilePicture from './ProfilePicture';
-import Logo from '../common/Logo/Logo';
+import LogoContainer from '../common/Logo/LogoContainer';
 
 class Profile extends Component {
 
@@ -80,7 +80,7 @@ class Profile extends Component {
       <>
         <main class="profile-container">
           <div class="background-logo">
-            <Logo />
+            <LogoContainer />
           </div>
           <header class="information">
               <ProfilePicture {...profilePictureProps} />
