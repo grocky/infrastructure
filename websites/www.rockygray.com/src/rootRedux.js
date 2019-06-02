@@ -4,12 +4,12 @@ import { combineReducers } from 'redux';
 import logos from './common/Logo';
 
 const rootReducer = combineReducers({
-  logos
+  logos,
 });
 
-export function configureStore(preloadedState) {
+export default function configureStore(preLoadedState) {
   return createStore(
     rootReducer,
-    preloadedState
-  )
+    preLoadedState,
+  );
 }

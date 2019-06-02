@@ -1,8 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
+import {Provider} from "react-redux";
 
-import AppContainer from './Profile'
-import { configureStore } from './rootRedux';
+import ProfileContainer from './Profile'
+import configureStore from './rootRedux';
 
 import './index.css'
 
@@ -10,6 +11,8 @@ const preLoadedState = {};
 const store = configureStore(preLoadedState);
 
 render(
-  <AppContainer store={store} />,
-  document.getElementById('root')
+  <Provider store={store}>
+    <ProfileContainer />
+  </Provider>,
+  document.getElementById('root'),
 );
