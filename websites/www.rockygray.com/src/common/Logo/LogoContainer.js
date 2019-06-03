@@ -6,7 +6,6 @@ import {
 import Logo from './Logo';
 
 import {
-  createLogo,
   rotationStopped,
   startRotation,
   updateSections
@@ -20,7 +19,6 @@ const mapDispatchToProps = dispatch => (
       updateSections: () => dispatch(updateSections()),
       startRotation: () => dispatch(startRotation()),
       rotationStopped: () => dispatch(rotationStopped()),
-      createLogo: (ref) => dispatch(createLogo(ref)),
     },
   }
 );
@@ -28,18 +26,45 @@ const mapDispatchToProps = dispatch => (
 const mergeProps = (stateProps, dispatchProps, ownProps) =>
   ({ ...ownProps, ...stateProps, ...dispatchProps });
 
-const LogoContainer = (
-  {
-    actions: { updateSections },
-    logos: { letterGroups: { segments }, highlightedSections },
+
+class LogoContainer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.logoRef = React.createRef();
   }
-) => (
-  <Logo
-    segments={segments}
-    onMouseEnter={updateSections}
-    highlightedSections={highlightedSections}
-  />
-);
+
+  handleLogoClick = (event) => {
+    event.preventDefault();
+    this.props.actions.startRotation();
+  };
+
+  render() {
+    const {
+      actions: {
+        updateSections,
+        rotationStopped,
+      },
+      logos: {
+        letterGroups: {
+          segments,
+        },
+        highlightedSections,
+        isSpinning,
+      },
+    } = this.props;
+    return (
+      <Logo
+        isSpinning={isSpinning}
+        svgRef={this.logoRef}
+        segments={segments}
+        highlightedSections={highlightedSections}
+        onMouseEnter={updateSections}
+        onClick={this.handleLogoClick}
+        onRotationStop={rotationStopped}
+      />
+    )
+  }
+}
 
 export default connect(
   mapStateToProps,

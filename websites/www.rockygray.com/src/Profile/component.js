@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import { TweenMax, Power4 } from 'gsap';
-
 import './Profile.css'
 import headShot from './headshot_450.jpg'
 import ProfilePicture from './ProfilePicture';
@@ -16,26 +14,7 @@ class Profile extends Component {
     };
   }
 
-  handleLogoClick = (event) => {
-    event.preventDefault();
-    if (this.props.logos.isSpinning) {
-      return event;
-    }
-    this.props.actions.startRotation();
-    TweenMax.to(this.props.logos.refs, 3, {
-      throwProps: {
-        rotation: {
-          velocity: 800,
-          end: naturalLandingValue => Math.round(naturalLandingValue / 180) * 180
-        }
-      },
-      ease: Power4.easeOut,
-      onComplete: this.props.actions.rotationStopped
-    });
-  };
-
   render() {
-
     const profilePictureProps = {
       image: headShot,
       imageWidth: 320,

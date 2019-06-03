@@ -13,12 +13,16 @@ const initialState = {
       ['top'] // j
     ]
   },
-  refs: []
+  isSpinning: false,
 };
 
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case LOGO_INTERACTION:
+      if (state.isSpinning) {
+        return state;
+      }
+
       const {index, states, sections} = state.letterGroups;
       const nextIndex = index >= states.length -1
         ? 0
@@ -55,13 +59,6 @@ export default function reducer(state = initialState, action = {}) {
 export function updateSections() {
   return {
     type: LOGO_INTERACTION,
-  }
-}
-
-export function createLogo(logoRef) {
-  return {
-    type: LOGO_CREATED,
-    payload: { logoRef }
   }
 }
 
