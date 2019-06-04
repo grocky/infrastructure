@@ -33,16 +33,12 @@ class LogoContainer extends React.Component {
     this.logoRef = React.createRef();
   }
 
-  handleLogoClick = (event) => {
-    event.preventDefault();
-    this.props.actions.startRotation();
-  };
-
   render() {
     const {
       actions: {
         updateSections,
         rotationStopped,
+        startRotation,
       },
       logos: {
         letterGroups: {
@@ -59,8 +55,8 @@ class LogoContainer extends React.Component {
         segments={segments}
         highlightedSections={highlightedSections}
         onMouseEnter={updateSections}
-        onClick={this.handleLogoClick}
         onRotationStop={rotationStopped}
+        startRotation={startRotation}
       />
     )
   }
