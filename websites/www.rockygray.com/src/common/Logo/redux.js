@@ -42,6 +42,10 @@ export default function reducer(state = initialState, action = {}) {
         refs: state.refs.concat(action.payload.logoRef)
       };
     case SPIN_STARTED:
+      if (state.isSpinning) {
+        return state;
+      }
+
       return {
         ...state,
         isSpinning: action.payload.isSpinning

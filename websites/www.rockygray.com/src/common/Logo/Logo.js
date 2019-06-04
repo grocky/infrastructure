@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TimelineLite, Power4 } from 'gsap';
+import { TweenMax, Power4 } from 'gsap';
 
 import style from './Logo.css';
 
@@ -11,28 +11,33 @@ export default class Logo extends Component {
   constructor(props) {
     super(props);
     this.logoRef = null;
-    this.spinAnimation = new TimelineLite({ paused: true });
   }
 
-  componentDidMount() {
-    this.spinAnimation.to(this.logoRef, 3, {
-        throwProps: {
-          rotation: {
-            velocity: 800,
-            end: naturalLandingValue => Math.round(naturalLandingValue / 180) * 180
-          }
-        },
-        ease: Power4.easeOut,
-        onComplete: () => {
-          this.props.onRotationStop();
-          this.spinAnimation.seek(0);
+  handleLogoClick = (event) => {
+    event.preventDefault();
+    this.props.startRotation();
+  };
+
+  componentDidUpdate(prevProps) {
+    if (!prevProps.isSpinning && this.props.isSpinning) {
+      this.rotateLogo();
+    }
+  }
+
+  rotateLogo = () => {
+    TweenMax.to(this.logoRef, 3, {
+      throwProps: {
+        rotation: {
+          velocity: 800,
+          end: naturalLandingValue => Math.round(naturalLandingValue / 180) * 180
         }
-      });
-  }
-
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    this.spinAnimation.paused(!this.props.isSpinning)
-  }
+      },
+      ease: Power4.easeOut,
+      onComplete: () => {
+        this.props.onRotationStop();
+      }
+    });
+  };
 
   render() {
     const {
@@ -42,7 +47,6 @@ export default class Logo extends Component {
       fillColor,
       highlightColor,
       onMouseEnter,
-      onClick,
     } = this.props;
 
     const logoPaths = segments.map(segment => (
@@ -59,7 +63,7 @@ export default class Logo extends Component {
            fill={fillColor}
            viewBox="0 0 215 323"
            onMouseEnter={onMouseEnter}
-           onClick={onClick}
+           onClick={this.handleLogoClick}
            ref={el => this.logoRef = el}
       >
         <g>
@@ -76,7 +80,6 @@ Logo.defaultProps = {
   fillColor: '#991D20',
   highlightColor: '#353535',
   onMouseEnter: noop,
-  onClick: noop,
   onRotationStop: noop,
   highlightedSections: [],
   containerClass: style.inactiveLogo,
