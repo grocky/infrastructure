@@ -1,0 +1,1 @@
+export { withRotationAnimation } from './RotationAnimation';

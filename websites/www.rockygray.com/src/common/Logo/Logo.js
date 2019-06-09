@@ -1,78 +1,49 @@
-import React, { Component } from 'react';
-import { TweenMax, Power4 } from 'gsap';
+import React from 'react';
 
 import style from './Logo.css';
 
-const LogoPath = ({ fill, path }) => (
-  <path fill={ fill } d={path} />
+const LogoPath = ({ fill, path, onClick }) => (
+  <path
+    fill={ fill }
+    d={path}
+    onClick={onClick}
+  />
 );
 
-export default class Logo extends Component {
-  constructor(props) {
-    super(props);
-    this.logoRef = null;
-  }
-
-  handleLogoClick = (event) => {
-    event.preventDefault();
-    this.props.startRotation();
-  };
-
-  componentDidUpdate(prevProps) {
-    if (!prevProps.isSpinning && this.props.isSpinning) {
-      this.rotateLogo();
-    }
-  }
-
-  rotateLogo = () => {
-    TweenMax.to(this.logoRef, 3, {
-      throwProps: {
-        rotation: {
-          velocity: 800,
-          end: naturalLandingValue => Math.round(naturalLandingValue / 180) * 180
-        }
-      },
-      ease: Power4.easeOut,
-      onComplete: () => {
-        this.props.onRotationStop();
-      }
-    });
-  };
-
-  render() {
-    const {
+const Logo = ({
       segments,
       highlightedSections,
       containerClass,
       fillColor,
       highlightColor,
       onMouseEnter,
-    } = this.props;
+      onClick,
+      getRef,
+    }) => (
+  <svg xmlns="http://www.w3.org/2000/svg"
+       className={containerClass}
+       fill={fillColor}
+       viewBox="0 0 215 323"
+       onMouseEnter={onMouseEnter}
+       ref={getRef}
+  >
+    <g>
+      {
+        segments.map(segment => (
+          <LogoPath
+            key={segment.id}
+            fill={highlightedSections.includes(segment.id) ? highlightColor : segment.fill}
+            path={segment.path}
+            onClick={onClick}
+            onMouseEnter={onMouseEnter}
+          />
+        ))
+      }
+    </g>
+  </svg>
+);
 
-    const logoPaths = segments.map(segment => (
-      <LogoPath
-        key={segment.id}
-        fill={highlightedSections.includes(segment.id) ? highlightColor : segment.fill}
-        path={segment.path}
-      />
-    ));
-
-    return (
-      <svg xmlns="http://www.w3.org/2000/svg"
-           className={containerClass}
-           fill={fillColor}
-           viewBox="0 0 215 323"
-           onMouseEnter={onMouseEnter}
-           onClick={this.handleLogoClick}
-           ref={el => this.logoRef = el}
-      >
-        <g>
-          {logoPaths}
-        </g>
-      </svg>
-    );
-  }
-}
+export default Logo;
 
 const noop = () => {};
 
@@ -80,7 +51,6 @@ Logo.defaultProps = {
   fillColor: '#991D20',
   highlightColor: '#353535',
   onMouseEnter: noop,
-  onRotationStop: noop,
   highlightedSections: [],
   containerClass: style.inactiveLogo,
   segments: [
