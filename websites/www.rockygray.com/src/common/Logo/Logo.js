@@ -2,8 +2,9 @@ import React from 'react';
 
 import style from './Logo.css';
 
-const LogoPath = ({ fill, path, onClick }) => (
+const LogoPath = ({ fill, path, onClick, onMouseEnter }) => (
   <path
+    onMouseEnter={onMouseEnter}
     fill={ fill }
     d={path}
     onClick={onClick}
@@ -24,7 +25,6 @@ const Logo = ({
        className={containerClass}
        fill={fillColor}
        viewBox="0 0 215 323"
-       onMouseEnter={onMouseEnter}
        ref={getRef}
   >
     <g>

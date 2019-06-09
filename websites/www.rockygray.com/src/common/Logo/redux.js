@@ -10,15 +10,11 @@ const initialState = {
       ['top'] // j
     ]
   },
-  isSpinning: false,
 };
 
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case LOGO_INTERACTION:
-      if (state.isSpinning) {
-        return state;
-      }
 
       const {index, states, sections} = state.letterGroups;
       const nextIndex = index >= states.length -1
