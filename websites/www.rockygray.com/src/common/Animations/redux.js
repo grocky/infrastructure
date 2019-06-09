@@ -1,43 +1,44 @@
-const  ANIMATION_STARTED =  'animations/ANIMATION_STARTED';
-const  ANIMATION_STOPPED = 'animations/ANIMATION_STOPPED';
+const  ANIMATION_STARTED = key =>  `animations/${key}/ANIMATION_STARTED`;
+const  ANIMATION_STOPPED = key => `animations/${key}/ANIMATION_STOPPED`;
 
 const initialState = { };
 
 export default function reducer(state = initialState, action = {}) {
+  const { key } = action.payload || { key: '' };
   switch (action.type) {
-    case ANIMATION_STARTED:
-      if (state[action.payload.ref]) {
+    case ANIMATION_STARTED(key):
+      if (state[key]) {
         return state;
       }
 
       return {
         ...state,
-        [action.payload.ref]: true,
+        [key]: true,
       };
-    case ANIMATION_STOPPED:
+    case ANIMATION_STOPPED(key):
       return {
         ...state,
-        [action.payload.ref]: false,
+        [key]: false,
       };
     default:
       return state;
   }
 }
 
-export function startRotation(ref) {
+export function startRotation(key) {
   return {
-    type: ANIMATION_STARTED,
+    type: ANIMATION_STARTED(key),
     payload: {
-      ref,
+      key,
     }
   }
 }
 
-export function rotationStopped(ref) {
+export function rotationStopped(key) {
   return {
-    type: ANIMATION_STOPPED,
+    type: ANIMATION_STOPPED(key),
     payload: {
-      ref,
+      key,
     }
   }
 }
