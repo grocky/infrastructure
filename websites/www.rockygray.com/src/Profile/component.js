@@ -5,6 +5,17 @@ import headShot from './headshot_450.jpg'
 import ProfilePicture from './ProfilePicture';
 import LogoContainer from '../common/Logo/LogoContainer';
 import SocialList from '../common/SocialLinks/SocialList';
+import { withRotationAnimation } from '../common/Animations';
+
+const profilePictureProps = {
+  image: headShot,
+  imageWidth: 320,
+  xCenter: 160,
+  yCenter: 80,
+  circleDiameter: 150,
+};
+
+const AnimatedProfilePicture = withRotationAnimation(ProfilePicture, 'profilePicture', profilePictureProps);
 
 class Profile extends Component {
 
@@ -16,14 +27,6 @@ class Profile extends Component {
   }
 
   render() {
-    const profilePictureProps = {
-      image: headShot,
-      imageWidth: 320,
-      xCenter: 160,
-      yCenter: 80,
-      circleDiameter: 150,
-    };
-
     const socialSites = [
       {
         name: 'github',
@@ -54,11 +57,11 @@ class Profile extends Component {
             <LogoContainer />
           </div>
           <header className="information">
-              <ProfilePicture {...profilePictureProps} />
-              <div className="contact-info">
-                <p className="name">Rocky Gray Jr.</p>
-                <p className="title"><em>Software Engineer</em></p>
-              </div>
+            <AnimatedProfilePicture />
+            <div className="contact-info">
+              <p className="name">Rocky Gray Jr.</p>
+              <p className="title"><em>Software Engineer</em></p>
+            </div>
           </header>
           <SocialList socialSites={socialSites} />
         </main>

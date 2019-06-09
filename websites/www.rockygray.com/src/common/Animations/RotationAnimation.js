@@ -16,14 +16,15 @@ const mapDispatchToProps = dispatch => (
   }
 );
 
-const mergeProps = (stateProps, dispatchProps, ownProps) =>
-  ({ ...ownProps, ...stateProps, ...dispatchProps });
+const mergeProps = (wrappedComponentProps) =>
+  (stateProps, dispatchProps, ownProps) =>
+    ({ ...ownProps, ...stateProps, ...dispatchProps, ...wrappedComponentProps });
 
-export const withRotationAnimation = (WrappedComponent) => {
+export const withRotationAnimation = (WrappedComponent, key, wrappedComponentProps = {}) => {
   return connect(
     mapStateToProps,
     mapDispatchToProps,
-    mergeProps,
+    mergeProps(wrappedComponentProps),
   )(class RotationAnimation extends Component {
     constructor(props) {
       super(props);
@@ -32,17 +33,17 @@ export const withRotationAnimation = (WrappedComponent) => {
 
     onClick = (e) => {
       e.preventDefault();
-      this.props.startRotation(this.ref);
+      this.props.startRotation(key);
     };
 
     getRef = (ref) => this.ref = ref;
 
     onAnimationEnd = () => {
-      this.props.rotationStopped(this.ref);
+      this.props.rotationStopped(key);
     };
 
     componentDidUpdate(prevProps, prevState) {
-      if (!prevProps[this.ref] && this.props[this.ref]) {
+      if (!prevProps[key] && this.props[key]) {
         this.doAnimation();
       }
     }

@@ -4,4 +4,4 @@ import { withRotationAnimation } from '../Animations';
 
 import Logo from './Logo';
 
-export default withRotationAnimation(Logo);
+export default withRotationAnimation(Logo, 'logo');
