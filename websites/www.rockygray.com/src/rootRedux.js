@@ -1,10 +1,12 @@
 import { createStore } from 'redux'
 import { combineReducers } from 'redux';
 
-import logos from './common/Logo/redux';
+import animations from './common/Animations/redux';
+import logo from './common/Logo/redux';
 
 const rootReducer = combineReducers({
-  logos,
+  animations,
+  logo,
 });
 
 const enhancer = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();

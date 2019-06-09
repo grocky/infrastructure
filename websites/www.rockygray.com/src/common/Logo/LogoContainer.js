@@ -1,69 +1,14 @@
-import React from 'react';
-import {
-  connect,
-} from 'react-redux';
+import { connect } from 'react-redux';
+
+import { withRotationAnimation } from '../Animations';
 
 import Logo from './Logo';
+import { updateSections } from "./redux";
 
-import {
-  rotationStopped,
-  startRotation,
-  updateSections
-} from "./redux";
+const mapStateToProps = (state) => ({ ...state.logo });
 
-const mapStateToProps = (state) => ({ logos: state.logos});
+const mapDispatchToProps = dispatch => ({
+  onMouseEnter: () => dispatch(updateSections()),
+});
 
-const mapDispatchToProps = dispatch => (
-  {
-    actions: {
-      updateSections: () => dispatch(updateSections()),
-      startRotation: () => dispatch(startRotation()),
-      rotationStopped: () => dispatch(rotationStopped()),
-    },
-  }
-);
-
-const mergeProps = (stateProps, dispatchProps, ownProps) =>
-  ({ ...ownProps, ...stateProps, ...dispatchProps });
-
-
-class LogoContainer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.logoRef = React.createRef();
-  }
-
-  render() {
-    const {
-      actions: {
-        updateSections,
-        rotationStopped,
-        startRotation,
-      },
-      logos: {
-        letterGroups: {
-          segments,
-        },
-        highlightedSections,
-        isSpinning,
-      },
-    } = this.props;
-    return (
-      <Logo
-        isSpinning={isSpinning}
-        svgRef={this.logoRef}
-        segments={segments}
-        highlightedSections={highlightedSections}
-        onMouseEnter={updateSections}
-        onRotationStop={rotationStopped}
-        startRotation={startRotation}
-      />
-    )
-  }
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-  mergeProps,
-)(LogoContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(withRotationAnimation(Logo, 'logo'));

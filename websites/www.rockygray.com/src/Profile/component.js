@@ -4,6 +4,18 @@ import './Profile.css'
 import headShot from './headshot_450.jpg'
 import ProfilePicture from './ProfilePicture';
 import LogoContainer from '../common/Logo/LogoContainer';
+import SocialList from '../common/SocialLinks/SocialList';
+import { withRotationAnimation } from '../common/Animations';
+
+const profilePictureProps = {
+  image: headShot,
+  imageWidth: 320,
+  xCenter: 160,
+  yCenter: 80,
+  circleDiameter: 150,
+};
+
+const AnimatedProfilePicture = withRotationAnimation(ProfilePicture, 'profilePicture', profilePictureProps);
 
 class Profile extends Component {
 
@@ -15,14 +27,6 @@ class Profile extends Component {
   }
 
   render() {
-    const profilePictureProps = {
-      image: headShot,
-      imageWidth: 320,
-      xCenter: 160,
-      yCenter: 80,
-      circleDiameter: 150,
-    };
-
     const socialSites = [
       {
         name: 'github',
@@ -46,15 +50,6 @@ class Profile extends Component {
       },
     ];
 
-    const socialLinks = socialSites.map(s => (
-      <div className="social-link" key={s.name}>
-        <a href={s.url} rel="noopener noreferrer" target="_blank">
-          <div className={`fa fa-${s.name}`}></div>
-          <div className="label">{ `/${s.url.split('/').pop()}` }</div>
-        </a>
-      </div>
-    ));
-
     return (
       <>
         <main className="profile-container">
@@ -62,15 +57,13 @@ class Profile extends Component {
             <LogoContainer />
           </div>
           <header className="information">
-              <ProfilePicture {...profilePictureProps} />
-              <div className="contact-info">
-                <p className="name">Rocky Gray Jr.</p>
-                <p className="title"><em>Software Engineer</em></p>
-              </div>
+            <AnimatedProfilePicture />
+            <div className="contact-info">
+              <p className="name">Rocky Gray Jr.</p>
+              <p className="title"><em>Software Engineer</em></p>
+            </div>
           </header>
-          <section className="social-sites-container">
-            {socialLinks}
-          </section>
+          <SocialList socialSites={socialSites} />
         </main>
         <footer>
           <p>&copy; Rocky Gray {this.state.date.getFullYear()}</p>

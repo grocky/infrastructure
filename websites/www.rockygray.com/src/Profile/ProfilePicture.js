@@ -2,7 +2,16 @@ import React from 'react';
 
 import './ProfilePicture.css';
 
-const ProfilePicture = ({ imageWidth, image, xCenter, yCenter, circleDiameter }) => {
+const ProfilePicture = (
+  {
+    imageWidth,
+    image,
+    xCenter,
+    yCenter,
+    circleDiameter,
+    onClick,
+    getRef,
+  }) => {
   const squareLength = 75;
 
   const circle = {
@@ -22,7 +31,10 @@ const ProfilePicture = ({ imageWidth, image, xCenter, yCenter, circleDiameter })
 
   return (
     <>
-      <svg width={imageWidth} height="200">
+      <svg onClick={onClick}
+           ref={getRef}
+           width={imageWidth}
+           height="200">
         <defs>
           <clipPath id="profileClipPath">
             <rect
