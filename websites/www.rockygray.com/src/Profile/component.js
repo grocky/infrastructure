@@ -4,7 +4,7 @@ import './Profile.css'
 import headShot from './headshot_450.jpg'
 import ProfilePicture from './ProfilePicture';
 import LogoContainer from '../common/Logo/LogoContainer';
-import SocialLink from '../common/SocialLinks/SocialLink';
+import SocialList from '../common/SocialLinks/SocialList';
 
 class Profile extends Component {
 
@@ -47,10 +47,6 @@ class Profile extends Component {
       },
     ];
 
-    const socialLinks = socialSites.map(s => (
-      <SocialLink key={s.name} name={s.name} url={s.url}/>
-    ));
-
     return (
       <>
         <main className="profile-container">
@@ -64,9 +60,7 @@ class Profile extends Component {
                 <p className="title"><em>Software Engineer</em></p>
               </div>
           </header>
-          <section className="social-sites-container">
-            {socialLinks}
-          </section>
+          <SocialList socialSites={socialSites} />
         </main>
         <footer>
           <p>&copy; Rocky Gray {this.state.date.getFullYear()}</p>
