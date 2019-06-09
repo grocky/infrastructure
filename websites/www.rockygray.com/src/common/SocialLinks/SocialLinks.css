@@ -1,0 +1,33 @@
+.social-sites-container {
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+
+.social-link {
+  flex: 0 0 100px;
+  background-color: var(--dark-gray);
+  padding: .5em;
+  margin-bottom: 1em;
+  border-radius: 10px;
+}
+
+.social-link .fa {
+  font-size: 2em;
+}
+
+.social-link a {
+  color: var(--light-gray);
+  text-decoration: none;
+  display: block;
+}
+
+.social-link a:hover {
+  color: white;
+}
+
+.social-link .label {
+  margin-top: .5em;
+}
+

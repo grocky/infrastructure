@@ -1,11 +1,11 @@
 import React from 'react';
-import IconLinkListItem from './IconLinkListItem';
+import SocialLink from './SocialLink';
 
 import styles from './SocialLinksList.module.css'
 
 const SocialLinksList = ({ socialLinks }) => (
   <ul className={styles.ul}>
-    {socialLinks.map(l => <IconLinkListItem key={l.name} name={l.name} url={l.url} />)}
+    {socialLinks.map(l => <SocialLink key={l.name} name={l.name} url={l.url} />)}
   </ul>
 );
 

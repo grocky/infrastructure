@@ -4,6 +4,7 @@ import './Profile.css'
 import headShot from './headshot_450.jpg'
 import ProfilePicture from './ProfilePicture';
 import LogoContainer from '../common/Logo/LogoContainer';
+import SocialLink from '../common/SocialLinks/SocialLink';
 
 class Profile extends Component {
 
@@ -47,12 +48,7 @@ class Profile extends Component {
     ];
 
     const socialLinks = socialSites.map(s => (
-      <div className="social-link" key={s.name}>
-        <a href={s.url} rel="noopener noreferrer" target="_blank">
-          <div className={`fa fa-${s.name}`}></div>
-          <div className="label">{ `/${s.url.split('/').pop()}` }</div>
-        </a>
-      </div>
+      <SocialLink key={s.name} name={s.name} url={s.url}/>
     ));
 
     return (
