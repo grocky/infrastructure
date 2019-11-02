@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "gsap": "2.0.2",
-    "lodash": "4.17.11",
+    "lodash": "4.17.13",
     "npm": "6.9.0",
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
