@@ -70,7 +70,7 @@ resource "aws_cloudfront_distribution" "www_distribution" {
     ssl_support_method  = "sni-only"
   }
 
-  tags {
+  tags = {
     Name        = "www.rockygray.com"
     Env         = "prod"
     Application = "www.rockygray.com"

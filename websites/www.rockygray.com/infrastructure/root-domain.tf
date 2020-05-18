@@ -22,7 +22,7 @@ POLICY
     redirect_all_requests_to = "https://${var.www_domain_name}"
   }
 
-  tags {
+  tags = {
     Name        = "rockygray.com"
     Env         = "prod"
     Application = "www.rockygray.com"
@@ -79,7 +79,7 @@ resource "aws_cloudfront_distribution" "root_distribution" {
     ssl_support_method  = "sni-only"
   }
 
-  tags {
+  tags = {
     Name        = "rockygray.com"
     Env         = "prod"
     Application = "www.rockygray.com"
@@ -93,7 +93,7 @@ resource "aws_route53_record" "root" {
   name = ""
   type = "A"
 
-  alias = {
+  alias {
     name                   = "${aws_cloudfront_distribution.root_distribution.domain_name}"
     zone_id                = "${aws_cloudfront_distribution.root_distribution.hosted_zone_id}"
     evaluate_target_health = false

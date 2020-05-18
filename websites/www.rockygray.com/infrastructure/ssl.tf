@@ -7,7 +7,7 @@ resource "aws_acm_certificate" "certificate" {
     create_before_destroy = true
   }
 
-  tags {
+  tags = {
     Name        = "wildcard.rockygray.com"
     Env         = "prod"
     Application = "www.rockygray.com"
