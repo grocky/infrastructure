@@ -1,11 +1,8 @@
 GREEN  := $(shell tput -Txterm setaf 2)
-YELLOW := $(shell tput -Txterm setaf 3)
-BLUE   := $(shell tput -Txterm setaf 4)
-WHITE  := $(shell tput -Txterm setaf 7)
 NC     := $(shell tput -Txterm sgr0)
 
 help: ## Print this help message
-	@awk -F ':|##' '/^[^\t].+?:.*?##/ { printf "${BLUE}%-20s${NC}%s\n", $$1, $$NF }' $(MAKEFILE_LIST) | \
+	@awk -F ':|##' '/^[^\t].+?:.*?##/ { printf "${GREEN}%-20s${NC}%s\n", $$1, $$NF }' $(MAKEFILE_LIST) | \
         sort
 
 BUILD_DIR=build
@@ -27,4 +24,5 @@ package: ## Package the application
 	npm run build
 
 publish: build ## Publish the application to S3
-	cd $(BUILD_DIR); aws s3 sync . s3://$(BUCKET_NAME)
+	aws s3 sync --cache-control 'max-age=604800' --exclude index.html build/ s3://$(BUCKET_NAME)
+	aws s3 sync --cache-control 'no-cache' build/ s3://$(BUCKET_NAME)
