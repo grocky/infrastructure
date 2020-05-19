@@ -27,7 +27,7 @@ POLICY
     enabled = true
   }
 
-  tags {
+  tags = {
     Name        = "www.rockygray.com"
     Env         = "prod"
     Application = "www.rockygray.com"

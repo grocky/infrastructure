@@ -13,7 +13,7 @@ resource "aws_s3_bucket" "terraform_state" {
     prevent_destroy = true
   }
 
-  tags {
+  tags = {
     Name = "grocky-tfstate"
     Env  = "prod"
   }
@@ -30,7 +30,7 @@ resource "aws_dynamodb_table" "terraform_state_lock" {
     type = "S"
   }
 
-  tags {
+  tags = {
     Name = "tfstate-lock"
     Env  = "prod"
   }

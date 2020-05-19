@@ -39,3 +39,11 @@ output "cloudfront_root_id" {
 output "nameservers" {
   value = ["${aws_route53_zone.zone.name_servers}"]
 }
+
+output "root_zone_id" {
+  value = "${aws_route53_zone.zone.zone_id}"
+}
+
+output "certificate_arn" {
+  value = "${aws_acm_certificate.certificate2.arn}"
+}

@@ -66,11 +66,11 @@ resource "aws_cloudfront_distribution" "www_distribution" {
   }
 
   viewer_certificate {
-    acm_certificate_arn = "${aws_acm_certificate.certificate.arn}"
+    acm_certificate_arn = "${aws_acm_certificate_validation.certificate.certificate_arn}"
     ssl_support_method  = "sni-only"
   }
 
-  tags {
+  tags = {
     Name        = "www.rockygray.com"
     Env         = "prod"
     Application = "www.rockygray.com"
