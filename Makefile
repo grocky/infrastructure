@@ -13,4 +13,3 @@ NC     := $(shell tput -Txterm sgr0)
 help: ## Print this help message
 	@awk -F ':|##' '/^[^\t].+?:.*?##/ { printf "${GREEN}%-20s${NC}%s\n", $$1, $$NF }' $(MAKEFILE_LIST) | \
         sort
-
