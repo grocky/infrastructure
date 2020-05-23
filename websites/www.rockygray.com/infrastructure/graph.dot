@@ -1,0 +1,65 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] aws_acm_certificate.certificate2" [label = "aws_acm_certificate.certificate2", shape = "box"]
+		"[root] aws_acm_certificate_validation.certificate" [label = "aws_acm_certificate_validation.certificate", shape = "box"]
+		"[root] aws_cloudfront_distribution.root_distribution" [label = "aws_cloudfront_distribution.root_distribution", shape = "box"]
+		"[root] aws_cloudfront_distribution.www_distribution" [label = "aws_cloudfront_distribution.www_distribution", shape = "box"]
+		"[root] aws_route53_record.cert_validation" [label = "aws_route53_record.cert_validation", shape = "box"]
+		"[root] aws_route53_record.root" [label = "aws_route53_record.root", shape = "box"]
+		"[root] aws_route53_record.www" [label = "aws_route53_record.www", shape = "box"]
+		"[root] aws_route53_zone.zone" [label = "aws_route53_zone.zone", shape = "box"]
+		"[root] aws_s3_bucket.root" [label = "aws_s3_bucket.root", shape = "box"]
+		"[root] aws_s3_bucket.www" [label = "aws_s3_bucket.www", shape = "box"]
+		"[root] output.certificate_arn" [label = "output.certificate_arn", shape = "note"]
+		"[root] output.cloudfront_root_id" [label = "output.cloudfront_root_id", shape = "note"]
+		"[root] output.cloudfront_url" [label = "output.cloudfront_url", shape = "note"]
+		"[root] output.cloudfront_www_id" [label = "output.cloudfront_www_id", shape = "note"]
+		"[root] output.nameservers" [label = "output.nameservers", shape = "note"]
+		"[root] output.root_zone_id" [label = "output.root_zone_id", shape = "note"]
+		"[root] output.s3_website_url" [label = "output.s3_website_url", shape = "note"]
+		"[root] provider.aws" [label = "provider.aws", shape = "diamond"]
+		"[root] var.root_domain_name" [label = "var.root_domain_name", shape = "note"]
+		"[root] var.www_domain_name" [label = "var.www_domain_name", shape = "note"]
+		"[root] aws_acm_certificate.certificate2" -> "[root] provider.aws"
+		"[root] aws_acm_certificate.certificate2" -> "[root] var.root_domain_name"
+		"[root] aws_acm_certificate_validation.certificate" -> "[root] aws_route53_record.cert_validation"
+		"[root] aws_cloudfront_distribution.root_distribution" -> "[root] aws_acm_certificate_validation.certificate"
+		"[root] aws_cloudfront_distribution.root_distribution" -> "[root] aws_s3_bucket.root"
+		"[root] aws_cloudfront_distribution.www_distribution" -> "[root] aws_acm_certificate_validation.certificate"
+		"[root] aws_cloudfront_distribution.www_distribution" -> "[root] aws_s3_bucket.www"
+		"[root] aws_route53_record.cert_validation" -> "[root] aws_acm_certificate.certificate2"
+		"[root] aws_route53_record.cert_validation" -> "[root] aws_route53_zone.zone"
+		"[root] aws_route53_record.root" -> "[root] aws_cloudfront_distribution.root_distribution"
+		"[root] aws_route53_record.www" -> "[root] aws_cloudfront_distribution.www_distribution"
+		"[root] aws_route53_zone.zone" -> "[root] provider.aws"
+		"[root] aws_route53_zone.zone" -> "[root] var.root_domain_name"
+		"[root] aws_s3_bucket.root" -> "[root] provider.aws"
+		"[root] aws_s3_bucket.root" -> "[root] var.root_domain_name"
+		"[root] aws_s3_bucket.root" -> "[root] var.www_domain_name"
+		"[root] aws_s3_bucket.www" -> "[root] provider.aws"
+		"[root] aws_s3_bucket.www" -> "[root] var.www_domain_name"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] aws_route53_record.root"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] aws_route53_record.www"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.certificate_arn"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.cloudfront_root_id"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.cloudfront_url"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.cloudfront_www_id"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.nameservers"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.root_zone_id"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.s3_website_url"
+		"[root] output.certificate_arn" -> "[root] aws_acm_certificate.certificate2"
+		"[root] output.cloudfront_root_id" -> "[root] aws_cloudfront_distribution.root_distribution"
+		"[root] output.cloudfront_url" -> "[root] aws_cloudfront_distribution.www_distribution"
+		"[root] output.cloudfront_www_id" -> "[root] aws_cloudfront_distribution.www_distribution"
+		"[root] output.nameservers" -> "[root] aws_route53_zone.zone"
+		"[root] output.root_zone_id" -> "[root] aws_route53_zone.zone"
+		"[root] output.s3_website_url" -> "[root] aws_s3_bucket.www"
+		"[root] provider.aws (close)" -> "[root] aws_route53_record.root"
+		"[root] provider.aws (close)" -> "[root] aws_route53_record.www"
+		"[root] root" -> "[root] meta.count-boundary (EachMode fixup)"
+		"[root] root" -> "[root] provider.aws (close)"
+	}
+}
+
