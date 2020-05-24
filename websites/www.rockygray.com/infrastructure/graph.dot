@@ -2,15 +2,15 @@ digraph {
 	compound = "true"
 	newrank = "true"
 	subgraph "root" {
-		"[root] aws_acm_certificate.certificate2" [ fillcolor="darkseagreen1" style=filled label = "aws_acm_certificate.certificate2", shape = "box"]
-		"[root] aws_acm_certificate_validation.certificate" [ fillcolor="darkseagreen1" style=filled label = "aws_acm_certificate_validation.certificate", shape = "box"]
-		"[root] aws_cloudfront_distribution.root_distribution" [ fillcolor="darkseagreen1" style=filled label = "aws_cloudfront_distribution.root_distribution", shape = "box"]
+		"[root] aws_acm_certificate.certificate2" [ fillcolor="darkorchid2" style=filled label = "aws_acm_certificate.certificate2", shape = "box"]
+		"[root] aws_acm_certificate_validation.certificate" [ fillcolor="darkorchid2" style=filled label = "aws_acm_certificate_validation.certificate", shape = "box"]
+		"[root] aws_cloudfront_distribution.root_distribution" [ fillcolor="darkorchid2" style=filled label = "aws_cloudfront_distribution.root_distribution", shape = "box"]
 		"[root] aws_cloudfront_distribution.www_distribution" [ fillcolor="darkseagreen1" style=filled label = "aws_cloudfront_distribution.www_distribution", shape = "box"]
-		"[root] aws_route53_record.cert_validation" [ fillcolor="darkseagreen1" style=filled label = "aws_route53_record.cert_validation", shape = "box"]
-		"[root] aws_route53_record.root" [ fillcolor="darkseagreen1" style=filled label = "aws_route53_record.root", shape = "box"]
+		"[root] aws_route53_record.cert_validation" [ fillcolor="darkorchid2" style=filled label = "aws_route53_record.cert_validation", shape = "box"]
+		"[root] aws_route53_record.root" [ fillcolor="darkorchid2" style=filled label = "aws_route53_record.root", shape = "box"]
 		"[root] aws_route53_record.www" [ fillcolor="darkseagreen1" style=filled label = "aws_route53_record.www", shape = "box"]
-		"[root] aws_route53_zone.zone" [fillcolor="darkseagreen1" style=filled label = "aws_route53_zone.zone", shape = "box"]
-		"[root] aws_s3_bucket.root" [fillcolor="darkseagreen1" style=filled label = "aws_s3_bucket.root", shape = "box"]
+		"[root] aws_route53_zone.zone" [fillcolor="darkorchid2" style=filled label = "aws_route53_zone.zone", shape = "box"]
+		"[root] aws_s3_bucket.root" [fillcolor="darkorchid2" style=filled label = "aws_s3_bucket.root", shape = "box"]
 		"[root] aws_s3_bucket.www" [fillcolor="darkseagreen1" style=filled label = "aws_s3_bucket.www", shape = "box"]
 		"[root] output.certificate_arn" [label = "output.certificate_arn", shape = "note"]
 		"[root] output.cloudfront_root_id" [label = "output.cloudfront_root_id", shape = "note"]
