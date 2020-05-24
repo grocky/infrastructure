@@ -12,38 +12,28 @@ provider "aws" {
   region = "us-east-1"
 }
 
-variable "www_domain_name" {
-  default = "www.rockygray.com"
+module "root" {
+  source = "./root-domain"
+
+  root_domain_name = var.root_domain_name
 }
 
 variable "root_domain_name" {
   default = "rockygray.com"
 }
 
+variable "www_domain_name" {
+  default = "www.rockygray.com"
+}
+
 output "s3_website_url" {
-  value = "${aws_s3_bucket.www.website_endpoint}"
+  value = aws_s3_bucket.www.website_endpoint
 }
 
 output "cloudfront_url" {
-  value = "${aws_cloudfront_distribution.www_distribution.domain_name}"
+  value = aws_cloudfront_distribution.www_distribution.domain_name
 }
 
 output "cloudfront_www_id" {
-  value = "${aws_cloudfront_distribution.www_distribution.id}"
-}
-
-output "cloudfront_root_id" {
-  value = "${aws_cloudfront_distribution.root_distribution.id}"
-}
-
-output "nameservers" {
-  value = ["${aws_route53_zone.zone.name_servers}"]
-}
-
-output "root_zone_id" {
-  value = "${aws_route53_zone.zone.zone_id}"
-}
-
-output "certificate_arn" {
-  value = "${aws_acm_certificate.certificate2.arn}"
+  value = aws_cloudfront_distribution.www_distribution.id
 }

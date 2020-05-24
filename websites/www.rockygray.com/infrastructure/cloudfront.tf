@@ -7,8 +7,8 @@ resource "aws_cloudfront_distribution" "www_distribution" {
       origin_ssl_protocols   = ["TLSv1", "TLSv1.1", "TLSv1.2"]
     }
 
-    domain_name = "${aws_s3_bucket.www.website_endpoint}"
-    origin_id   = "${var.www_domain_name}"
+    domain_name = aws_s3_bucket.www.website_endpoint
+    origin_id   = var.www_domain_name
   }
 
   enabled             = true
@@ -20,7 +20,7 @@ resource "aws_cloudfront_distribution" "www_distribution" {
     viewer_protocol_policy = "redirect-to-https"
     allowed_methods        = ["GET", "HEAD"]
     cached_methods         = ["GET", "HEAD"]
-    target_origin_id       = "${var.www_domain_name}"
+    target_origin_id       = var.www_domain_name
 
     compress    = true
     min_ttl     = 0
@@ -36,14 +36,14 @@ resource "aws_cloudfront_distribution" "www_distribution" {
     }
   }
 
-  aliases = ["${var.www_domain_name}"]
+  aliases = [var.www_domain_name]
 
   ordered_cache_behavior {
     viewer_protocol_policy = "redirect-to-https"
     path_pattern           = "/index.html"
     allowed_methods        = ["GET", "HEAD", "OPTIONS"]
     cached_methods         = ["GET", "HEAD", "OPTIONS"]
-    target_origin_id       = "${var.www_domain_name}"
+    target_origin_id       = var.www_domain_name
 
     compress    = true
     min_ttl     = 0
@@ -66,7 +66,7 @@ resource "aws_cloudfront_distribution" "www_distribution" {
   }
 
   viewer_certificate {
-    acm_certificate_arn = "${aws_acm_certificate_validation.certificate.certificate_arn}"
+    acm_certificate_arn = module.root.outputs.certificate_arn
     ssl_support_method  = "sni-only"
   }
 
