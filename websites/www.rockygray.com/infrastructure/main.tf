@@ -13,7 +13,7 @@ provider "aws" {
 }
 
 module "root" {
-  source = "./root-domain"
+  source = "github.com/grocky/infrastructure//modules/root-domain"
 
   root_domain_name = var.root_domain_name
 }
