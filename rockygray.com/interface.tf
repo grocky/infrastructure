@@ -7,6 +7,5 @@ variable "region" {
 }
 
 output "outputs" {
-  value = {
-  }
+  value = module.root.outputs
 }
