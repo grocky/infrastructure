@@ -88,7 +88,9 @@ function generate_docs() {
     if [ $? -gt 0 ]; then
       files_updated=$((files_updated + 1))
     fi
-    make ${m}/graph.svg
+    if [[ ${m} != "module/*" ]]; then
+      make ${m}/graph.svg
+    fi
   done
 
   return ${files_updated}
