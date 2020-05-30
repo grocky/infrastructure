@@ -6,6 +6,10 @@ variable "region" {
   default = "us-east-1"
 }
 
+variable "domain" {
+  default = "rockygray.com"
+}
+
 output "root_zone_id" {
   value = module.root.outputs.root_zone_id
 }
