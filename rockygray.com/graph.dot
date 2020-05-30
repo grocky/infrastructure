@@ -1,0 +1,50 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] module.root.aws_acm_certificate.certificate" [label = "module.root.aws_acm_certificate.certificate", shape = "box"]
+		"[root] module.root.aws_acm_certificate_validation.certificate" [label = "module.root.aws_acm_certificate_validation.certificate", shape = "box"]
+		"[root] module.root.aws_cloudfront_distribution.root_distribution" [label = "module.root.aws_cloudfront_distribution.root_distribution", shape = "box"]
+		"[root] module.root.aws_route53_record.cert_validation" [label = "module.root.aws_route53_record.cert_validation", shape = "box"]
+		"[root] module.root.aws_route53_record.root" [label = "module.root.aws_route53_record.root", shape = "box"]
+		"[root] module.root.aws_route53_zone.zone" [label = "module.root.aws_route53_zone.zone", shape = "box"]
+		"[root] module.root.aws_s3_bucket.root" [label = "module.root.aws_s3_bucket.root", shape = "box"]
+		"[root] module.root.output.outputs" [label = "module.root.output.outputs", shape = "note"]
+		"[root] module.root.var.root_domain_name" [label = "module.root.var.root_domain_name", shape = "note"]
+		"[root] output.certificate_arn" [label = "output.certificate_arn", shape = "note"]
+		"[root] output.cloudfront_id" [label = "output.cloudfront_id", shape = "note"]
+		"[root] output.nameservers" [label = "output.nameservers", shape = "note"]
+		"[root] output.root_zone_id" [label = "output.root_zone_id", shape = "note"]
+		"[root] provider.aws" [label = "provider.aws", shape = "diamond"]
+		"[root] var.env" [label = "var.env", shape = "note"]
+		"[root] var.region" [label = "var.region", shape = "note"]
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] module.root.aws_route53_record.root"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.certificate_arn"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.cloudfront_id"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.nameservers"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.root_zone_id"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] var.env"
+		"[root] module.root.aws_acm_certificate.certificate" -> "[root] module.root.var.root_domain_name"
+		"[root] module.root.aws_acm_certificate.certificate" -> "[root] provider.aws"
+		"[root] module.root.aws_acm_certificate_validation.certificate" -> "[root] module.root.aws_route53_record.cert_validation"
+		"[root] module.root.aws_cloudfront_distribution.root_distribution" -> "[root] module.root.aws_acm_certificate_validation.certificate"
+		"[root] module.root.aws_cloudfront_distribution.root_distribution" -> "[root] module.root.aws_s3_bucket.root"
+		"[root] module.root.aws_route53_record.cert_validation" -> "[root] module.root.aws_acm_certificate.certificate"
+		"[root] module.root.aws_route53_record.cert_validation" -> "[root] module.root.aws_route53_zone.zone"
+		"[root] module.root.aws_route53_record.root" -> "[root] module.root.aws_cloudfront_distribution.root_distribution"
+		"[root] module.root.aws_route53_zone.zone" -> "[root] module.root.var.root_domain_name"
+		"[root] module.root.aws_route53_zone.zone" -> "[root] provider.aws"
+		"[root] module.root.aws_s3_bucket.root" -> "[root] module.root.var.root_domain_name"
+		"[root] module.root.aws_s3_bucket.root" -> "[root] provider.aws"
+		"[root] module.root.output.outputs" -> "[root] module.root.aws_cloudfront_distribution.root_distribution"
+		"[root] output.certificate_arn" -> "[root] module.root.output.outputs"
+		"[root] output.cloudfront_id" -> "[root] module.root.output.outputs"
+		"[root] output.nameservers" -> "[root] module.root.output.outputs"
+		"[root] output.root_zone_id" -> "[root] module.root.output.outputs"
+		"[root] provider.aws (close)" -> "[root] module.root.aws_route53_record.root"
+		"[root] provider.aws" -> "[root] var.region"
+		"[root] root" -> "[root] meta.count-boundary (EachMode fixup)"
+		"[root] root" -> "[root] provider.aws (close)"
+	}
+}
+
