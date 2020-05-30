@@ -12,10 +12,13 @@ provider "aws" {
   region = "us-east-1"
 }
 
-module "root" {
-  source = "github.com/grocky/infrastructure//modules/root-domain"
-
-  root_domain_name = var.root_domain_name
+data "terraform_remote_state" "root" {
+  backend = "s3"
+  config = {
+    bucket = "grocky-tfstate"
+    region = "us-east-1"
+    key    = "rockygray.com/terraform.tfstate"
+  }
 }
 
 variable "root_domain_name" {
@@ -24,6 +27,10 @@ variable "root_domain_name" {
 
 variable "www_domain_name" {
   default = "www.rockygray.com"
+}
+
+output "site_url" {
+  value = aws_route53_record.www.fqdn
 }
 
 output "s3_website_url" {

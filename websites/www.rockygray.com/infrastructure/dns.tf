@@ -1,5 +1,5 @@
 resource "aws_route53_record" "www" {
-  zone_id = module.root.outputs.root_zone_id
+  zone_id = data.terraform_remote_state.root.outputs.root_zone_id
   name    = var.www_domain_name
   type    = "A"
 
