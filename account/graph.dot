@@ -1,0 +1,21 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] aws_ses_active_receipt_rule_set.main" [label = "aws_ses_active_receipt_rule_set.main", shape = "box"]
+		"[root] aws_ses_receipt_rule_set.main" [label = "aws_ses_receipt_rule_set.main", shape = "box"]
+		"[root] output.ses_rule_set_name" [label = "output.ses_rule_set_name", shape = "note"]
+		"[root] provider.aws" [label = "provider.aws", shape = "diamond"]
+		"[root] var.region" [label = "var.region", shape = "note"]
+		"[root] aws_ses_active_receipt_rule_set.main" -> "[root] aws_ses_receipt_rule_set.main"
+		"[root] aws_ses_receipt_rule_set.main" -> "[root] provider.aws"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] aws_ses_active_receipt_rule_set.main"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.ses_rule_set_name"
+		"[root] output.ses_rule_set_name" -> "[root] aws_ses_receipt_rule_set.main"
+		"[root] provider.aws (close)" -> "[root] aws_ses_active_receipt_rule_set.main"
+		"[root] provider.aws" -> "[root] var.region"
+		"[root] root" -> "[root] meta.count-boundary (EachMode fixup)"
+		"[root] root" -> "[root] provider.aws (close)"
+	}
+}
+
