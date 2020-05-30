@@ -13,6 +13,16 @@ provider "aws" {
 }
 
 module "root" {
-  source           = "github.com/grocky/infrastructure//modules/root-domain"
+  source           = "../modules/root-domain"
   root_domain_name = var.domain
+}
+
+data "terraform_remote_state" "account" {
+  backend = "s3"
+
+  config = {
+    bucket = "grocky-tfstate"
+    region = "us-east-1"
+    key    = "account/terraform.tfstate"
+  }
 }

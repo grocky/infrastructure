@@ -25,3 +25,7 @@ output "certificate_arn" {
 output "cloudfront_id" {
   value = module.root.outputs.cloudfront_id
 }
+
+output "bucket_name" {
+  value = module.root.outputs.s3_bucket
+}

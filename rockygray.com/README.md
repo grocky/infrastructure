@@ -5,7 +5,6 @@ This sets up the wild card certificate and apex domain for rockygray.com
 ## Graph
 
 ![](./graph.svg)
-
 ## Requirements
 
 No requirements.
@@ -15,6 +14,7 @@ No requirements.
 | Name | Version |
 |------|---------|
 | aws | n/a |
+| terraform | n/a |
 
 ## Inputs
 
@@ -28,6 +28,7 @@ No requirements.
 
 | Name | Description |
 |------|-------------|
+| bucket\_name | n/a |
 | certificate\_arn | n/a |
 | cloudfront\_id | n/a |
 | nameservers | n/a |
