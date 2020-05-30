@@ -5,56 +5,35 @@ digraph {
 		"[root] aws_cloudfront_distribution.www_distribution" [label = "aws_cloudfront_distribution.www_distribution", shape = "box"]
 		"[root] aws_route53_record.www" [label = "aws_route53_record.www", shape = "box"]
 		"[root] aws_s3_bucket.www" [label = "aws_s3_bucket.www", shape = "box"]
-		"[root] module.root.aws_acm_certificate.certificate" [label = "module.root.aws_acm_certificate.certificate", shape = "box"]
-		"[root] module.root.aws_acm_certificate_validation.certificate" [label = "module.root.aws_acm_certificate_validation.certificate", shape = "box"]
-		"[root] module.root.aws_cloudfront_distribution.root_distribution" [label = "module.root.aws_cloudfront_distribution.root_distribution", shape = "box"]
-		"[root] module.root.aws_route53_record.cert_validation" [label = "module.root.aws_route53_record.cert_validation", shape = "box"]
-		"[root] module.root.aws_route53_record.root" [label = "module.root.aws_route53_record.root", shape = "box"]
-		"[root] module.root.aws_route53_zone.zone" [label = "module.root.aws_route53_zone.zone", shape = "box"]
-		"[root] module.root.aws_s3_bucket.root" [label = "module.root.aws_s3_bucket.root", shape = "box"]
-		"[root] module.root.output.outputs" [label = "module.root.output.outputs", shape = "note"]
-		"[root] module.root.var.root_domain_name" [label = "module.root.var.root_domain_name", shape = "note"]
+		"[root] data.terraform_remote_state.root" [label = "data.terraform_remote_state.root", shape = "box"]
 		"[root] output.cloudfront_url" [label = "output.cloudfront_url", shape = "note"]
 		"[root] output.cloudfront_www_id" [label = "output.cloudfront_www_id", shape = "note"]
 		"[root] output.s3_website_url" [label = "output.s3_website_url", shape = "note"]
+		"[root] output.site_url" [label = "output.site_url", shape = "note"]
 		"[root] provider.aws" [label = "provider.aws", shape = "diamond"]
+		"[root] provider.terraform" [label = "provider.terraform", shape = "diamond"]
 		"[root] var.root_domain_name" [label = "var.root_domain_name", shape = "note"]
 		"[root] var.www_domain_name" [label = "var.www_domain_name", shape = "note"]
 		"[root] aws_cloudfront_distribution.www_distribution" -> "[root] aws_s3_bucket.www"
-		"[root] aws_cloudfront_distribution.www_distribution" -> "[root] module.root.output.outputs"
+		"[root] aws_cloudfront_distribution.www_distribution" -> "[root] data.terraform_remote_state.root"
 		"[root] aws_route53_record.www" -> "[root] aws_cloudfront_distribution.www_distribution"
 		"[root] aws_s3_bucket.www" -> "[root] provider.aws"
 		"[root] aws_s3_bucket.www" -> "[root] var.www_domain_name"
-		"[root] meta.count-boundary (EachMode fixup)" -> "[root] aws_route53_record.www"
-		"[root] meta.count-boundary (EachMode fixup)" -> "[root] module.root.aws_route53_record.root"
-		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.certificate_arn (orphan)"
-		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.cloudfront_root_id (orphan)"
+		"[root] data.terraform_remote_state.root" -> "[root] provider.terraform"
 		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.cloudfront_url"
 		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.cloudfront_www_id"
-		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.nameservers (orphan)"
-		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.root_zone_id (orphan)"
 		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.s3_website_url"
-		"[root] module.root.aws_acm_certificate.certificate" -> "[root] module.root.var.root_domain_name"
-		"[root] module.root.aws_acm_certificate.certificate" -> "[root] provider.aws"
-		"[root] module.root.aws_acm_certificate_validation.certificate" -> "[root] module.root.aws_route53_record.cert_validation"
-		"[root] module.root.aws_cloudfront_distribution.root_distribution" -> "[root] module.root.aws_acm_certificate_validation.certificate"
-		"[root] module.root.aws_cloudfront_distribution.root_distribution" -> "[root] module.root.aws_s3_bucket.root"
-		"[root] module.root.aws_route53_record.cert_validation" -> "[root] module.root.aws_acm_certificate.certificate"
-		"[root] module.root.aws_route53_record.cert_validation" -> "[root] module.root.aws_route53_zone.zone"
-		"[root] module.root.aws_route53_record.root" -> "[root] module.root.aws_cloudfront_distribution.root_distribution"
-		"[root] module.root.aws_route53_zone.zone" -> "[root] module.root.var.root_domain_name"
-		"[root] module.root.aws_route53_zone.zone" -> "[root] provider.aws"
-		"[root] module.root.aws_s3_bucket.root" -> "[root] module.root.var.root_domain_name"
-		"[root] module.root.aws_s3_bucket.root" -> "[root] provider.aws"
-		"[root] module.root.output.outputs" -> "[root] module.root.aws_cloudfront_distribution.root_distribution"
-		"[root] module.root.var.root_domain_name" -> "[root] var.root_domain_name"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.site_url"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] var.root_domain_name"
 		"[root] output.cloudfront_url" -> "[root] aws_cloudfront_distribution.www_distribution"
 		"[root] output.cloudfront_www_id" -> "[root] aws_cloudfront_distribution.www_distribution"
 		"[root] output.s3_website_url" -> "[root] aws_s3_bucket.www"
+		"[root] output.site_url" -> "[root] aws_route53_record.www"
 		"[root] provider.aws (close)" -> "[root] aws_route53_record.www"
-		"[root] provider.aws (close)" -> "[root] module.root.aws_route53_record.root"
+		"[root] provider.terraform (close)" -> "[root] data.terraform_remote_state.root"
 		"[root] root" -> "[root] meta.count-boundary (EachMode fixup)"
 		"[root] root" -> "[root] provider.aws (close)"
+		"[root] root" -> "[root] provider.terraform (close)"
 	}
 }
 
