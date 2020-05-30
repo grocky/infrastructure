@@ -18,6 +18,7 @@ resource "aws_ses_domain_identity_verification" "rockygray_verification" {
 }
 
 # SES DKIM
+# https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-authentication-dkim.html
 resource "aws_ses_domain_dkim" "rockygray" {
   domain = aws_ses_domain_identity.rockygray.domain
 }
@@ -36,6 +37,7 @@ resource "aws_route53_record" "rockygray_amazonses_dkim_record" {
 }
 
 # Mail Send and Receive
+# https://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from.html
 resource "aws_ses_domain_mail_from" "rockygray" {
   domain           = aws_ses_domain_identity.rockygray.domain
   mail_from_domain = "mail.${aws_ses_domain_identity.rockygray.domain}"
@@ -71,4 +73,14 @@ resource "aws_route53_record" "rockygray_ses_domain_receive_mx" {
   type    = "MX"
   ttl     = "600"
   records = ["10 inbound-smtp.${var.region}.amazonses.com"]
+}
+
+# DMARC
+# (https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-authentication-dmarc.html)
+resource "aws_route53_record" "rockygray_ses_domain_dmarc_txt" {
+  zone_id = module.root.outputs.root_zone_id
+  name    = "_dmarc.${aws_ses_domain_identity.rockygray.domain}"
+  type    = "TXT"
+  ttl     = "600"
+  records = ["v=DMARC1;p=quarantine;rua=mailto:dmarcreports@${aws_ses_domain_identity.rockygray.domain};"]
 }
