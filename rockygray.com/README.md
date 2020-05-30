@@ -1,6 +1,6 @@
 # rockygray.com Infrastructure
 
-This is the sets up the wild card certificate and apex domain for rockygray.com
+This sets up the wild card certificate and apex domain for rockygray.com
 
 ## Graph
 
@@ -12,12 +12,15 @@ No requirements.
 
 ## Providers
 
-No provider.
+| Name | Version |
+|------|---------|
+| aws | n/a |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| domain | n/a | `string` | `"rockygray.com"` | no |
 | env | n/a | `string` | `"prod"` | no |
 | region | n/a | `string` | `"us-east-1"` | no |
 
@@ -29,4 +32,3 @@ No provider.
 | cloudfront\_id | n/a |
 | nameservers | n/a |
 | root\_zone\_id | n/a |
-
