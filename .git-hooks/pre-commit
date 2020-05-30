@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-PROJECT_ROOT=$(realpath "${DIR}/..")
+PROJECT_ROOT=$(realpath "${DIR}/../..")
 
 changed_tf_files=$(git status --porcelain | awk '/.tf/ { print $2; }')
 

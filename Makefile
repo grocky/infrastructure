@@ -1,7 +1,16 @@
 .DEFAULT_GOAL := help
 
+TF_MODULES := $(shell find . -name "*.tf" -exec dirname {} \; | grep -v '\.terraform' | uniq)
+
 help: ## Print this help message
 	@awk -F ':|##' '/^[^\t].+?:.*?##/ { printf "${GREEN}%-20s${NC}%s\n", $$1, $$NF }' $(MAKEFILE_LIST)
+
+%.dot:
+	cd $(shell dirname $@); \
+	terraform graph > $(shell basename $@);
+
+%.svg: %.dot
+	dot -Tsvg $< -o $@
 
 remote-state-init: ## Initialize remote-state
 	@cd remote-state; terraform init

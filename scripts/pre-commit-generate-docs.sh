@@ -62,6 +62,13 @@ function ensure_terraform_docs() {
   fi
 }
 
+function generate_graph() {
+  module="$1"
+  cd "${module}"
+  terraform graph > graph.dot
+  dot -Tsvg graph.dot > graph.svg
+}
+
 ###############################################################################
 # Generate docs from a list of modules.
 #
@@ -81,6 +88,7 @@ function generate_docs() {
     if [ $? -gt 0 ]; then
       files_updated=$((files_updated + 1))
     fi
+    make ${m}/graph.svg
   done
 
   return ${files_updated}
