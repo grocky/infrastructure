@@ -19,7 +19,7 @@ resource "aws_ses_domain_identity_verification" "rockygray_verification" {
 
 # SES DKIM
 resource "aws_ses_domain_dkim" "rockygray" {
-  domain = "${aws_ses_domain_identity.rockygray.domain}"
+  domain = aws_ses_domain_identity.rockygray.domain
 }
 
 resource "aws_route53_record" "rockygray_amazonses_dkim_record" {
@@ -49,9 +49,17 @@ resource "aws_route53_record" "rockygray_ses_domain_mail_from_mx" {
   records = ["10 feedback-smtp.${var.region}.amazonses.com"]
 }
 
-resource "aws_route53_record" "rockygray_ses_domain_mail_from_txt" {
+locals {
+  spf_domain_names = [
+    aws_ses_domain_mail_from.rockygray.mail_from_domain,
+    aws_ses_domain_identity.rockygray.domain,
+  ]
+}
+
+resource "aws_route53_record" "rockygray_ses_domain_spf_txt" {
+  count   = length(local.spf_domain_names)
   zone_id = module.root.outputs.root_zone_id
-  name    = aws_ses_domain_mail_from.rockygray.mail_from_domain
+  name    = element(local.spf_domain_names, count.index)
   type    = "TXT"
   ttl     = "600"
   records = ["v=spf1 include:amazonses.com -all"]
