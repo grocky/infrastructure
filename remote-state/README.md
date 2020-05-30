@@ -1,21 +1,27 @@
+# Remote state infrastructure
+
+Sets up the remote state bucket.
+
+## Graph
+
+![](./graph.svg)
+
 ## Requirements
 
-| Name | Version |
-|------|---------|
-| terraform | >= 0.12 |
-| aws | >= 2.15.0 |
+No requirements.
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | >= 2.15.0 |
+| aws | n/a |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| root\_domain\_name | n/a | `any` | n/a | yes |
+| env | n/a | `string` | `"prod"` | no |
+| region | n/a | `string` | `"us-east-1"` | no |
 
 ## Outputs
 
