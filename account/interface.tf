@@ -6,8 +6,8 @@ variable "log_bucket_name" {
   default = "rockygray-s3-logs"
 }
 
-output "log_bucket_arn" {
-  value = aws_s3_bucket.aws_logs.arn
+output "log_bucket" {
+  value = aws_s3_bucket.aws_logs.id
 }
 
 output "ses_rule_set_name" {

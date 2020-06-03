@@ -24,5 +24,5 @@ No requirements.
 
 | Name | Description |
 |------|-------------|
-| log\_bucket\_arn | n/a |
+| log\_bucket | n/a |
 | ses\_rule\_set\_name | The name of the SES rule set |

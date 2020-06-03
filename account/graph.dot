@@ -8,7 +8,7 @@ digraph {
 		"[root] data.aws_caller_identity.current" [label = "data.aws_caller_identity.current", shape = "box"]
 		"[root] data.aws_iam_policy_document.main" [label = "data.aws_iam_policy_document.main", shape = "box"]
 		"[root] local.pre_log_bucket_arn" [label = "local.pre_log_bucket_arn", shape = "note"]
-		"[root] output.log_bucket_arn" [label = "output.log_bucket_arn", shape = "note"]
+		"[root] output.log_bucket" [label = "output.log_bucket", shape = "note"]
 		"[root] output.ses_rule_set_name" [label = "output.ses_rule_set_name", shape = "note"]
 		"[root] provider.aws" [label = "provider.aws", shape = "diamond"]
 		"[root] var.log_bucket_name" [label = "var.log_bucket_name", shape = "note"]
@@ -21,9 +21,9 @@ digraph {
 		"[root] data.aws_iam_policy_document.main" -> "[root] local.pre_log_bucket_arn"
 		"[root] local.pre_log_bucket_arn" -> "[root] var.log_bucket_name"
 		"[root] meta.count-boundary (EachMode fixup)" -> "[root] aws_ses_active_receipt_rule_set.main"
-		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.log_bucket_arn"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.log_bucket"
 		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.ses_rule_set_name"
-		"[root] output.log_bucket_arn" -> "[root] aws_s3_bucket.aws_logs"
+		"[root] output.log_bucket" -> "[root] aws_s3_bucket.aws_logs"
 		"[root] output.ses_rule_set_name" -> "[root] aws_ses_receipt_rule_set.main"
 		"[root] provider.aws (close)" -> "[root] aws_s3_bucket.aws_logs"
 		"[root] provider.aws (close)" -> "[root] aws_ses_active_receipt_rule_set.main"
