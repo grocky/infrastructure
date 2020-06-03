@@ -5,11 +5,12 @@ TF_MODULES := $(shell find . -name "*.tf" -exec dirname {} \; | grep -v '\.terra
 help: ## Print this help message
 	@awk -F ':|##' '/^[^\t].+?:.*?##/ { printf "${GREEN}%-20s${NC}%s\n", $$1, $$NF }' $(MAKEFILE_LIST)
 
-%.dot:
+.SECONDEXPANSION:
+%/graph.dot: %/*.tf
 	cd $(shell dirname $@); \
 	terraform graph > $(shell basename $@);
 
-%.svg: %.dot
+%/graph.svg: %/graph.dot
 	dot -Tsvg $< -o $@
 
 remote-state-init: ## Initialize remote-state
