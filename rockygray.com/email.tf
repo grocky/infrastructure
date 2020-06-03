@@ -84,3 +84,84 @@ resource "aws_route53_record" "rockygray_ses_domain_dmarc_txt" {
   ttl     = "600"
   records = ["v=DMARC1;p=quarantine;rua=mailto:dmarcreports@${aws_ses_domain_identity.rockygray.domain};"]
 }
+
+# SES S3 Rule
+data "aws_caller_identity" "current" {}
+
+locals {
+  ses_bucket_name = "${aws_ses_domain_identity.rockygray.domain}.emails"
+}
+
+resource "aws_s3_bucket" "temp_bucket" {
+  bucket        = local.ses_bucket_name
+  acl           = "private"
+  force_destroy = true
+  policy        = data.aws_iam_policy_document.s3_allow_ses_puts.json
+
+  logging {
+    target_bucket = data.terraform_remote_state.account.outputs.log_bucket
+    target_prefix = "s3/${local.ses_bucket_name}/"
+  }
+}
+
+data "aws_iam_policy_document" "s3_allow_ses_puts" {
+  statement {
+    sid    = "allow-ses-puts"
+    effect = "Allow"
+
+    principals {
+      type        = "Service"
+      identifiers = ["ses.amazonaws.com"]
+    }
+
+    actions = [
+      "s3:PutObject",
+    ]
+
+    resources = [
+      "arn:aws:s3:::${local.ses_bucket_name}/ses/*",
+    ]
+
+    condition {
+      test     = "StringEquals"
+      variable = "aws:Referer"
+      values   = [data.aws_caller_identity.current.account_id]
+    }
+  }
+}
+
+resource "aws_s3_bucket_public_access_block" "public_access_block" {
+  bucket = aws_s3_bucket.temp_bucket.id
+
+  # Block new public ACLs and uploading public objects
+  block_public_acls = true
+
+  # Retroactively remove public access granted through public ACLs
+  ignore_public_acls = true
+
+  # Block new public bucket policies
+  block_public_policy = true
+
+  # Retroactivley block public and cross-account access if bucket has public policies
+  restrict_public_buckets = true
+}
+
+resource "aws_ses_receipt_rule" "rockygray" {
+  name          = "${aws_ses_domain_identity.rockygray.domain}-s3-rule"
+  rule_set_name = data.terraform_remote_state.account.outputs.ses_rule_set_name
+  recipients    = ["me@erockygray.com"]
+  enabled       = true
+  scan_enabled  = true
+
+  add_header_action {
+    header_name  = "Custom-Header"
+    header_value = "Added by SES"
+    position     = 1
+  }
+
+  s3_action {
+    bucket_name       = aws_s3_bucket.temp_bucket.id
+    position          = 2
+    object_key_prefix = "ses/"
+  }
+}
