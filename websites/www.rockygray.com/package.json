@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "chai": "3.5.0",
-    "mocha": "6.1.4",
+    "mocha": "8.0.1",
     "react-scripts": "3.4.1",
     "sinon": "1.17.5",
     "svgo": "1.2.2"
