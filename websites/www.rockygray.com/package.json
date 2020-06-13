@@ -7,13 +7,8 @@
     "build": "REACT_APP_GIT_SHA=$(git rev-parse --short HEAD) react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "clean": "rm -rf dist/",
+    "clean": "rm -rf build/",
     "test:watch": "npm run test -- --watch",
-    "postbuild": "echo 'doing nothing for now...' && exit 0 || npm run favicons",
-    "build-dev": "webpack -p",
-    "favicons": "npm run favicons:generate && npm run favicons:inject",
-    "favicons:generate": "real-favicon generate faviconDescription.json faviconData.json dist/static/favicons",
-    "favicons:inject": "real-favicon inject faviconData.json dist/ client/index.html",
     "svg:clean": "svgo --disable=cleanupIDs --pretty --indent=2 --enable=removeViewBox --enable=removeDimensions",
     "svg:clean:all": "npm run svg:clean -- --folder client/img",
     "svg:min": "svgo --disable=cleanupIDs"
@@ -24,7 +19,6 @@
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
     "react-redux": "5.1.0",
-    "react-scripts": "3.4.1",
     "redux": "4.0.1"
   },
   "eslintConfig": {
@@ -32,7 +26,8 @@
   },
   "devDependencies": {
     "chai": "3.5.0",
-    "mocha": "6.1.4",
+    "mocha": "8.0.1",
+    "react-scripts": "3.4.1",
     "sinon": "1.17.5",
     "svgo": "1.2.2"
   },
