@@ -29,6 +29,10 @@ class Profile extends Component {
   render() {
     const socialSites = [
       {
+        name: 'file',
+        url: 'https://blog.rockygray.com/about'
+      },
+      {
         name: 'github',
         url: 'https://github.com/grocky'
       },
