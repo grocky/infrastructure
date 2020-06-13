@@ -7,7 +7,7 @@
     "build": "REACT_APP_GIT_SHA=$(git rev-parse --short HEAD) react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "clean": "rm -rf dist/",
+    "clean": "rm -rf build/",
     "test:watch": "npm run test -- --watch",
     "svg:clean": "svgo --disable=cleanupIDs --pretty --indent=2 --enable=removeViewBox --enable=removeDimensions",
     "svg:clean:all": "npm run svg:clean -- --folder client/img",
