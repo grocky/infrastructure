@@ -15,7 +15,6 @@
   },
   "dependencies": {
     "gsap": "2.0.2",
-    "lodash": "4.17.13",
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
     "react-redux": "5.1.0",
@@ -26,8 +25,9 @@
   },
   "devDependencies": {
     "chai": "3.5.0",
-    "mocha": "8.0.1",
-    "react-scripts": "3.4.1",
+    "cli-real-favicon": "0.0.8",
+    "mocha": "8.1.1",
+    "react-scripts": "3.4.3",
     "sinon": "1.17.5",
     "svgo": "1.2.2"
   },
