@@ -51,6 +51,8 @@ jobs:
           key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
       - restore_cache:
           key: v1-build-{{ .Environment.CIRCLE_SHA1 }}
+      - restore_cache:
+          key: v1-node_modules-{{ checksum "package-lock.json" }}
       - run:
           name: Deploy the app
           command: make publish
@@ -70,4 +72,4 @@ workflows:
             - build
           filters:
             branches:
-              only: master
+              only: main
