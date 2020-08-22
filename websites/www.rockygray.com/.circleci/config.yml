@@ -2,7 +2,7 @@ version: 2
 jobs:
   checkout:
     docker:
-      - image: circleci/node:10-browsers
+      - image: circleci/node:14.4-browsers
     working_directory: ~/rockygray.com
     steps:
       - checkout
@@ -12,7 +12,7 @@ jobs:
             - ~/rockygray.com
   node_modules:
     docker:
-      - image: circleci/node:10-browsers
+      - image: circleci/node:14.4-browsers
     working_directory: ~/rockygray.com
     steps:
       - restore_cache:
@@ -28,7 +28,7 @@ jobs:
             - node_modules
   build:
     docker:
-      - image: circleci/node:10-browsers
+      - image: circleci/node:14.4-browsers
     working_directory: ~/rockygray.com
     steps:
       - restore_cache:

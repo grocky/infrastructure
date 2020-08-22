@@ -26,9 +26,11 @@ start: ## Start the dev server
 clean: ## Cleanup the application
 	rm -rf dist/ $(BUILD_DIR)
 
-favicons: public/img/logo.svg ## Generate favicons
-	npx real-favicon generate faviconDescription.json faviconData.json public
+FAVICONS := public/android-chrome-*.png public/apple-touch-icon.png public/favicon*.png public/mstile-*.png
 
+favicons: $(FAVICONS) ## Generate favicons
+$(FAVICONS):  public/img/logo.svg
+	npx real-favicon generate faviconDescription.json faviconData.json public
 build: $(build_sources) favicons ## Package the application
 	npm run build
 
