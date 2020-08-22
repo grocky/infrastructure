@@ -26,7 +26,10 @@ start: ## Start the dev server
 clean: ## Cleanup the application
 	rm -rf dist/ $(BUILD_DIR)
 
-build: $(build_sources) ## Package the application
+favicons: public/img/logo.svg ## Generate favicons
+	npx real-favicon generate faviconDescription.json faviconData.json public
+
+build: $(build_sources) favicons ## Package the application
 	npm run build
 
 .PHONY=publish
