@@ -29,28 +29,34 @@ class Profile extends Component {
   render() {
     const socialSites = [
       {
-        name: 'file',
-        url: 'https://blog.rockygray.com/about'
+        icon: 'fa fa-pen',
+        url: 'https://blog.rockygray.com/about',
+        overrideName: 'blog',
       },
       {
-        name: 'github',
-        url: 'https://github.com/grocky'
+        icon: 'fa fa-file-alt',
+        url: 'https://resume.rockygray.com',
+        overrideName: 'resume',
       },
       {
-        name: 'linkedin',
-        url: 'https://www.linkedin.com/in/rockygray'
+        icon: 'fab fa-github',
+        url: 'https://github.com/grocky',
       },
       {
-        name: 'medium',
-        url: 'https://medium.com/@rocky.grayjr'
+        icon: 'fab fa-linkedin',
+        url: 'https://www.linkedin.com/in/rockygray',
       },
       {
-        name: 'twitter',
-        url: 'https://twitter.com/RockyGJr'
+        icon: 'fab fa-medium',
+        url: 'https://medium.com/@rocky.grayjr',
       },
       {
-        name: 'stack-overflow',
-        url: 'https://stackoverflow.com/story/rockygray'
+        icon: 'fab fa-twitter',
+        url: 'https://twitter.com/RockyGJr',
+      },
+      {
+        icon: 'fab fa-stack-overflow',
+        url: 'https://stackoverflow.com/story/rockygray',
       },
     ];
 

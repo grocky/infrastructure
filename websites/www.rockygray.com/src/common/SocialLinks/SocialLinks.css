@@ -16,7 +16,7 @@
   border-style: solid;
 }
 
-.social-link .fa {
+.social-link .fa, .social-link .fab {
   font-size: 2em;
 }
 

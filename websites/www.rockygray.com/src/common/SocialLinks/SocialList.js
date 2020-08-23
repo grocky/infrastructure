@@ -6,7 +6,7 @@ import './SocialLinks.css'
 const SocialList = ({ socialSites }) => (
   <section className="social-sites-container">
     {socialSites.map(s => (
-      <SocialLink key={s.name} name={s.name} url={s.url}/>
+      <SocialLink key={s.name} {...s} />
     ))}
   </section>
 );
