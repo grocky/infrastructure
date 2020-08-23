@@ -28,10 +28,13 @@ clean: ## Cleanup the application
 
 FAVICONS := public/android-chrome-*.png public/apple-touch-icon.png public/favicon*.png public/mstile-*.png
 
+.PHONY=favicons
 favicons: $(FAVICONS) ## Generate favicons
 $(FAVICONS):  public/img/logo.svg
 	npx real-favicon generate faviconDescription.json faviconData.json public
-build: $(build_sources) favicons ## Package the application
+
+build: $(build_sources) $(FAVICONS) ## Package the application
+	@echo "new than target: $?"
 	npm run build
 
 .PHONY=publish
