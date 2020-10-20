@@ -23,9 +23,9 @@ POLICY
   }
 
   tags = {
-    Name        = "rockygray.com"
+    Name        = var.root_domain_name
     Env         = "prod"
-    Application = "www.rockygray.com"
+    Application = "www.${var.root_domain_name}"
   }
 }
 

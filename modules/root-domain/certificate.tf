@@ -8,9 +8,9 @@ resource "aws_acm_certificate" "certificate" {
   }
 
   tags = {
-    Name        = "wildcard.rockygray.com"
+    Name        = "wildcard.${var.root_domain_name}"
     Env         = "prod"
-    Application = "www.rockygray.com"
+    Application = "www.${var.root_domain_name}"
   }
 }
 

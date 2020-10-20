@@ -2,9 +2,9 @@ resource "aws_route53_zone" "zone" {
   name = var.root_domain_name
 
   tags = {
-    Name        = "rockygray.com"
+    Name        = var.root_domain_name
     Env         = "prod"
-    Application = "www.rockygray.com"
+    Application = "www.${var_root_domain_name}"
   }
 }
 
