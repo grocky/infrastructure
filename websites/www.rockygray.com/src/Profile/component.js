@@ -44,11 +44,11 @@ class Profile extends Component {
       },
       {
         icon: 'fab fa-linkedin',
-        url: 'https://www.linkedin.com/in/rockygray',
+        url: 'https://www.linkedin.com/in/grocky',
       },
       {
         icon: 'fab fa-medium',
-        url: 'https://medium.com/@rocky.grayjr',
+        url: 'https://medium.com/@grocky'
       },
       {
         icon: 'fab fa-twitter',
@@ -56,7 +56,7 @@ class Profile extends Component {
       },
       {
         icon: 'fab fa-stack-overflow',
-        url: 'https://stackoverflow.com/story/rockygray',
+        url: 'https://stackoverflow.com/story/grocky',
       },
     ];
 
