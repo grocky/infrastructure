@@ -66,7 +66,7 @@ resource "aws_cloudfront_distribution" "www_distribution" {
   }
 
   viewer_certificate {
-    acm_certificate_arn = data.terraform_remote_state.root.outputs.certificate_arn
+    acm_certificate_arn = data.terraform_remote_state.root.outputs.root_domain.certificate_arn
     ssl_support_method  = "sni-only"
   }
 
