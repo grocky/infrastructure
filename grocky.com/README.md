@@ -5,9 +5,7 @@ No requirements.
 
 ## Providers
 
-| Name | Version |
-|------|---------|
-| aws | n/a |
+No provider.
 
 ## Inputs
 
@@ -20,5 +18,4 @@ No requirements.
 
 | Name | Description |
 |------|-------------|
-| nameservers | n/a |
-| zone\_id | n/a |
+| root\_domain | n/a |

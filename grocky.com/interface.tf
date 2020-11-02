@@ -6,10 +6,6 @@ variable "region" {
   default = "us-east-1"
 }
 
-output "nameservers" {
-  value = aws_route53_zone.zone.name_servers
-}
-
-output "zone_id" {
-  value = aws_route53_zone.zone.zone_id
+output "root_domain" {
+  value = module.root
 }
