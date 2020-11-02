@@ -7,5 +7,5 @@ variable "region" {
 }
 
 output "root_domain" {
-  value = module.root
+  value = module.root.outputs
 }
