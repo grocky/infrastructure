@@ -1,5 +1,5 @@
 resource "aws_cloudfront_distribution" "root_distribution" {
-  comment = "Redirect distribution for rockygray.com"
+  comment = "Redirect distribution for ${var.root_domain_name}"
 
   origin {
     custom_origin_config {
@@ -49,9 +49,9 @@ resource "aws_cloudfront_distribution" "root_distribution" {
   }
 
   tags = {
-    Name        = "rockygray.com"
+    Name        = var.root_domain_name
     Env         = "prod"
-    Application = "www.rockygray.com"
+    Application = "www.${var.root_domain_name}"
   }
 }
 
