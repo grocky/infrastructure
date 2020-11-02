@@ -2,8 +2,6 @@
 
 Personal infrastructure.
 
-## module docs
-
-```shell
-brew install terraform-docs
-```
+- [remote-state](./remote-state)
+- [rockygray.com](./rockygray.com)
+- [grocky.com](./grocky.com)

@@ -1,3 +1,10 @@
+# grocky.com Infrastructure
+
+This is the sets up the wild card certificate and apex domain for grocky.com
+
+## Infrastructure Graph
+
+![terraform graph](./graph.svg)
 
 ## Requirements
 

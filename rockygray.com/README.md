@@ -2,9 +2,10 @@
 
 This is the sets up the wild card certificate and apex domain for rockygray.com
 
-## Graph
+## Infrastructure Graph
 
-![](./graph.svg)
+![terraform graph](./graph.svg)
+
 ## Requirements
 
 No requirements.

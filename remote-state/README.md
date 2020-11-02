@@ -2,9 +2,9 @@
 
 Sets up the remote state bucket.
 
-## Graph
+## Infrastructure Graph
 
-![](./graph.svg)
+![terraform graph](./graph.svg)
 
 ## Requirements
 
