@@ -4,7 +4,7 @@ resource "aws_route53_zone" "zone" {
   tags = {
     Name        = var.root_domain_name
     Env         = "prod"
-    Application = "www.${var_root_domain_name}"
+    Application = "www.${var.root_domain_name}"
   }
 }
 
@@ -21,4 +21,3 @@ resource "aws_route53_record" "root" {
     evaluate_target_health = false
   }
 }
-
