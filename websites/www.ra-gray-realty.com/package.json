@@ -1,0 +1,16 @@
+{
+  "name": "ra-gray-realty.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node scripts/start.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "browser-sync": "2.27.7",
+    "concurrently": "7.0.0",
+    "upath": "2.0.1"
+  }
+}
