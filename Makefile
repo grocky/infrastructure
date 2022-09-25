@@ -6,7 +6,7 @@ help: ## Print this help message
 	@awk -F ':|##' '/^[^\t].+?:.*?##/ { printf "${GREEN}%-20s${NC}%s\n", $$1, $$NF }' $(MAKEFILE_LIST)
 
 .SECONDEXPANSION:
-%/graph.dot: %/*.tf
+%/graph.dot: %/*.tf modules/*/*.tf
 	cd $(shell dirname $@); \
 	terraform graph > $(shell basename $@);
 
