@@ -1,0 +1,22 @@
+[[main]]
+  name = "Home"
+  url = ""
+  weight = -110
+
+[[main]]
+  name = "About"
+  url = "about/"
+  weight = -109
+
+[[main]]
+  name = "Links"
+  identifier = "Links"
+  weight = -108
+[[main]]
+  parent = "Links"
+  name = "Personal Site"
+  url = "https://www.grocky.com"
+[[main]]
+  parent = "Links"
+  name = "Resume"
+  url = "https://resume.rockygray.com"

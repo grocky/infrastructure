@@ -1,0 +1,85 @@
+theme = ["hugo-video", "hugo-clarity-grocky"]
+
+enableRobotsTXT = true
+enableEmoji = true
+enableGitInfo = true
+
+baseurl = "https://blog.rockygray.com"
+title = "Rocky's thoughts and things"
+paginate = 10
+
+disqusShortname = "blog-rockygray-com"
+
+DefaultContentLanguage = "en"
+
+[taxonomies]
+category = "categories"
+tag = "tags"
+series = "series"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      hardWraps = false
+      unsafe = true # change to false to disable inclusion of rawHTML and math functions
+      xhtml = false
+    [markup.goldmark.extensions]
+      typographer = false
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    hl_Lines = "--"
+    lineNoStart = 1
+    lineNos = true # always set to true # else line numbers won't show at all! even when you toggle them on in the UI
+    lineNumbersInTable = false # toggling this on (i.e to true) or deleting this line will break the code blocks functionality. Will
+    noClasses = false
+    # style = "monokai"
+    tabWidth = 2
+
+[params]
+comment = true
+
+author = "Rocky Gray"
+twitter = "@RockyGJr"
+largeTwitterCard = true
+Tagline = "Father. Husband. Technologist. Leader. Inventor."
+description = "Rocky Gray is a software engineering leader focused on building systems and leading talented engineers. Thoughts on this site are his own."
+
+customCSS = ["css/blog.css"]
+customJS = ["js/blog.js"]
+
+ga_analytics = "UA-55863384-2"
+
+numberOfTagsShown = 14
+
+# will be used on share >> twitter, facebook, linkedin
+fallBackOgImage = "images/grocky-solutions.png"
+
+# sets the maximum number of lines per codeblock. The codeblock will however be scrollable and expandable.
+codeMaxLines = 7
+codeLineNumbers = false
+
+mainSections = ["posts"] # see config details here https://gohugo.io/functions/where/#mainsections
+
+# center logo on navbar
+centerLogo = false # Set to "true" for centering or "false" for left aligned.
+logo = "logos/logo.min.svg"
+
+# Label Non inline images on an article body
+figurePositionShow = false # toggle on or off globally
+# you can toggle this behaviour on or off on per page using the same variable inside your articles frontmatter
+figurePositionLabel = "Figure" # the text before image number e.g Figure 1.0
+
+# Set the collapsed mobile navigation to either appear from the left or the right
+mobileNavigation = "left" # if you prefer right change to 'right'
+
+enforceLightMode = true
+# enforceDarkMode = false
+
+# Text for the languages menu.
+languageMenuName = "ƛ"
+
+# Title separator, default to |.
+titleSeparator = "|"
+
+dateFormat = "2006.Jan.2.Mon"
