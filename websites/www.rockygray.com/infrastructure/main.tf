@@ -34,7 +34,7 @@ output "site_url" {
 }
 
 output "s3_website_url" {
-  value = aws_s3_bucket.www.website_endpoint
+  value = aws_s3_bucket_website_configuration.www.website_endpoint
 }
 
 output "cloudfront_url" {
