@@ -1,0 +1,40 @@
+{
+  "name": "rockygray",
+  "version": "1.2.0",
+  "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "REACT_APP_GIT_SHA=$(git rev-parse --short HEAD) react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "clean": "rm -rf build/",
+    "test:watch": "npm run test -- --watch",
+    "svg:clean": "svgo --disable=cleanupIDs --pretty --indent=2 --enable=removeViewBox --enable=removeDimensions",
+    "svg:clean:all": "npm run svg:clean -- --folder client/img",
+    "svg:min": "svgo --disable=cleanupIDs"
+  },
+  "dependencies": {
+    "gsap": "2.0.2",
+    "react": "^16.6.1",
+    "react-dom": "^16.6.1",
+    "react-redux": "5.1.0",
+    "redux": "4.0.1"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "devDependencies": {
+    "chai": "3.5.0",
+    "cli-real-favicon": "0.0.8",
+    "mocha": "8.1.1",
+    "react-scripts": "3.4.3",
+    "sinon": "1.17.5",
+    "svgo": "1.2.2"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

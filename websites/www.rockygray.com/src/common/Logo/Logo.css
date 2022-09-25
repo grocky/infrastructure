@@ -1,0 +1,7 @@
+.activeLogo {
+  cursor: pointer;
+}
+
+.inactiveLogo {
+  cursor: auto;
+}

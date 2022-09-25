@@ -1,0 +1,30 @@
+:root {
+  --cool-red: #991d20;
+  --light-gray: #ebe9e7;
+  --dark-gray: #353535;
+}
+
+body {
+  background-color: var(--light-gray);
+  padding: 0;
+  margin: 0;
+	font-family: "proxima-nova",sans-serif;
+}
+
+.flex,
+.flex-stack {
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+.flex-stack {
+  flex-direction: column;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}

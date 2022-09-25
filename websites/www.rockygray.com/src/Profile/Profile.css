@@ -1,0 +1,76 @@
+* {
+  -webkit-transition: all 0.4s linear;
+  -moz-transition: all 0.4s linear;
+  -o-transition: all 0.4s linear;
+  transition: all 0.4s linear;
+}
+
+.background-logo {
+  position: absolute;
+  top: 8px;
+  left: -100px;
+  width: 100%;
+}
+@media screen and (min-width: 1400px) {
+  .background-logo {
+    left: 0;
+  }
+}
+
+.background-logo svg {
+  max-height: 90vh;
+  fill: var(--cool-red);
+}
+
+.profile-container {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  max-width: 1024px;
+  margin: auto;
+}
+
+.profile-container section {
+  margin-top: 1em;
+}
+
+.information {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  max-width: 350px;
+  margin: auto;
+}
+
+.contact-info {
+  background-color: var(--light-gray);
+  color: var(--dark-gray);
+  border: .2rem solid;
+  border-radius: 10px;
+  padding: .5em;
+  margin: 0 4em;
+}
+
+.contact-info .title {
+  font-size: .5em;
+}
+
+.contact-info p {
+  margin: .3em
+}
+
+footer {
+  font-size: .5em;
+  color: white;
+  background-color: var(--dark-gray);
+  padding: .4em;
+}
+
+footer p {
+  margin: 0;
+}
