@@ -21,7 +21,8 @@ function get_requirements_line() {
   line_number=$(awk '/## Requirements/ { print NR }' ${filename})
 
   if [ -z ${line_number} ]; then
-    line_number=1
+    header_lines=$(wc -l < ${filename})
+    line_number=$((header_lines + 1))
   fi
 
   echo ${line_number}
