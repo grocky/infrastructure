@@ -2,6 +2,6 @@
 
 Personal infrastructure.
 
-- [remote-state](./remote-state)
-- [rockygray.com](./rockygray.com)
-- [grocky.com](./grocky.com)
+- [remote-state](./root-domains/remote-state)
+- [rockygray.com](./root-domains/rockygray.com)
+- [grocky.com](./root-domains/grocky.com)

@@ -12,9 +12,6 @@ digraph {
 		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" [label = "provider[\"registry.terraform.io/hashicorp/aws\"]", shape = "diamond"]
 		"[root] var.env" [label = "var.env", shape = "note"]
 		"[root] var.region" [label = "var.region", shape = "note"]
-		"[root] meta.count-boundary (EachMode fixup)" -> "[root] module.root (close)"
-		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.root_domain (expand)"
-		"[root] meta.count-boundary (EachMode fixup)" -> "[root] var.env"
 		"[root] module.root (close)" -> "[root] module.root.aws_route53_record.root (expand)"
 		"[root] module.root (close)" -> "[root] module.root.output.outputs (expand)"
 		"[root] module.root.aws_acm_certificate.certificate (expand)" -> "[root] module.root.var.root_domain_name (expand)"
@@ -34,8 +31,10 @@ digraph {
 		"[root] output.root_domain (expand)" -> "[root] module.root.output.outputs (expand)"
 		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] module.root.aws_route53_record.root (expand)"
 		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" -> "[root] var.region"
-		"[root] root" -> "[root] meta.count-boundary (EachMode fixup)"
+		"[root] root" -> "[root] module.root (close)"
+		"[root] root" -> "[root] output.root_domain (expand)"
 		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)"
+		"[root] root" -> "[root] var.env"
 	}
 }
 

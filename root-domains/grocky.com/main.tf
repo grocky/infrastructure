@@ -4,7 +4,7 @@ terraform {
     bucket         = "grocky-tfstate"
     dynamodb_table = "tfstate-lock"
     region         = "us-east-1"
-    key            = "ra-gray-realty.com/terraform.tfstate"
+    key            = "grocky.com/terraform.tfstate"
   }
 }
 
@@ -13,6 +13,6 @@ provider "aws" {
 }
 
 module "root" {
-  source           = "../modules/root-domain"
-  root_domain_name = "ra-gray-realty.com"
+  source           = "../../modules/root-domain"
+  root_domain_name = "grocky.com"
 }
