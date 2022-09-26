@@ -10,13 +10,13 @@ help: ## print this help message
 start: ## Start the dev server
 	npm run start
 
-infra-init: ## Initialize infrastructure
+tf-init: ## Initialize infrastructure
 	cd infrastructure; terraform init
 
-infra-plan: ## See terraform plan
+tf-plan: ## See terraform plan
 	cd infrastructure; terraform plan
 
-infra-apply: ## Apply terraform
+tf-apply: ## Apply terraform
 	cd infrastructure; terraform apply
 
 .PHONY=publish

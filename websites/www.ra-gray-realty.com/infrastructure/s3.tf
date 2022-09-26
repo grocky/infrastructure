@@ -1,14 +1,36 @@
 resource "aws_s3_bucket" "www" {
   bucket = var.www_domain_name
-  acl    = "public-read"
 
-  // @see This post: http://amzn.to/2Fa04ul explains why.
+  tags = {
+    Name        = var.www_domain_name
+    Env         = "prod"
+    Application = var.www_domain_name
+  }
+}
+
+resource "aws_s3_bucket_website_configuration" "www" {
+  bucket = aws_s3_bucket.www.bucket
+  index_document {
+    suffix = "index.html"
+  }
+  error_document {
+    key = "index.html"
+  }
+}
+
+resource "aws_s3_bucket_acl" "www" {
+  bucket = aws_s3_bucket.www.bucket
+  acl    = "public-read"
+}
+
+resource "aws_s3_bucket_policy" "allow_access_from_anyone" {
+  bucket = aws_s3_bucket.www.bucket
   policy = <<POLICY
 {
   "Version":"2012-10-17",
   "Statement":[
     {
-      "Sid":"AddPerm",
+      "Sid":"GetPerm",
       "Effect":"Allow",
       "Principal": "*",
       "Action":["s3:GetObject"],
@@ -17,19 +39,11 @@ resource "aws_s3_bucket" "www" {
   ]
 }
 POLICY
+}
 
-  website {
-    index_document = "index.html"
-    error_document = "index.html"
-  }
-
-  versioning {
-    enabled = true
-  }
-
-  tags = {
-    Name        = "www.ra-gray-realty.com"
-    Env         = "prod"
-    Application = "www.ra-gray-realty.com"
+resource "aws_s3_bucket_versioning" "www" {
+  bucket = aws_s3_bucket.www.bucket
+  versioning_configuration {
+    status = "Enabled"
   }
 }
