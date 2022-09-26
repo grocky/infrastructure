@@ -38,8 +38,8 @@ output "site_url" {
 
 output "s3_website_url" {
   value = {
-    prod = aws_s3_bucket.blog.website_endpoint
-    qa   = aws_s3_bucket.preview_blog.website_endpoint
+    prod = aws_s3_bucket_website_configuration.blog.website_endpoint
+    qa   = aws_s3_bucket_website_configuration.preview_blog.website_endpoint
   }
 }
 

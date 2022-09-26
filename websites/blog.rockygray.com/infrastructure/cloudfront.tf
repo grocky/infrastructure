@@ -7,7 +7,7 @@ resource "aws_cloudfront_distribution" "blog_distribution" {
       origin_ssl_protocols   = ["TLSv1", "TLSv1.1", "TLSv1.2"]
     }
 
-    domain_name = aws_s3_bucket.blog.website_endpoint
+    domain_name = aws_s3_bucket_website_configuration.blog.website_endpoint
     origin_id   = var.blog_domain_name
   }
 
@@ -86,7 +86,7 @@ resource "aws_cloudfront_distribution" "preview_blog_distribution" {
       origin_ssl_protocols   = ["TLSv1", "TLSv1.1", "TLSv1.2"]
     }
 
-    domain_name = aws_s3_bucket.preview_blog.website_endpoint
+    domain_name = aws_s3_bucket_website_configuration.preview_blog.website_endpoint
     origin_id   = var.preview_blog_domain_name
   }
 

@@ -2,43 +2,74 @@ digraph {
 	compound = "true"
 	newrank = "true"
 	subgraph "root" {
-		"[root] aws_cloudfront_distribution.blog_distribution" [label = "aws_cloudfront_distribution.blog_distribution", shape = "box"]
-		"[root] aws_route53_record.blog" [label = "aws_route53_record.blog", shape = "box"]
-		"[root] aws_route53_record.google_site_verification" [label = "aws_route53_record.google_site_verification", shape = "box"]
-		"[root] aws_s3_bucket.blog" [label = "aws_s3_bucket.blog", shape = "box"]
-		"[root] data.terraform_remote_state.rockygray_com" [label = "data.terraform_remote_state.rockygray_com", shape = "box"]
-		"[root] output.cloudfront_url" [label = "output.cloudfront_url", shape = "note"]
-		"[root] output.cloudfront_www_id" [label = "output.cloudfront_www_id", shape = "note"]
-		"[root] output.s3_website_url" [label = "output.s3_website_url", shape = "note"]
-		"[root] output.site_url" [label = "output.site_url", shape = "note"]
-		"[root] provider.aws" [label = "provider.aws", shape = "diamond"]
-		"[root] provider.terraform" [label = "provider.terraform", shape = "diamond"]
+		"[root] aws_cloudfront_distribution.blog_distribution (expand)" [label = "aws_cloudfront_distribution.blog_distribution", shape = "box"]
+		"[root] aws_cloudfront_distribution.preview_blog_distribution (expand)" [label = "aws_cloudfront_distribution.preview_blog_distribution", shape = "box"]
+		"[root] aws_route53_record.blog (expand)" [label = "aws_route53_record.blog", shape = "box"]
+		"[root] aws_route53_record.google_site_verification (expand)" [label = "aws_route53_record.google_site_verification", shape = "box"]
+		"[root] aws_route53_record.preview_blog (expand)" [label = "aws_route53_record.preview_blog", shape = "box"]
+		"[root] aws_s3_bucket.blog (expand)" [label = "aws_s3_bucket.blog", shape = "box"]
+		"[root] aws_s3_bucket.preview_blog (expand)" [label = "aws_s3_bucket.preview_blog", shape = "box"]
+		"[root] aws_s3_bucket_acl.blog (expand)" [label = "aws_s3_bucket_acl.blog", shape = "box"]
+		"[root] aws_s3_bucket_acl.preview_blog (expand)" [label = "aws_s3_bucket_acl.preview_blog", shape = "box"]
+		"[root] aws_s3_bucket_policy.blog_access_policy (expand)" [label = "aws_s3_bucket_policy.blog_access_policy", shape = "box"]
+		"[root] aws_s3_bucket_policy.preview_blog_access_policy (expand)" [label = "aws_s3_bucket_policy.preview_blog_access_policy", shape = "box"]
+		"[root] aws_s3_bucket_versioning.blog (expand)" [label = "aws_s3_bucket_versioning.blog", shape = "box"]
+		"[root] aws_s3_bucket_versioning.preview_blog (expand)" [label = "aws_s3_bucket_versioning.preview_blog", shape = "box"]
+		"[root] aws_s3_bucket_website_configuration.blog (expand)" [label = "aws_s3_bucket_website_configuration.blog", shape = "box"]
+		"[root] aws_s3_bucket_website_configuration.preview_blog (expand)" [label = "aws_s3_bucket_website_configuration.preview_blog", shape = "box"]
+		"[root] data.terraform_remote_state.rockygray_com (expand)" [label = "data.terraform_remote_state.rockygray_com", shape = "box"]
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" [label = "provider[\"registry.terraform.io/hashicorp/aws\"]", shape = "diamond"]
+		"[root] provider[\"terraform.io/builtin/terraform\"]" [label = "provider[\"terraform.io/builtin/terraform\"]", shape = "diamond"]
 		"[root] var.blog_domain_name" [label = "var.blog_domain_name", shape = "note"]
 		"[root] var.google_site_verification_code" [label = "var.google_site_verification_code", shape = "note"]
-		"[root] aws_cloudfront_distribution.blog_distribution" -> "[root] aws_s3_bucket.blog"
-		"[root] aws_cloudfront_distribution.blog_distribution" -> "[root] data.terraform_remote_state.rockygray_com"
-		"[root] aws_route53_record.blog" -> "[root] aws_cloudfront_distribution.blog_distribution"
-		"[root] aws_route53_record.google_site_verification" -> "[root] data.terraform_remote_state.rockygray_com"
-		"[root] aws_route53_record.google_site_verification" -> "[root] provider.aws"
-		"[root] aws_route53_record.google_site_verification" -> "[root] var.google_site_verification_code"
-		"[root] aws_s3_bucket.blog" -> "[root] provider.aws"
-		"[root] aws_s3_bucket.blog" -> "[root] var.blog_domain_name"
-		"[root] data.terraform_remote_state.rockygray_com" -> "[root] provider.terraform"
-		"[root] meta.count-boundary (EachMode fixup)" -> "[root] aws_route53_record.google_site_verification"
-		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.cloudfront_url"
-		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.cloudfront_www_id"
-		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.s3_website_url"
-		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.site_url"
-		"[root] output.cloudfront_url" -> "[root] aws_cloudfront_distribution.blog_distribution"
-		"[root] output.cloudfront_www_id" -> "[root] aws_cloudfront_distribution.blog_distribution"
-		"[root] output.s3_website_url" -> "[root] aws_s3_bucket.blog"
-		"[root] output.site_url" -> "[root] aws_route53_record.blog"
-		"[root] provider.aws (close)" -> "[root] aws_route53_record.blog"
-		"[root] provider.aws (close)" -> "[root] aws_route53_record.google_site_verification"
-		"[root] provider.terraform (close)" -> "[root] data.terraform_remote_state.rockygray_com"
-		"[root] root" -> "[root] meta.count-boundary (EachMode fixup)"
-		"[root] root" -> "[root] provider.aws (close)"
-		"[root] root" -> "[root] provider.terraform (close)"
+		"[root] var.preview_blog_domain_name" [label = "var.preview_blog_domain_name", shape = "note"]
+		"[root] aws_cloudfront_distribution.blog_distribution (expand)" -> "[root] aws_s3_bucket_website_configuration.blog (expand)"
+		"[root] aws_cloudfront_distribution.blog_distribution (expand)" -> "[root] data.terraform_remote_state.rockygray_com (expand)"
+		"[root] aws_cloudfront_distribution.preview_blog_distribution (expand)" -> "[root] aws_s3_bucket_website_configuration.preview_blog (expand)"
+		"[root] aws_cloudfront_distribution.preview_blog_distribution (expand)" -> "[root] data.terraform_remote_state.rockygray_com (expand)"
+		"[root] aws_route53_record.blog (expand)" -> "[root] aws_cloudfront_distribution.blog_distribution (expand)"
+		"[root] aws_route53_record.google_site_verification (expand)" -> "[root] data.terraform_remote_state.rockygray_com (expand)"
+		"[root] aws_route53_record.google_site_verification (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_route53_record.google_site_verification (expand)" -> "[root] var.google_site_verification_code"
+		"[root] aws_route53_record.preview_blog (expand)" -> "[root] aws_cloudfront_distribution.preview_blog_distribution (expand)"
+		"[root] aws_s3_bucket.blog (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_s3_bucket.blog (expand)" -> "[root] var.blog_domain_name"
+		"[root] aws_s3_bucket.preview_blog (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_s3_bucket.preview_blog (expand)" -> "[root] var.blog_domain_name"
+		"[root] aws_s3_bucket.preview_blog (expand)" -> "[root] var.preview_blog_domain_name"
+		"[root] aws_s3_bucket_acl.blog (expand)" -> "[root] aws_s3_bucket.blog (expand)"
+		"[root] aws_s3_bucket_acl.preview_blog (expand)" -> "[root] aws_s3_bucket.preview_blog (expand)"
+		"[root] aws_s3_bucket_policy.blog_access_policy (expand)" -> "[root] aws_s3_bucket.blog (expand)"
+		"[root] aws_s3_bucket_policy.preview_blog_access_policy (expand)" -> "[root] aws_s3_bucket.preview_blog (expand)"
+		"[root] aws_s3_bucket_versioning.blog (expand)" -> "[root] aws_s3_bucket.blog (expand)"
+		"[root] aws_s3_bucket_versioning.preview_blog (expand)" -> "[root] aws_s3_bucket.preview_blog (expand)"
+		"[root] aws_s3_bucket_website_configuration.blog (expand)" -> "[root] aws_s3_bucket.blog (expand)"
+		"[root] aws_s3_bucket_website_configuration.preview_blog (expand)" -> "[root] aws_s3_bucket.preview_blog (expand)"
+		"[root] data.terraform_remote_state.rockygray_com (expand)" -> "[root] provider[\"terraform.io/builtin/terraform\"]"
+		"[root] output.cloudfront_url (expand)" -> "[root] aws_cloudfront_distribution.blog_distribution (expand)"
+		"[root] output.cloudfront_url (expand)" -> "[root] aws_cloudfront_distribution.preview_blog_distribution (expand)"
+		"[root] output.cloudfront_www_id (expand)" -> "[root] aws_cloudfront_distribution.blog_distribution (expand)"
+		"[root] output.cloudfront_www_id (expand)" -> "[root] aws_cloudfront_distribution.preview_blog_distribution (expand)"
+		"[root] output.s3_website_url (expand)" -> "[root] aws_s3_bucket_website_configuration.blog (expand)"
+		"[root] output.s3_website_url (expand)" -> "[root] aws_s3_bucket_website_configuration.preview_blog (expand)"
+		"[root] output.site_url (expand)" -> "[root] aws_route53_record.blog (expand)"
+		"[root] output.site_url (expand)" -> "[root] aws_route53_record.preview_blog (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route53_record.blog (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route53_record.google_site_verification (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route53_record.preview_blog (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_s3_bucket_acl.blog (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_s3_bucket_acl.preview_blog (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_s3_bucket_policy.blog_access_policy (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_s3_bucket_policy.preview_blog_access_policy (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_s3_bucket_versioning.blog (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_s3_bucket_versioning.preview_blog (expand)"
+		"[root] provider[\"terraform.io/builtin/terraform\"] (close)" -> "[root] data.terraform_remote_state.rockygray_com (expand)"
+		"[root] root" -> "[root] output.cloudfront_url (expand)"
+		"[root] root" -> "[root] output.cloudfront_www_id (expand)"
+		"[root] root" -> "[root] output.s3_website_url (expand)"
+		"[root] root" -> "[root] output.site_url (expand)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)"
+		"[root] root" -> "[root] provider[\"terraform.io/builtin/terraform\"] (close)"
 	}
 }
 
