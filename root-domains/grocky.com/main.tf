@@ -11,8 +11,3 @@ terraform {
 provider "aws" {
   region = var.region
 }
-
-module "root" {
-  source           = "../../modules/root-domain"
-  root_domain_name = "grocky.com"
-}

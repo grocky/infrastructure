@@ -15,9 +15,7 @@ No providers.
 
 ## Modules
 
-| Name | Source | Version |
-|------|--------|---------|
-| <a name="module_root"></a> [root](#module\_root) | ../../modules/root-domain | n/a |
+No modules.
 
 ## Resources
 
@@ -32,6 +30,4 @@ No resources.
 
 ## Outputs
 
-| Name | Description |
-|------|-------------|
-| <a name="output_root_domain"></a> [root\_domain](#output\_root\_domain) | n/a |
+No outputs.

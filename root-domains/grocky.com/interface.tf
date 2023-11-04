@@ -5,7 +5,3 @@ variable "env" {
 variable "region" {
   default = "us-east-1"
 }
-
-output "root_domain" {
-  value = module.root.outputs
-}
