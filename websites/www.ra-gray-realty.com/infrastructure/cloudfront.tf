@@ -71,8 +71,8 @@ resource "aws_cloudfront_distribution" "www_distribution" {
   }
 
   tags = {
-    Name        = "www.ra-gray-realty.com"
+    Name        = var.www_domain_name
     Env         = "prod"
-    Application = "www.ra-gray-realty.com"
+    Application = var.www_domain_name
   }
 }
