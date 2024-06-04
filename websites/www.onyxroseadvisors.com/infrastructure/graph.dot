@@ -1,0 +1,50 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] aws_cloudfront_distribution.www_distribution (expand)" [label = "aws_cloudfront_distribution.www_distribution", shape = "box"]
+		"[root] aws_route53_record.www (expand)" [label = "aws_route53_record.www", shape = "box"]
+		"[root] aws_s3_bucket.www (expand)" [label = "aws_s3_bucket.www", shape = "box"]
+		"[root] aws_s3_bucket_acl.www (expand)" [label = "aws_s3_bucket_acl.www", shape = "box"]
+		"[root] aws_s3_bucket_ownership_controls.www (expand)" [label = "aws_s3_bucket_ownership_controls.www", shape = "box"]
+		"[root] aws_s3_bucket_policy.allow_access_from_anyone (expand)" [label = "aws_s3_bucket_policy.allow_access_from_anyone", shape = "box"]
+		"[root] aws_s3_bucket_public_access_block.www (expand)" [label = "aws_s3_bucket_public_access_block.www", shape = "box"]
+		"[root] aws_s3_bucket_versioning.www (expand)" [label = "aws_s3_bucket_versioning.www", shape = "box"]
+		"[root] aws_s3_bucket_website_configuration.www (expand)" [label = "aws_s3_bucket_website_configuration.www", shape = "box"]
+		"[root] data.terraform_remote_state.root (expand)" [label = "data.terraform_remote_state.root", shape = "box"]
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" [label = "provider[\"registry.terraform.io/hashicorp/aws\"]", shape = "diamond"]
+		"[root] provider[\"terraform.io/builtin/terraform\"]" [label = "provider[\"terraform.io/builtin/terraform\"]", shape = "diamond"]
+		"[root] var.root_domain_name" [label = "var.root_domain_name", shape = "note"]
+		"[root] var.www_domain_name" [label = "var.www_domain_name", shape = "note"]
+		"[root] aws_cloudfront_distribution.www_distribution (expand)" -> "[root] aws_s3_bucket_website_configuration.www (expand)"
+		"[root] aws_cloudfront_distribution.www_distribution (expand)" -> "[root] data.terraform_remote_state.root (expand)"
+		"[root] aws_route53_record.www (expand)" -> "[root] aws_cloudfront_distribution.www_distribution (expand)"
+		"[root] aws_s3_bucket.www (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_s3_bucket.www (expand)" -> "[root] var.www_domain_name"
+		"[root] aws_s3_bucket_acl.www (expand)" -> "[root] aws_s3_bucket_ownership_controls.www (expand)"
+		"[root] aws_s3_bucket_acl.www (expand)" -> "[root] aws_s3_bucket_public_access_block.www (expand)"
+		"[root] aws_s3_bucket_ownership_controls.www (expand)" -> "[root] aws_s3_bucket.www (expand)"
+		"[root] aws_s3_bucket_policy.allow_access_from_anyone (expand)" -> "[root] aws_s3_bucket.www (expand)"
+		"[root] aws_s3_bucket_public_access_block.www (expand)" -> "[root] aws_s3_bucket.www (expand)"
+		"[root] aws_s3_bucket_versioning.www (expand)" -> "[root] aws_s3_bucket.www (expand)"
+		"[root] aws_s3_bucket_website_configuration.www (expand)" -> "[root] aws_s3_bucket.www (expand)"
+		"[root] data.terraform_remote_state.root (expand)" -> "[root] provider[\"terraform.io/builtin/terraform\"]"
+		"[root] output.cloudfront_url (expand)" -> "[root] aws_cloudfront_distribution.www_distribution (expand)"
+		"[root] output.cloudfront_www_id (expand)" -> "[root] aws_cloudfront_distribution.www_distribution (expand)"
+		"[root] output.s3_website_url (expand)" -> "[root] aws_s3_bucket_website_configuration.www (expand)"
+		"[root] output.site_url (expand)" -> "[root] aws_route53_record.www (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route53_record.www (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_s3_bucket_acl.www (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_s3_bucket_policy.allow_access_from_anyone (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_s3_bucket_versioning.www (expand)"
+		"[root] provider[\"terraform.io/builtin/terraform\"] (close)" -> "[root] data.terraform_remote_state.root (expand)"
+		"[root] root" -> "[root] output.cloudfront_url (expand)"
+		"[root] root" -> "[root] output.cloudfront_www_id (expand)"
+		"[root] root" -> "[root] output.s3_website_url (expand)"
+		"[root] root" -> "[root] output.site_url (expand)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)"
+		"[root] root" -> "[root] provider[\"terraform.io/builtin/terraform\"] (close)"
+		"[root] root" -> "[root] var.root_domain_name"
+	}
+}
+
