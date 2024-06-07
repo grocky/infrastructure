@@ -30,3 +30,23 @@ resource "aws_route53_record" "txt" {
   ]
   ttl = 3600
 }
+
+resource "aws_route53_record" "dkim" {
+  zone_id = data.terraform_remote_state.root.outputs.root_domain.root_zone_id
+  name    = "default._domainkey"
+  type    = "TXT"
+  records = [
+    "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC7YdY0Ex+nY1nEhW7/M5ii0kNictbSiOJY7E21CWMVALfhAl3YUy8+1LAC8ixXTyH7ilw39ZnPyqlCBFf7QgQmdC5Ju5xGwBwLqjV7a92wYc587WLo2spV+hqNCCgV/qa4qOB8WtuJyqnsARc68ACb1qtLknUypI0wutzQLifCtQIDAQAB",
+  ]
+  ttl = 300
+}
+
+resource "aws_route53_record" "dmarc" {
+  zone_id = data.terraform_remote_state.root.outputs.root_domain.root_zone_id
+  name    = "_dmarc"
+  type    = "TXT"
+  records = [
+    "v=DMARC1; p=quarantine; rua=mailto:25f8c5e6@mxtoolbox.dmarc-report.com; ruf=mailto:25f8c5e6@forensics.dmarc-report.com; fo=1",
+  ]
+  ttl = 300
+}

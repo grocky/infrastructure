@@ -3,6 +3,8 @@ digraph {
 	newrank = "true"
 	subgraph "root" {
 		"[root] aws_cloudfront_distribution.www_distribution (expand)" [label = "aws_cloudfront_distribution.www_distribution", shape = "box"]
+		"[root] aws_route53_record.dkim (expand)" [label = "aws_route53_record.dkim", shape = "box"]
+		"[root] aws_route53_record.dmarc (expand)" [label = "aws_route53_record.dmarc", shape = "box"]
 		"[root] aws_route53_record.mx (expand)" [label = "aws_route53_record.mx", shape = "box"]
 		"[root] aws_route53_record.txt (expand)" [label = "aws_route53_record.txt", shape = "box"]
 		"[root] aws_route53_record.www (expand)" [label = "aws_route53_record.www", shape = "box"]
@@ -20,6 +22,10 @@ digraph {
 		"[root] var.www_domain_name" [label = "var.www_domain_name", shape = "note"]
 		"[root] aws_cloudfront_distribution.www_distribution (expand)" -> "[root] aws_s3_bucket_website_configuration.www (expand)"
 		"[root] aws_cloudfront_distribution.www_distribution (expand)" -> "[root] data.terraform_remote_state.root (expand)"
+		"[root] aws_route53_record.dkim (expand)" -> "[root] data.terraform_remote_state.root (expand)"
+		"[root] aws_route53_record.dkim (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_route53_record.dmarc (expand)" -> "[root] data.terraform_remote_state.root (expand)"
+		"[root] aws_route53_record.dmarc (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
 		"[root] aws_route53_record.mx (expand)" -> "[root] data.terraform_remote_state.root (expand)"
 		"[root] aws_route53_record.mx (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
 		"[root] aws_route53_record.txt (expand)" -> "[root] data.terraform_remote_state.root (expand)"
@@ -39,6 +45,8 @@ digraph {
 		"[root] output.cloudfront_www_id (expand)" -> "[root] aws_cloudfront_distribution.www_distribution (expand)"
 		"[root] output.s3_website_url (expand)" -> "[root] aws_s3_bucket_website_configuration.www (expand)"
 		"[root] output.site_url (expand)" -> "[root] aws_route53_record.www (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route53_record.dkim (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route53_record.dmarc (expand)"
 		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route53_record.mx (expand)"
 		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route53_record.txt (expand)"
 		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route53_record.www (expand)"
