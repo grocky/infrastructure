@@ -36,7 +36,7 @@ resource "aws_route53_record" "dkim" {
   name    = "default._domainkey"
   type    = "TXT"
   records = [
-    "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC7YdY0Ex+nY1nEhW7/M5ii0kNictbSiOJY7E21CWMVALfhAl3YUy8+1LAC8ixXTyH7ilw39ZnPyqlCBFf7QgQmdC5Ju5xGwBwLqjV7a92wYc587WLo2spV+hqNCCgV/qa4qOB8WtuJyqnsARc68ACb1qtLknUypI0wutzQLifCtQIDAQAB",
+    "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDCZ5UraY4WtaXvihqjOFhw0NQ5UI+85tQm7ojI6OIy8DByT/HQSbynWMpyHj5WrCRrJR9Bal2Qyr6IkGy5LxgdgUDbJDQkg9olFzQkEbcyFNMzNl1chPqKJkxKer07AjND0fD5KeufNaJ4iuPK4Ci7V/shVY3AInQDKJeOgjlZaQIDAQAB",
   ]
   ttl = 300
 }
