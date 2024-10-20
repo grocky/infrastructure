@@ -1,0 +1,37 @@
+@startuml infrastructure
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v18.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/Storage/SimpleStorageService.puml
+
+skinparam componentStyle rectangle
+
+component AWS {
+    component DNS {
+        node www
+        node root
+        node clients
+    }
+    SimpleStorageService(s3Site, "Website", "onyxroseadvisors.com")
+}
+
+component honeybook {
+    database CRM
+}
+
+actor/ admin
+actor client
+
+root --> www
+www -left-> client
+s3Site -up-> www
+client -> DNS
+
+client -[hidden]-> admin
+www -[hidden]-> clients
+
+clients -> honeybook
+
+
+
+@enduml
