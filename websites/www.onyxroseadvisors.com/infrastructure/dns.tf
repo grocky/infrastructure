@@ -1,13 +1,32 @@
+resource "aws_route53_record" "verify" {
+  zone_id = data.terraform_remote_state.root.outputs.root_domain.root_zone_id
+  name    = "n844trhdr8ewwsk3yxtt"
+  type    = "CNAME"
+  ttl     = 300
+  records = ["verify.squarespace.com"]
+}
+
 resource "aws_route53_record" "www" {
   zone_id = data.terraform_remote_state.root.outputs.root_domain.root_zone_id
   name    = var.www_domain_name
-  type    = "A"
+  type    = "CNAME"
+  ttl     = 300
 
-  alias {
-    name                   = aws_cloudfront_distribution.www_distribution.domain_name
-    zone_id                = aws_cloudfront_distribution.www_distribution.hosted_zone_id
-    evaluate_target_health = false
-  }
+  records = ["ext-cust.squarespace.com"]
+}
+
+resource "aws_route53_record" "a" {
+  zone_id = data.terraform_remote_state.root.outputs.root_domain.root_zone_id
+  name    = ""
+  type    = "A"
+  ttl     = 300
+
+  records = [
+    "198.185.159.144",
+    "198.185.159.145",
+    "198.49.23.144",
+    "198.49.23.145"
+  ]
 }
 
 resource "aws_route53_record" "mx" {
