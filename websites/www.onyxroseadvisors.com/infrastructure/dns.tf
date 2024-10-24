@@ -34,8 +34,7 @@ resource "aws_route53_record" "mx" {
   name    = ""
   type    = "MX"
   records = [
-    "10 fwd1.porkbun.com",
-    "20 fwd2.porkbun.com",
+    "0 onyxroseadvisors-com.mail.protection.outlook.com."
   ]
   ttl = 3600
 }
@@ -45,7 +44,7 @@ resource "aws_route53_record" "txt" {
   name    = ""
   type    = "TXT"
   records = [
-    "v=spf1 mx include:_spf.porkbun.com ~all",
+    "v=spf1 include:spf.protection.outlook.com -all",
   ]
   ttl = 3600
 }
