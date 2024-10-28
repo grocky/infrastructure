@@ -16,3 +16,4 @@ override.tf.json
 *_override.tf
 *_override.tf.json
 .terraform*
+!.terraform-docs.yml
