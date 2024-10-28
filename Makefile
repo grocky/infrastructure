@@ -1,12 +1,13 @@
 .DEFAULT_GOAL := help
 
 TF_MODULES := $(shell find . -name "*.tf" -exec dirname {} \; | grep -v '\.terraform' | uniq)
-GRAPH_FILES := $(addsuffix /graph.html, $(TF_MODULES))
+HTML_FILES := $(addsuffix /graph.html, $(TF_MODULES))
+SVG_FILES := $(addsuffix /graph.svg, $(TF_MODULES))
 
 help: ## Print this help message
 	@awk -F ':|##' '/^[^\t].+?:.*?##/ { printf "${GREEN}%-20s${NC}%s\n", $$1, $$NF }' $(MAKEFILE_LIST)
 
-all-graph: $(GRAPH_FILES)
+all-graph: $(HTML_FILES) $(SVG_FILES)
 
 %/graph.dot: %/*.tf modules/*/*.tf
 	cd $(shell dirname $@); \
