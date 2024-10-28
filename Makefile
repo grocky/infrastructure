@@ -3,6 +3,7 @@
 TF_MODULES := $(shell find . -name "*.tf" -exec dirname {} \; | grep -v '\.terraform' | uniq)
 HTML_FILES := $(addsuffix /graph.html, $(TF_MODULES))
 SVG_FILES := $(addsuffix /graph.svg, $(TF_MODULES))
+README_FILES := $(addsuffix /README.md, $(TF_MODULES))
 
 help: ## Print this help message
 	@awk -F ':|##' '/^[^\t].+?:.*?##/ { printf "${GREEN}%-20s${NC}%s\n", $$1, $$NF }' $(MAKEFILE_LIST)
@@ -10,7 +11,15 @@ help: ## Print this help message
 list-modules: ## list all terraform modules in this repo
 	@echo $(TF_MODULES) | tr ' ' '\n'
 
+# all-graph: should only be used to batch update graph images if necessary.
 all-graph: $(HTML_FILES) $(SVG_FILES)
+
+# all-docs: should only be used to batch update module documentation if necessary.
+all-docs:
+	./scripts/pre-commit-generate-docs.sh $(TF_MODULES)
+
+%/README.md: %/*.tf modules/*/*.tf %/graph.svg
+	./scripts/pre-commit-generate-docs.sh $(shell dirname $@)
 
 %/graph.dot: %/*.tf modules/*/*.tf
 	cd $(shell dirname $@); \
