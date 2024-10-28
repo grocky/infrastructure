@@ -7,6 +7,9 @@ SVG_FILES := $(addsuffix /graph.svg, $(TF_MODULES))
 help: ## Print this help message
 	@awk -F ':|##' '/^[^\t].+?:.*?##/ { printf "${GREEN}%-20s${NC}%s\n", $$1, $$NF }' $(MAKEFILE_LIST)
 
+list-modules: ## list all terraform modules in this repo
+	@echo $(TF_MODULES) | tr ' ' '\n'
+
 all-graph: $(HTML_FILES) $(SVG_FILES)
 
 %/graph.dot: %/*.tf modules/*/*.tf
