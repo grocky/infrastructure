@@ -4,7 +4,8 @@
 #
 # When TF files have changed and the generated documentation has changed, this script
 # will update the README.md file in the module's directory and exit with a
-# status code of 1.
+# status code of 1. This stops the commit and allows the documentation changes to be
+# included with the code changes.
 #
 # Author: github.com/grocky
 
@@ -68,6 +69,7 @@ function generate_graph() {
   cd "${module}"
   terraform graph > graph.dot
   dot -Tsvg graph.dot > graph.svg
+  <graph.dot terraform-graph-beautifier --output-type=cyto-html > graph.html
 }
 
 ###############################################################################
@@ -90,11 +92,52 @@ function generate_docs() {
       files_updated=$((files_updated + 1))
     fi
     if [[ "${m}" != *"modules"* ]]; then
-      make ${m}/graph.svg
+      make ${m}/graph.svg ${m}/graph.html
+      # can be subsistuted with `generate_graph ${m}`
+      # otherwise, requires the following Makefile targets:
+      #
+      # %/graph.dot: %/*.tf modules/*/*.tf
+      # 	cd $(shell dirname $@); \
+      # 	terraform graph > $(shell basename $@);
+
+      # %/graph.svg: %/graph.dot
+      # 	dot -Tsvg $< -o $@
+
+      # %/graph.html: %/graph.dot
+      # 	<$< terraform-graph-beautifier --output-type=cyto-html > $@
     fi
   done
 
   return ${files_updated}
 }
 
-generate_docs "$@"
+function check_dependencies() {
+  checkbin "terraform" "brew install terraform"
+  checkbin "dot" "brew install graphviz"
+  checkbin "terraform-docs" "brew install terraform-docs"
+  checkbin "terraform-graph-beautifier" "go install github.com/pcasteran/terraform-graph-beautifier@latest"
+}
+
+###############################################################################
+# Ensure that an executable (bin) exists. Prints out the provided install
+# command if it doesn't exist.
+#
+# Arguments:
+#   1: the binary name to check
+#   2: a string of the install command
+# Returns:
+#   null
+###############################################################################
+function checkbin() {
+  theBin="$1"
+  cmd="$2"
+
+  command -v $theBin >/dev/null 2>&1 || { printf >&2 "%s is required. Install it with:\n    %s\n" "$theBin" "$cmd"; exit 1; }
+}
+
+function main() {
+  check_dependencies
+  generate_docs "$@"
+}
+
+main "$@"

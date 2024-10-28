@@ -1,17 +1,22 @@
 .DEFAULT_GOAL := help
 
 TF_MODULES := $(shell find . -name "*.tf" -exec dirname {} \; | grep -v '\.terraform' | uniq)
+GRAPH_FILES := $(addsuffix /graph.html, $(TF_MODULES))
 
 help: ## Print this help message
 	@awk -F ':|##' '/^[^\t].+?:.*?##/ { printf "${GREEN}%-20s${NC}%s\n", $$1, $$NF }' $(MAKEFILE_LIST)
 
-.SECONDEXPANSION:
+all-graph: $(GRAPH_FILES)
+
 %/graph.dot: %/*.tf modules/*/*.tf
 	cd $(shell dirname $@); \
 	terraform graph > $(shell basename $@);
 
 %/graph.svg: %/graph.dot
 	dot -Tsvg $< -o $@
+
+%/graph.html: %/graph.dot
+	<$< terraform-graph-beautifier --output-type=cyto-html > $@
 
 remote-state-init: ## Initialize remote-state
 	@cd remote-state; terraform init
