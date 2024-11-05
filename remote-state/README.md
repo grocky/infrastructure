@@ -5,6 +5,7 @@ Sets up the remote state bucket.
 ## Infrastructure Graph
 
 ![terraform graph](./graph.svg)
+
 ## Requirements
 
 No requirements.
@@ -21,11 +22,11 @@ No modules.
 
 ## Resources
 
-| Name | Type |
-|------|------|
-| [aws_dynamodb_table.terraform_state_lock](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/dynamodb_table) | resource |
-| [aws_s3_bucket.terraform_state](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket) | resource |
-| [aws_s3_bucket_public_access_block.state](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_public_access_block) | resource |
+| Name | Type | File |
+|------|------|------|
+| [aws_dynamodb_table.terraform_state_lock](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/dynamodb_table) | resource | (remote-state/main.tf#40) |
+| [aws_s3_bucket.terraform_state](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket) | resource | (remote-state/main.tf#15) |
+| [aws_s3_bucket_public_access_block.state](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_public_access_block) | resource | (remote-state/main.tf#32) |
 
 ## Inputs
 

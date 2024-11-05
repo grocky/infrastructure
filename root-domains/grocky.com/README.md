@@ -19,7 +19,8 @@ No modules.
 
 ## Resources
 
-No resources.
+| Name | Type | File |
+|------|------|------|
 
 ## Inputs
 

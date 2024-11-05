@@ -21,7 +21,8 @@ No providers.
 
 ## Resources
 
-No resources.
+| Name | Type | File |
+|------|------|------|
 
 ## Inputs
 
